@@ -1,0 +1,29 @@
+{
+  "ogrenci_bilgileri": {
+    "ad": "Mert Test",
+    "ogrenci_no": "20210001",
+    "bolum": "Bilgisayar Mühendisliği",
+    "hazirlik_durumu": "Tamamlandı",
+    "toplam_staj_gun": 60,
+    "mevcut_gno": 2.45
+  },
+  "alinan_dersler": [
+    { "kod": "INF101", "ad": "Bilgisayar Mühendisliğine Giriş", "durum": "Geçti", "harf_notu": "BA" },
+    { "kod": "MAT101", "ad": "Matematik I", "durum": "Geçti", "harf_notu": "CB" },
+    { "kod": "FIZ101", "ad": "Fizik I", "durum": "Geçti", "harf_notu": "CC" },
+    { "kod": "INF201", "ad": "Veri Yapıları", "durum": "Geçti", "harf_notu": "BB" },
+    { "kod": "INF204", "ad": "Algoritmalar", "durum": "Geçti", "harf_notu": "AA" },
+    { "kod": "INF301", "ad": "İşletim Sistemleri", "durum": "Geçti", "harf_notu": "BA" },
+    { "kod": "INF305", "ad": "Veritabanı Yönetimi", "durum": "Geçti", "harf_notu": "CB" },
+    { "kod": "INF401", "ad": "Bitirme Projesi I", "durum": "Geçti", "harf_notu": "AA" },
+    { "kod": "INF402", "ad": "Bitirme Projesi II", "durum": "Geçti", "harf_notu": "BA" },
+    { "kod": "SEC001", "ad": "Teknik Seçmeli I", "durum": "Geçti", "harf_notu": "BB" },
+    { "kod": "SEC002", "ad": "Teknik Seçmeli II", "durum": "Geçti", "harf_notu": "CB" },
+    { "kod": "SEC003", "ad": "Sosyal Seçmeli I", "durum": "Geçti", "harf_notu": "BA" }
+  ],
+  "ozet": {
+    "toplam_alinan_akts": 240,
+    "alinan_zorunlu_ders_sayisi": 42,
+    "alinan_secmeli_ders_sayisi": 8
+  }
+}
