@@ -1,0 +1,8 @@
+fastapi
+uvicorn[standard]
+pdfplumber
+langchain
+langchain-ollama
+langchain-community
+langchain-core
+pydantic

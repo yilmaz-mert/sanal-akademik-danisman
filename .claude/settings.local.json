@@ -1,0 +1,28 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install *)",
+      "Bash(python -c \"import langchain.agents; print\\('langchain OK'\\)\")",
+      "Bash(python -c \"from langchain.agents import create_react_agent, AgentExecutor, Tool; print\\('agents OK'\\)\")",
+      "Bash(python -c \"import langchain; print\\(langchain.__version__\\)\")",
+      "Bash(python -c \"from langchain.agents import dir; print\\([x for x in dir\\(langchain.agents\\) if 'react' in x.lower\\(\\) or 'create' in x.lower\\(\\)]\\)\")",
+      "Bash(python -c \"import langchain.agents; print\\([x for x in dir\\(langchain.agents\\) if 'react' in x.lower\\(\\) or 'create' in x.lower\\(\\)]\\)\")",
+      "Bash(python -c \"import langchain.agents; print\\(dir\\(langchain.agents\\)\\)\")",
+      "Bash(python -c \"from langchain.agents import create_agent; help\\(create_agent\\)\")",
+      "Bash(python -c \"from langchain_core.tools import tool, BaseTool; print\\('tools ok'\\)\")",
+      "Bash(python -c \"import langchain_core; print\\(langchain_core.__version__\\)\")",
+      "Bash(python -c \"from langchain_core.messages import HumanMessage, AIMessage; print\\('messages ok'\\)\")",
+      "Bash(python -c \"from langchain_ollama import ChatOllama; print\\('ChatOllama ok'\\)\")",
+      "Bash(python -c \"from langchain_core.tools import tool; print\\('tool decorator ok'\\)\")",
+      "Bash(python -c \"from langchain.agents import create_agent; from langchain_ollama import ChatOllama; m = ChatOllama\\(model='llama3.1:8b'\\); print\\(type\\(m\\).__mro__\\)\")",
+      "Bash(python -c ' *)",
+      "Bash(python -c \"import langgraph; print\\('langgraph', langgraph.__version__\\)\")",
+      "Bash(node -e \"const p=require\\('./package.json'\\); console.log\\('react-markdown:', p.dependencies['react-markdown'] || 'NOT FOUND'\\)\")",
+      "Bash(powershell -Command \"Select-String -Path 'gs-akts_ham_metin.txt' -Pattern '\\(Notu|Not|Puan|GNO|ANO|Yarıyıl Sonu|2021|2022|2023|Geçti|Kaldı|Başarı|Harf\\)' | Select-Object -First 40 | Format-Table LineNumber, Line -AutoSize\")",
+      "Bash(powershell -Command \"Get-Content 'gs-akts_ham_metin.txt' | Measure-Object -Line\")",
+      "Bash(powershell -Command \"Get-Content 'gs-akts_ham_metin.txt' | Select-Object -Last 80\")",
+      "Bash(node -e ' *)",
+      "Bash(npm run *)"
+    ]
+  }
+}
