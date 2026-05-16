@@ -108,6 +108,13 @@
             "donem": 3
         },
         {
+            "kod": "INF204",
+            "ad": "Elektromanyetik Dalgalar",
+            "akts": 3.0,
+            "tip": "Zorunlu",
+            "donem": 3
+        },
+        {
             "kod": "INF246",
             "ad": "Programlama Uygulamaları",
             "akts": 3.0,
@@ -166,6 +173,13 @@
         {
             "kod": "INF257",
             "ad": "İstatistik",
+            "akts": 4.0,
+            "tip": "Zorunlu",
+            "donem": 4
+        },
+        {
+            "kod": "INF211",
+            "ad": "Bilgisayar Mühendisliği İçin Olasılık ve İstatistiğe Giriş",
             "akts": 4.0,
             "tip": "Zorunlu",
             "donem": 4

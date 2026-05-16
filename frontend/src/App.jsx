@@ -427,19 +427,31 @@ function MessageBubble({ msg }) {
 }
 
 // ─── Thinking bubble ─────────────────────────────────────────────────────────
-function ThinkingBubble({ status }) {
+function ThinkingBubble({ status, statusLog = [] }) {
+  // Show up to 2 prior steps faded above, then the active one pulsing
+  const prev = statusLog.length > 1 ? statusLog.slice(-3, -1) : [];
+  const current = status || (statusLog.length > 0 ? statusLog[statusLog.length - 1] : 'Bağlanıyor...');
   return (
     <div className="flex justify-start">
       <div className="flex gap-2.5">
         <div className="shrink-0 h-7 w-7 rounded-full bg-white/[0.05] border border-white/10 text-indigo-400 flex items-center justify-center mt-0.5">
           <Bot size={14} />
         </div>
-        <div className="px-4 py-3 rounded-2xl rounded-tl-sm bg-white/[0.04] border border-white/[0.08] flex items-center gap-3 min-w-[180px]">
-          <span className="relative flex h-2 w-2 flex-shrink-0">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75" />
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-indigo-500" />
-          </span>
-          <span className="text-slate-400 text-[13px]">{status || 'Bağlanıyor...'}</span>
+        <div className="px-4 py-3 rounded-2xl rounded-tl-sm bg-white/[0.04] border border-white/[0.08] min-w-[200px] max-w-[420px]">
+          {prev.length > 0 && (
+            <div className="mb-2 space-y-0.5 border-b border-white/[0.05] pb-2">
+              {prev.map((msg, i) => (
+                <p key={i} className="text-slate-700 text-[11px] leading-tight truncate">{msg}</p>
+              ))}
+            </div>
+          )}
+          <div className="flex items-center gap-3">
+            <span className="relative flex h-2 w-2 flex-shrink-0">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75" />
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-indigo-500" />
+            </span>
+            <span className="text-slate-400 text-[13px]">{current}</span>
+          </div>
         </div>
       </div>
     </div>
@@ -457,6 +469,7 @@ export default function App() {
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);
   const [loadingStatus, setLoadingStatus] = useState('');
+  const [statusLog, setStatusLog] = useState([]);
   const [fileUploaded, setFileUploaded] = useState(false);
   const [sessionId, setSessionId] = useState(null);
   const [summary, setSummary] = useState(null);
@@ -473,6 +486,7 @@ export default function App() {
     if (!file) return;
     setLoading(true);
     setLoadingStatus('Transkript yükleniyor...');
+    setStatusLog([]);
     setMessages((prev) => [...prev, { role: 'user', text: `📄 Dosya yüklendi: ${file.name}` }]);
 
     const formData = new FormData();
@@ -500,6 +514,7 @@ export default function App() {
             const ev = JSON.parse(line.slice(6));
             if (ev.type === 'status') {
               setLoadingStatus(ev.data);
+              setStatusLog((prev) => [...prev, ev.data]);
             } else if (ev.type === 'summary') {
               const { session_id: sid, summary: s } = ev.data;
               if (sid) setSessionId(sid);
@@ -507,10 +522,10 @@ export default function App() {
               setFileUploaded(true);
             } else if (ev.type === 'done') {
               setMessages((prev) => [...prev, { role: 'system', text: ev.data }]);
-              setLoading(false); setLoadingStatus(''); resolved = true;
+              setLoading(false); setLoadingStatus(''); setStatusLog([]); resolved = true;
             } else if (ev.type === 'error') {
               setMessages((prev) => [...prev, { role: 'system', text: `❌ ${ev.data}` }]);
-              setLoading(false); setLoadingStatus(''); resolved = true;
+              setLoading(false); setLoadingStatus(''); setStatusLog([]); resolved = true;
             }
           } catch (_) {}
         }
@@ -535,6 +550,7 @@ export default function App() {
     setMessages((prev) => [...prev, { role: 'user', text: userMessage }]);
     setLoading(true);
     setLoadingStatus('⚡ Akademik danışman devreye giriyor...');
+    setStatusLog([]);
 
     try {
       const response = await fetch(`${API_BASE}/chat/stream`, {
@@ -561,12 +577,13 @@ export default function App() {
             const event = JSON.parse(line.slice(6));
             if (event.type === 'status') {
               setLoadingStatus(event.data);
+              setStatusLog((prev) => [...prev, event.data]);
             } else if (event.type === 'done') {
               setMessages((prev) => [...prev, { role: 'system', text: event.data }]);
-              setLoading(false); setLoadingStatus(''); resolved = true;
+              setLoading(false); setLoadingStatus(''); setStatusLog([]); resolved = true;
             } else if (event.type === 'error') {
               setMessages((prev) => [...prev, { role: 'system', text: `⚠️ ${event.data}` }]);
-              setLoading(false); setLoadingStatus(''); resolved = true;
+              setLoading(false); setLoadingStatus(''); setStatusLog([]); resolved = true;
             }
           } catch (_) {}
         }
@@ -583,7 +600,7 @@ export default function App() {
     if (sessionId) {
       try { await axios.delete(`${API_BASE}/session/${sessionId}`); } catch (_) {}
     }
-    setSessionId(null); setFileUploaded(false); setLoadingStatus(''); setSummary(null);
+    setSessionId(null); setFileUploaded(false); setLoadingStatus(''); setStatusLog([]); setSummary(null);
     setMessages([{ role: 'system', text: 'Sohbet temizlendi. Yeni bir transkript yükleyebilirsin.' }]);
   };
 
@@ -644,7 +661,7 @@ export default function App() {
       <div className="flex-1 flex flex-col min-w-0">
         <div className="flex-1 overflow-y-auto px-4 md:px-8 py-6 space-y-4">
           {messages.map((msg, i) => <MessageBubble key={i} msg={msg} />)}
-          {loading && <ThinkingBubble status={loadingStatus} />}
+          {loading && <ThinkingBubble status={loadingStatus} statusLog={statusLog} />}
           <div ref={messagesEndRef} />
         </div>
 

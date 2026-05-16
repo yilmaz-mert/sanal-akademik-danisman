@@ -561,6 +561,20 @@
             "akts": 2.0,
             "tip": "Zorunlu",
             "donem": 6
+        },
+        {
+            "kod": "TUR001",
+            "ad": "Türk Dili I",
+            "akts": 2.0,
+            "tip": "Zorunlu",
+            "donem": 1
+        },
+        {
+            "kod": "TUR002",
+            "ad": "Türk Dili II",
+            "akts": 2.0,
+            "tip": "Zorunlu",
+            "donem": 2
         }
     ]
 }

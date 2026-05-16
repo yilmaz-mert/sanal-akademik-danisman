@@ -1176,7 +1176,56 @@ def judge_node(state: PipelineState) -> dict:
             "tip":   c.get("tip", ""),
         })
 
+    # ── Intibak cross-verification: reverse-lookup missing ← passed old codes ──
+    # Pass 1 in review_missing_courses_node already expands via quick_lookup, but
+    # unrecognized electives may still contain old codes that satisfied requirements.
+    # This pass enforces that from both directions and cleans unrecognized_electives.
+    _intibak_j = load_intibak_rules()
+    _ql_j      = _intibak_j.get("eski_yeni_eslestirme", {})
+
+    # Inverted map: new_base → set of old_bases whose passing satisfies the requirement
+    _satisfiers: Dict[str, set] = {}
+    for _old, _new_list in _ql_j.items():
+        for _nc in _new_list:
+            _satisfiers.setdefault(strip_suffix(_nc), set()).add(strip_suffix(_old))
+
+    # All effective passed codes: resolved + unrecognized passed
+    _all_passed_j: set = set(passed)
+    for _bk, _ue in unrecognized.items():
+        _all_passed_j.add(strip_suffix(_ue.get("kod", "")))
+
+    # For each missing course, check if any satisfier code was actually passed
+    _extra_cleared: set = set()
+    _final_missing: List[Dict] = []
+    for mc in missing:
+        mc_base = strip_suffix(mc["kod"])
+        sats    = _satisfiers.get(mc_base, set())
+        if sats & _all_passed_j:
+            _extra_cleared.add(mc_base)
+            print(f"[JUDGE-INTIBAK] {mc_base} cleared via reverse-lookup "
+                  f"(satisfiers: {sats & _all_passed_j})")
+        else:
+            _final_missing.append(mc)
+    missing = _final_missing
+
+    # Remove from unrecognized_electives the old codes that satisfied requirements
+    _all_cleared_j  = intibak_cleared | _extra_cleared
+    _satisfying_old: set = set()
+    for _old, _new_list in _ql_j.items():
+        _old_base  = strip_suffix(_old)
+        _new_bases = {strip_suffix(nc) for nc in _new_list}
+        if _old_base in _all_passed_j and _new_bases & _all_cleared_j:
+            _satisfying_old.add(_old_base)
+    if _satisfying_old:
+        unrecognized_electives = [
+            e for e in unrecognized_electives
+            if strip_suffix(e.get("kod", "")) not in _satisfying_old
+        ]
+        print(f"[JUDGE-INTIBAK] Removed from unrecognized_electives: {_satisfying_old}")
+
     # ── Graduation status — missing courses BLOCK graduation regardless of ECTS ──
+    # NOTE: graduation_status is computed AFTER the cross-verification above so it
+    # correctly reflects the final cleaned missing list.
     target_ects = latest_curr.get("mezuniyet_sartlari", {}).get("toplam_akts_hedefi", 240)
     if missing:
         graduation_status = "Mezun Olamaz (Eksik Zorunlu Dersler Mevcut)"
@@ -1209,24 +1258,184 @@ def _judge_router(state: PipelineState) -> str:
     return "mapper" if state.get("judge_verdict") == "needs_remapping" else END
 
 
-# ── Compile pipeline (Map-Reduce: parallel semester agents) ───
-_g = StateGraph(PipelineState)
-_g.add_node("historian_init",        historian_init_node)
-_g.add_node("semester_agent",        semester_agent_node)
-_g.add_node("mapper",                mapper_node)
-_g.add_node("reviewer_ai",           reviewer_ai_node)
-_g.add_node("review_missing_courses", review_missing_courses_node)
-_g.add_node("judge",                 judge_node)
-_g.set_entry_point("historian_init")
-# Fan-out: each semester → its own parallel agent; empty → skip straight to mapper
-_g.add_conditional_edges("historian_init", _route_to_semester_agents, ["semester_agent", "mapper"])
-# Fan-in: all semester agents converge to mapper
-_g.add_edge("semester_agent",        "mapper")
-_g.add_edge("mapper",                "reviewer_ai")
-_g.add_edge("reviewer_ai",           "review_missing_courses")
-_g.add_edge("review_missing_courses", "judge")
-_g.add_conditional_edges("judge", _judge_router, {"mapper": "mapper", END: END})
-analysis_pipeline = _g.compile()
+# ─────────────────────────────────────────────────────────────
+# ANALYSIS CONTEXT  (shared mutable state for orchestrator tools)
+# ─────────────────────────────────────────────────────────────
+class AnalysisContext:
+    """Shared mutable state that flows through all 3 analysis tool calls."""
+
+    def __init__(self, semesters: list, all_codes: list) -> None:
+        self.semesters = semesters
+        self.all_codes = all_codes
+        self.chronological_records: List[Dict] = []
+        self.resolved:              Dict[str, Dict] = {}
+        self.unrecognized:          Dict[str, Dict] = {}
+        self.passed_codes:          List[str] = []
+        self.failed_courses:        List[Dict] = []
+        self.missing_courses:       List[Dict] = []
+        self.unrecognized_electives: List[Dict] = []
+        self.total_ects:            float = 0.0
+        self.matched_log:           List[str] = []
+        self.intibak_cleared_codes: List[str] = []
+        self.graduation_status:     str = ""
+        self.mapper_retries:        int = 0
+        self.status_msgs:           List[str] = []
+        self._steps_done:           set = set()
+
+    def _to_state(self) -> Dict:
+        return {
+            "semesters":              self.semesters,
+            "all_codes":              self.all_codes,
+            "chronological_records":  self.chronological_records,
+            "resolved_courses":       self.resolved,
+            "unrecognized":           self.unrecognized,
+            "passed_codes":           self.passed_codes,
+            "failed_courses":         self.failed_courses,
+            "missing_courses":        self.missing_courses,
+            "unrecognized_electives": self.unrecognized_electives,
+            "total_ects":             self.total_ects,
+            "matched_log":            self.matched_log,
+            "judge_verdict":          "",
+            "graduation_status":      self.graduation_status,
+            "mapper_retries":         self.mapper_retries,
+            "intibak_cleared_codes":  self.intibak_cleared_codes,
+            "status_queue":           [],
+        }
+
+    def _apply(self, result: Dict) -> None:
+        for json_key, attr in [
+            ("chronological_records",  "chronological_records"),
+            ("resolved_courses",       "resolved"),
+            ("unrecognized",           "unrecognized"),
+            ("passed_codes",           "passed_codes"),
+            ("failed_courses",         "failed_courses"),
+            ("missing_courses",        "missing_courses"),
+            ("unrecognized_electives", "unrecognized_electives"),
+            ("total_ects",             "total_ects"),
+            ("matched_log",            "matched_log"),
+            ("intibak_cleared_codes",  "intibak_cleared_codes"),
+            ("graduation_status",      "graduation_status"),
+            ("mapper_retries",         "mapper_retries"),
+        ]:
+            if json_key in result:
+                setattr(self, attr, result[json_key])
+        self.status_msgs.extend(result.get("status_queue", []))
+
+    # ── Step 1: Historian + all semester agents + mapper ──────
+    def run_step1(self) -> None:
+        if "step1" in self._steps_done:
+            return
+        n = len(self.semesters)
+        self.status_msgs.append(f"Paralel Dönem Ajanları devreye alınıyor ({n} dönem)...")
+        all_records: List[Dict] = []
+        for sem in self.semesters:
+            result = semester_agent_node({"semester": sem})
+            all_records.extend(result.get("chronological_records", []))
+            self.status_msgs.extend(result.get("status_queue", []))
+        self.chronological_records = all_records
+        self._apply(mapper_node(self._to_state()))
+        self._steps_done.add("step1")
+
+    # ── Step 2: Reviewer AI + Intibak (async) ────────────────
+    async def run_step2(self) -> None:
+        if "step2" in self._steps_done:
+            return
+        if "step1" not in self._steps_done:
+            self.run_step1()
+        self._apply(await reviewer_ai_node(self._to_state()))
+        self._apply(await review_missing_courses_node(self._to_state()))
+        self._steps_done.add("step2")
+
+    # ── Step 3: Judge ─────────────────────────────────────────
+    def run_step3(self) -> None:
+        if "step3" in self._steps_done:
+            return
+        result = judge_node(self._to_state())
+        if result.get("judge_verdict") == "needs_remapping":
+            self.status_msgs.extend(result.get("status_queue", []))
+            self.mapper_retries = result.get("mapper_retries", self.mapper_retries)
+            self._apply(mapper_node(self._to_state()))
+            result = judge_node(self._to_state())
+        self._apply(result)
+        self._steps_done.add("step3")
+
+
+# ─────────────────────────────────────────────────────────────
+# ORCHESTRATOR TOOLS  (3 ordered async StructuredTools)
+# ─────────────────────────────────────────────────────────────
+def make_analysis_tools(ctx: AnalysisContext) -> list:
+    """Return 3 ordered StructuredTools that share the given AnalysisContext."""
+
+    async def step1_historian() -> str:
+        if "step1" in ctx._steps_done:
+            return "ADIM 1 zaten tamamlandı."
+        ctx.run_step1()
+        return (
+            f"ADIM 1 tamamlandı: {len(ctx.chronological_records)} kayıt işlendi, "
+            f"{len(ctx.resolved)} ders eşlendi."
+        )
+
+    async def step2_reviewer() -> str:
+        if "step2" in ctx._steps_done:
+            return "ADIM 2 zaten tamamlandı."
+        if "step1" not in ctx._steps_done:
+            ctx.run_step1()
+        await ctx.run_step2()
+        return (
+            f"ADIM 2 tamamlandı: {len(ctx.intibak_cleared_codes)} intibak muafiyeti uygulandı."
+        )
+
+    async def step3_judge() -> str:
+        if "step3" in ctx._steps_done:
+            return "ADIM 3 zaten tamamlandı."
+        if "step2" not in ctx._steps_done:
+            await ctx.run_step2()
+        ctx.run_step3()
+        return f"ADIM 3 tamamlandı: {ctx.graduation_status}"
+
+    return [
+        StructuredTool.from_function(
+            coroutine=step1_historian,
+            name="AdimBir_HistorianHaritaci",
+            description=(
+                "ADIM 1/3: Transkript dönemlerini işler ve ders-müfredat eşleştirmesini yapar. "
+                "Analiz sürecinin İLK adımı — mutlaka ilk çağır."
+            ),
+        ),
+        StructuredTool.from_function(
+            coroutine=step2_reviewer,
+            name="AdimIki_GozdenGecirenIntibak",
+            description=(
+                "ADIM 2/3: AI gözden geçireni ve intibak eşdeğerlik kurallarını uygular. "
+                "ADIM 1'den sonra çağır."
+            ),
+        ),
+        StructuredTool.from_function(
+            coroutine=step3_judge,
+            name="AdimUc_Hakem",
+            description=(
+                "ADIM 3/3: Mezuniyet kararını verir ve eksik dersleri hesaplar. "
+                "ADIM 2'den sonra çağır. Son adım."
+            ),
+        ),
+    ]
+
+
+# ─────────────────────────────────────────────────────────────
+# ORCHESTRATOR SYSTEM PROMPT
+# ─────────────────────────────────────────────────────────────
+ORCHESTRATOR_PROMPT = """Sen bir transkript analiz orkestratörüsün. \
+Görevin aşağıdaki 3 aracı KESINLIKLE bu sırayla çağırmaktır:
+
+1. AdimBir_HistorianHaritaci
+2. AdimIki_GozdenGecirenIntibak
+3. AdimUc_Hakem
+
+KURALLAR:
+- Araçları sırayı bozmadan, art arda çağır.
+- Her araç kendinden öncekine bağlıdır; sırayı atlatma.
+- 3 araç da tamamlandıktan sonra YALNIZCA "Analiz tamamlandı." yaz.
+- Başka araç çağırma. Yorum yapma. Sadece araçları çalıştır."""
 
 
 
@@ -1502,8 +1711,17 @@ class ChatRequest(BaseModel):
 
 
 # ─────────────────────────────────────────────────────────────
-# UPLOAD ENDPOINT  (TXT input)
+# UPLOAD ENDPOINT  (TXT input — ReAct orchestrator)
 # ─────────────────────────────────────────────────────────────
+
+# Tool name → Turkish status shown when the tool starts
+_ANALYSIS_STATUS = {
+    "AdimBir_HistorianHaritaci":    "Tarihçi ve Haritacı dönem verilerini işliyor...",
+    "AdimIki_GozdenGecirenIntibak": "Gözden Geçiren AI ve İntibak motoru çalışıyor...",
+    "AdimUc_Hakem":                 "Hakem mezuniyet kararını hesaplıyor...",
+}
+
+
 @app.post("/upload")
 async def upload_transcript(
     file: UploadFile = File(...),
@@ -1525,53 +1743,84 @@ async def upload_transcript(
             yield _sse({"type": "error", "data": f"Transkript ayrıştırılamadı: {e}"})
             return
 
-        initial: PipelineState = {
-            "semesters":              parsed.get("semesters", []),
-            "all_codes":              parsed.get("all_codes", []),
-            "chronological_records":  [],
-            "resolved_courses":       {},
-            "unrecognized":           {},
-            "passed_codes":           [],
-            "failed_courses":         [],
-            "missing_courses":        [],
-            "unrecognized_electives": [],
-            "total_ects":             0.0,
-            "matched_log":            [],
-            "judge_verdict":          "",
-            "graduation_status":      "",
-            "mapper_retries":         0,
-            "intibak_cleared_codes":  [],
-            "status_queue":           [],
-        }
+        ctx = AnalysisContext(
+            semesters=parsed.get("semesters", []),
+            all_codes=parsed.get("all_codes", []),
+        )
 
-        emitted = 0
-        final_state = None
+        yield _sse({
+            "type": "status",
+            "data": f"Orkestratör Ajan başlatılıyor ({len(ctx.semesters)} dönem)...",
+        })
+
+        # ── Run orchestrator with real-time SSE streaming ──────
         try:
-            async for chunk in analysis_pipeline.astream(initial, stream_mode="values"):
-                final_state = chunk
-                q = chunk.get("status_queue", [])
-                while emitted < len(q):
-                    yield _sse({"type": "status", "data": q[emitted]})
-                    emitted += 1
+            orchestrator_model = ChatOllama(model="llama3.1:8b", temperature=0.0, num_ctx=2048)
+            orchestrator = create_react_agent(
+                model=orchestrator_model,
+                tools=make_analysis_tools(ctx),
+                prompt=ORCHESTRATOR_PROMPT,
+            )
+            async for event in orchestrator.astream_events(
+                {"messages": [HumanMessage(content="Transkript analiz et. 3 adımı sırayla uygula.")]},
+                config={"configurable": {"thread_id": session_id + "_analysis"}},
+                version="v2",
+            ):
+                etype = event["event"]
+                ename = event.get("name", "")
+
+                if etype == "on_tool_start":
+                    msg = _ANALYSIS_STATUS.get(ename, f"{ename} çalıştırılıyor...")
+                    yield _sse({"type": "status", "data": msg})
+
+                elif etype == "on_tool_end":
+                    for msg in ctx.status_msgs:
+                        yield _sse({"type": "status", "data": msg})
+                    ctx.status_msgs.clear()
+
         except Exception as e:
-            yield _sse({"type": "error", "data": f"Analiz hatası: {e}"})
-            return
+            print(f"[ORCHESTRATOR] Error: {e}")
+            yield _sse({"type": "status", "data": "Adımlar doğrudan tamamlanıyor..."})
 
-        if final_state is None:
-            yield _sse({"type": "error", "data": "Pipeline çalıştırılamadı."})
-            return
+        # Flush any leftover status messages from the last tool
+        for msg in ctx.status_msgs:
+            yield _sse({"type": "status", "data": msg})
+        ctx.status_msgs.clear()
 
+        # ── Fallback: run any steps the orchestrator missed ────
+        if "step3" not in ctx._steps_done:
+            yield _sse({"type": "status", "data": "Analiz adımları tamamlanıyor..."})
+            try:
+                if "step1" not in ctx._steps_done:
+                    ctx.run_step1()
+                    for msg in ctx.status_msgs:
+                        yield _sse({"type": "status", "data": msg})
+                    ctx.status_msgs.clear()
+                if "step2" not in ctx._steps_done:
+                    await ctx.run_step2()
+                    for msg in ctx.status_msgs:
+                        yield _sse({"type": "status", "data": msg})
+                    ctx.status_msgs.clear()
+                ctx.run_step3()
+                for msg in ctx.status_msgs:
+                    yield _sse({"type": "status", "data": msg})
+                ctx.status_msgs.clear()
+            except Exception as e:
+                yield _sse({"type": "error", "data": f"Analiz adımı hatası: {e}"})
+                return
+
+        # ── Build transcript_data from completed ctx ───────────
         transcript_data = {
             "session_id":             session_id,
             "semesters":              parsed.get("semesters", []),
             "cumulative_gpa":         parsed.get("cumulative_gpa"),
-            "passed_codes":           final_state.get("passed_codes", []),
-            "matched_log":            final_state.get("matched_log", []),
-            "total_ects":             final_state.get("total_ects", 0.0),
-            "missing_courses":        final_state.get("missing_courses", []),
-            "failed_courses":         final_state.get("failed_courses", []),
-            "unrecognized_electives": final_state.get("unrecognized_electives", []),
-            "graduation_status":      final_state.get("graduation_status", ""),
+            "passed_codes":           ctx.passed_codes,
+            "matched_log":            ctx.matched_log,
+            "total_ects":             ctx.total_ects,
+            "missing_courses":        ctx.missing_courses,
+            "failed_courses":         ctx.failed_courses,
+            "unrecognized_electives": ctx.unrecognized_electives,
+            "graduation_status":      ctx.graduation_status,
         }
 
         get_session(session_id)["transcript"] = transcript_data
@@ -1600,47 +1849,41 @@ async def upload_transcript(
         except Exception:
             target_ects = 240
 
-        unrecognized    = final_state.get("unrecognized_electives", [])
-        total_ects      = final_state.get("total_ects", 0.0)
-        missing_courses = final_state.get("missing_courses", [])
-        failed_courses  = final_state.get("failed_courses", [])
-
         summary = {
-            "total_ects":           total_ects,
-            "target_ects":          target_ects,
-            "missing_count":        len(missing_courses),
-            "failed_count":         len(failed_courses),
-            "unrecognized_count":   len(unrecognized),
-            "unrecognized_ects":    round(sum(e.get("akts", 0) for e in unrecognized), 1),
-            "semester_count":       len(parsed.get("semesters", [])),
-            "cumulative_gpa":       parsed.get("cumulative_gpa"),
-            "graduation_status":    final_state.get("graduation_status", ""),
-            "semesters":            semester_summaries,
-            # Full arrays for modal display in the frontend
-            "missing_courses":      missing_courses,
-            "failed_courses":       failed_courses,
-            "unrecognized_electives": unrecognized,
+            "total_ects":             ctx.total_ects,
+            "target_ects":            target_ects,
+            "missing_count":          len(ctx.missing_courses),
+            "failed_count":           len(ctx.failed_courses),
+            "unrecognized_count":     len(ctx.unrecognized_electives),
+            "unrecognized_ects":      round(sum(e.get("akts", 0) for e in ctx.unrecognized_electives), 1),
+            "semester_count":         len(parsed.get("semesters", [])),
+            "cumulative_gpa":         parsed.get("cumulative_gpa"),
+            "graduation_status":      ctx.graduation_status,
+            "semesters":              semester_summaries,
+            "missing_courses":        ctx.missing_courses,
+            "failed_courses":         ctx.failed_courses,
+            "unrecognized_electives": ctx.unrecognized_electives,
         }
 
         yield _sse({"type": "summary", "data": {"session_id": session_id, "summary": summary}})
 
-        # LLM initial assessment
-        missing_names = [f"{c['kod']} - {c['ad']}" for c in missing_courses]
-        failed_names  = [f"{c['kod']} - {c['ad']} ({c.get('not','F')})" for c in failed_courses]
-        unrec_ects    = round(sum(e.get("akts", 0) for e in unrecognized), 1)
+        # ── LLM initial assessment ─────────────────────────────
+        missing_names = [f"{c['kod']} - {c['ad']}" for c in ctx.missing_courses]
+        failed_names  = [f"{c['kod']} - {c['ad']} ({c.get('not','F')})" for c in ctx.failed_courses]
+        unrec_ects    = round(sum(e.get("akts", 0) for e in ctx.unrecognized_electives), 1)
 
         prompt = (
             f"Öğrencinin transkripti analiz edildi:\n"
-            f"- Tamamlanan AKTS: {total_ects} / {target_ects}\n"
+            f"- Tamamlanan AKTS: {ctx.total_ects} / {target_ects}\n"
             f"- Genel GNO: {parsed.get('cumulative_gpa') or 'Tespit edilemedi'}\n"
             f"- Dönem sayısı: {len(semester_summaries)}\n"
-            f"- Eksik zorunlu ders: {len(missing_courses)}\n"
-            f"- Başarısız (F) ders: {len(failed_courses)}\n"
+            f"- Eksik zorunlu ders: {len(ctx.missing_courses)}\n"
+            f"- Başarısız (F) ders: {len(ctx.failed_courses)}\n"
             + (f"- Başarısız: {', '.join(failed_names)}\n" if failed_names else "")
             + (
-                f"- Tanınmayan seçmeli: {len(unrecognized)} ders "
+                f"- Tanınmayan seçmeli: {len(ctx.unrecognized_electives)} ders "
                 f"({unrec_ects} AKTS — mezuniyet toplamına dahil edildi)\n"
-                if unrecognized else ""
+                if ctx.unrecognized_electives else ""
             )
             + (
                 f"- Eksikler (ilk 5): {', '.join(missing_names[:5])}"
@@ -1664,10 +1907,10 @@ async def upload_transcript(
             reply = result.content
         except Exception:
             reply = (
-                f"Transkriptiniz analiz edildi. {total_ects} AKTS tamamlandı"
+                f"Transkriptiniz analiz edildi. {ctx.total_ects} AKTS tamamlandı"
                 + (f", GNO: {parsed.get('cumulative_gpa'):.2f}" if parsed.get("cumulative_gpa") else "")
-                + f". {len(missing_courses)} zorunlu ders eksik"
-                + (f", {len(failed_courses)} ders başarısız" if failed_courses else "")
+                + f". {len(ctx.missing_courses)} zorunlu ders eksik"
+                + (f", {len(ctx.failed_courses)} ders başarısız" if ctx.failed_courses else "")
                 + ". Detaylar için soru sorabilirsiniz."
             )
 
