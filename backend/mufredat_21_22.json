@@ -484,6 +484,34 @@
             "akts": 4.0,
             "tip": "Zorunlu",
             "donem": 4
+        },
+        {
+            "kod": "FLE102",
+            "ad": "İngilizce Cef B1.1",
+            "akts": 2.0,
+            "tip": "Zorunlu",
+            "donem": 3
+        },
+        {
+            "kod": "FLE202",
+            "ad": "İngilizce Cef B1.2",
+            "akts": 2.0,
+            "tip": "Zorunlu",
+            "donem": 4
+        },
+        {
+            "kod": "FLE103",
+            "ad": "İngilizce Cef B2.1",
+            "akts": 2.0,
+            "tip": "Zorunlu",
+            "donem": 5
+        },
+        {
+            "kod": "FLE203",
+            "ad": "İngilizce Cef B2.2",
+            "akts": 2.0,
+            "tip": "Zorunlu",
+            "donem": 6
         }
     ]
 }

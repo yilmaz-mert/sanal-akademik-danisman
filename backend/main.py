@@ -138,6 +138,23 @@ def normalize_str(s: str) -> str:
     return s.translate(str.maketrans("ğüöşç", "guosc"))
 
 
+_TR_STOP_WORDS = {
+    "icin", "ve", "veya", "bir", "ile", "olan", "ya", "de", "da",
+    "mi", "mu", "mü", "gibi", "bu", "o", "en", "her",
+}
+
+
+def _token_similarity(name_a: str, name_b: str) -> float:
+    """Jaccard similarity over normalized tokens, excluding Turkish stop-words."""
+    def _tokens(s: str) -> set:
+        cleaned = re.sub(r"[^\w\s]", " ", normalize_str(s))
+        return {t for t in cleaned.split() if t and t not in _TR_STOP_WORDS and len(t) > 1}
+    ta, tb = _tokens(name_a), _tokens(name_b)
+    if not ta or not tb:
+        return 0.0
+    return len(ta & tb) / len(ta | tb)
+
+
 # ─────────────────────────────────────────────────────────────
 # SUFFIX NORMALIZATION
 # ─────────────────────────────────────────────────────────────
@@ -682,6 +699,7 @@ class PipelineState(TypedDict):
     total_ects:            float
     matched_log:           List[str]
     judge_verdict:         str               # "approved" | "needs_remapping"
+    graduation_status:     str               # "Mezun Olabilir" | "Mezun Olamaz (...)"
     mapper_retries:        int
     # ── Intibak (equivalency) review ──────────────────────────
     intibak_cleared_codes: List[str]   # codes cleared by intibak equivalency rules
@@ -758,7 +776,7 @@ def _get_latest_curriculum_lookup() -> tuple:
 
 def _lookup_course(raw_code: str, name: str,
                    by_code: dict, by_base: dict, by_name: dict):
-    """4-step cascade: exact → stripped → base_dict → name."""
+    """5-step cascade: exact → stripped → base_dict → exact name → token similarity."""
     stripped = strip_suffix(raw_code)
     curr = by_code.get(raw_code)
     if curr is None:
@@ -767,6 +785,13 @@ def _lookup_course(raw_code: str, name: str,
         curr = by_base.get(stripped)
     if curr is None and name:
         curr = by_name.get(normalize_str(name))
+    if curr is None and name and by_name:
+        # Token similarity fallback: ≥85% Jaccard after stop-word removal
+        for cname, candidate in by_name.items():
+            if _token_similarity(name, cname) >= 0.85:
+                curr = candidate
+                print(f"    [TOKEN-MATCH] '{name}' ≈ '{cname}' (≥85% Jaccard)")
+                break
     return curr
 
 
@@ -971,13 +996,25 @@ async def review_missing_courses_node(state: PipelineState) -> dict:
     quick_lookup   = intibak.get("eski_yeni_eslestirme", {})   # old → [new, ...]
     intibak_rules  = intibak.get("intibak_kurallari", [])       # full rule objects
 
-    # ── Pass 1: Deterministic expansion ──────────────────────
-    cleared: set  = set()
-    for old_code in list(all_passed):
-        for new_code in quick_lookup.get(old_code, []):
-            base_new = strip_suffix(new_code)
-            if base_new not in passed_set:
-                cleared.add(base_new)
+    # ── Pass 1: Deterministic expansion (iterative to handle chained mappings) ──
+    cleared: set = set()
+    to_expand  = set(all_passed)
+    seen_expanded: set = set()
+
+    while to_expand:
+        current_batch = to_expand - seen_expanded
+        if not current_batch:
+            break
+        seen_expanded |= current_batch
+        newly_cleared: set = set()
+        for old_code in current_batch:
+            for new_code in quick_lookup.get(old_code, []):
+                base_new = strip_suffix(new_code)
+                if base_new not in passed_set and base_new not in all_passed:
+                    cleared.add(base_new)
+                    newly_cleared.add(base_new)
+        # Follow chains: newly cleared codes that are themselves old keys
+        to_expand = {c for c in newly_cleared if c in quick_lookup}
 
     print(f"[INTIBAK] Pass-1 cleared {len(cleared)}: {cleared}")
 
@@ -1135,10 +1172,20 @@ def judge_node(state: PipelineState) -> dict:
             "tip":   c.get("tip", ""),
         })
 
+    # ── Graduation status — missing courses BLOCK graduation regardless of ECTS ──
+    target_ects = latest_curr.get("mezuniyet_sartlari", {}).get("toplam_akts_hedefi", 240)
+    if missing:
+        graduation_status = "Mezun Olamaz (Eksik Zorunlu Dersler Mevcut)"
+    elif round(total_ects, 1) < target_ects:
+        graduation_status = f"Mezun Olamaz (Yetersiz AKTS: {round(total_ects,1)} / {target_ects})"
+    else:
+        graduation_status = "Mezun Olabilir"
+
     msgs.append("Hakem sonuçları onayladı, rapor hazırlanıyor...")
     print(f"[JUDGE] passed={len(passed)}, failed={len(failed_courses)}, "
           f"missing={len(missing)}, ects={round(total_ects,1)}, "
-          f"unrecognized={len(unrecognized_electives)}")
+          f"unrecognized={len(unrecognized_electives)}, "
+          f"graduation_status={graduation_status!r}")
 
     return {
         "passed_codes":          list(passed),
@@ -1148,6 +1195,7 @@ def judge_node(state: PipelineState) -> dict:
         "total_ects":            round(total_ects, 1),
         "matched_log":           matched_log,
         "judge_verdict":         "approved",
+        "graduation_status":     graduation_status,
         "mapper_retries":        mapper_retries,
         "status_queue":          msgs,
     }
@@ -1179,138 +1227,147 @@ analysis_pipeline = _g.compile()
 
 
 # ─────────────────────────────────────────────────────────────
+# DYNAMIC CONTEXT BUILDER
+# Injects pre-computed transcript facts into the system prompt
+# so the small LLM never needs a tool call to answer basic
+# "what are my failed courses?" questions.
+# ─────────────────────────────────────────────────────────────
+def _build_dynamic_context(transcript: dict) -> str:
+    """Return a comprehensive academic history block appended to SYSTEM_PROMPT per request."""
+    lines = [
+        "\n\n=== ÖĞRENCİ AKADEMİK GEÇMİŞİ VE GÜNCEL DURUMU ===",
+        "_(Python pipeline tarafından hesaplanmış — KESİN VERİLER."
+        " Araç çağırmadan bu verileri kullan.)_",
+    ]
+
+    # ── General summary ───────────────────────────────────────
+    gpa    = transcript.get("cumulative_gpa")
+    total  = transcript.get("total_ects", 0)
+    status = transcript.get("graduation_status", "")
+
+    lines.append("\n**GENEL ÖZET**")
+    lines.append(f"- Tamamlanan AKTS: {total}")
+    if gpa is not None:
+        lines.append(f"- Genel GNO (CGPA): {gpa:.2f}")
+    if status:
+        lines.append(f"- Mezuniyet Durumu: {status}")
+
+    # ── Failed courses ────────────────────────────────────────
+    failed = transcript.get("failed_courses", [])
+    lines.append(f"\n**BAŞARISIZ DERSLER ({len(failed)} adet)**")
+    if failed:
+        lines.append("| Kod | Ad | Not |")
+        lines.append("|-----|-----|-----|")
+        for c in failed:
+            lines.append(f"| {c.get('kod','')} | {c.get('ad','')} | {c.get('not','')} |")
+    else:
+        lines.append("_Başarısız ders bulunmamaktadır._")
+
+    # ── Missing mandatory courses ─────────────────────────────
+    missing = transcript.get("missing_courses", [])
+    lines.append(f"\n**EKSİK ZORUNLU DERSLER ({len(missing)} adet)**")
+    if missing:
+        lines.append("| Kod | Ad | AKTS | Dönem |")
+        lines.append("|-----|-----|------|-------|")
+        for c in missing[:30]:
+            lines.append(
+                f"| {c.get('kod','')} | {c.get('ad','')} "
+                f"| {c.get('akts','')} | {c.get('donem','')} |"
+            )
+        if len(missing) > 30:
+            lines.append(f"_... ve {len(missing) - 30} ders daha_")
+    else:
+        lines.append("_Eksik zorunlu ders bulunmamaktadır._")
+
+    # ── Unrecognized electives ────────────────────────────────
+    unrecognized = transcript.get("unrecognized_electives", [])
+    if unrecognized:
+        unrec_ects = round(sum(e.get("akts", 0) for e in unrecognized), 1)
+        lines.append(
+            f"\n**TANINMAYAN SEÇMELİ DERSLER ({len(unrecognized)} adet — "
+            f"{unrec_ects} AKTS mezuniyet toplamına dahil edildi)**"
+        )
+        for e in unrecognized[:10]:
+            lines.append(f"- {e.get('kod','')} — {e.get('ad','')} ({e.get('akts','')} AKTS)")
+
+    # ── Full semester-by-semester grade history ───────────────
+    semesters = transcript.get("semesters", [])
+    if semesters:
+        lines.append("\n**DÖNEM DÖNEM DERS GEÇMİŞİ (Tüm Notlar)**")
+        for sem in semesters:
+            sem_name = sem.get("semester_name", "")
+            term_gpa = sem.get("term_gpa")
+            gpa_str  = f" | Dönem GNO: {term_gpa}" if term_gpa is not None else ""
+            lines.append(f"\n*{sem_name}{gpa_str}*")
+            courses = sem.get("courses", [])
+            if courses:
+                for c in courses:
+                    kod   = c.get("kod", "")
+                    ad    = c.get("ad", "")
+                    grade = c.get("not", "")
+                    durum = c.get("durum", "")
+                    akts  = c.get("akts", "")
+                    lines.append(f"  - {kod} {ad}: {grade} ({durum}, {akts} AKTS)")
+            else:
+                lines.append("  _Bu dönemde ders kaydı bulunamadı._")
+
+    lines.append(
+        "\n**UYARI: Yukarıdaki tüm veriler kesin Python çıktısıdır."
+        " Bu listede kayıt varsa ASLA 'başarısız ders yok' veya 'AA almamış' deme.**"
+    )
+    lines.append("=== TRANSKRİPT BİTİŞİ ===")
+    return "\n".join(lines)
+
+
+# ─────────────────────────────────────────────────────────────
 # AGENT TOOLS (closures per-request for session isolation)
 # ─────────────────────────────────────────────────────────────
 TOOL_STATUS = {
     "GetTranscriptData":      "Tarihçi transkript kayıtlarını tarıyor...",
     "GetCurriculumData":      "Haritacı müfredat verilerini yüklüyor...",
     "CalculateGraduationPath": "Hakem mezuniyet durumunu hesaplıyor...",
+    "GetIntibakRules":        "İntibak ve eşdeğerlik kuralları yükleniyor...",
 }
 
 
 def make_tools(session_id: str) -> list:
-    def get_transcript_data(_: str = "") -> str:
-        """Öğrencinin dönem dönem transkript verilerini getirir."""
-        data = get_session(session_id).get("transcript")
-        return (
-            "Henüz transkript yüklenmemiş."
-            if not data
-            else json.dumps(data, ensure_ascii=False, indent=2)
-        )
-
-    def get_curriculum_data(_: str = "") -> str:
-        """Bilgisayar Mühendisliği müfredatını getirir."""
+    def get_curriculum_data(year_key: str = "") -> str:
+        """Belirtilen yıla ait veya güncel müfredatı getirir. year_key örn: '2021-2022'"""
         try:
-            return json.dumps(load_curriculum(), ensure_ascii=False, indent=2)
+            if year_key and year_key.strip():
+                data = load_year_curriculum(year_key.strip())
+            else:
+                data = load_latest_curriculum()
+            return json.dumps(data, ensure_ascii=False, indent=2)
         except Exception as e:
             return f"Müfredat yüklenemedi: {e}"
 
-    def calculate_graduation_path(_: str = "") -> str:
-        """Eksik ve başarısız dersler + mezuniyet hesabı + tanınmayan seçmeliler."""
-        transcript = get_session(session_id).get("transcript")
-        if not transcript:
-            return "Transkript verisi bulunamadı."
+    def get_intibak_rules(_: str = "") -> str:
+        """İntibak/eşdeğerlik kurallarını ve eski-yeni ders kod eşleşmelerini getirir."""
         try:
-            curr = load_curriculum()
-            sartlar = curr.get("mezuniyet_sartlari", {})
-            hedef = sartlar.get("toplam_akts_hedefi", 240)
-            total = transcript.get("total_ects", 0)
-            missing = transcript.get("missing_courses", [])
-            failed = transcript.get("failed_courses", [])
-            unrecognized = transcript.get("unrecognized_electives", [])
-            unrecognized_ects = round(sum(e.get("akts", 0) for e in unrecognized), 1)
-
-            # Build prioritised next-semester list:
-            # 1) Failed courses first (mandatory retake)
-            # 2) Missing mandatory courses ordered by semester number
-            priorities: List[dict] = []
-            seen = set()
-            for f in failed:
-                priorities.append(
-                    {
-                        "kod": f["kod"],
-                        "ad": f["ad"],
-                        "akts": f.get("akts", 0),
-                        "sebep": f"Önceki dönemde {f.get('not','F')} aldı — TEKRAR ZORUNLU",
-                        "oncelik": "YÜKSEK",
-                    }
-                )
-                seen.add(f["kod"])
-
-            for m in sorted(missing, key=lambda x: str(x.get("donem", "99"))):
-                if m["kod"] not in seen:
-                    priorities.append(
-                        {
-                            "kod": m["kod"],
-                            "ad": m["ad"],
-                            "akts": m.get("akts", 0),
-                            "sebep": "Henüz alınmamış zorunlu ders",
-                            "oncelik": "NORMAL",
-                        }
-                    )
-                    seen.add(m["kod"])
-
-            return json.dumps(
-                {
-                    "tamamlanan_akts": total,
-                    "kalan_akts": round(hedef - total, 1),
-                    "hedef_akts": hedef,
-                    "minimum_gno": sartlar.get("minimum_gno", 2.0),
-                    "eksik_zorunlu_sayisi": len(missing),
-                    "basarisiz_ders_sayisi": len(failed),
-                    "taninmayan_secmeli_sayisi": len(unrecognized),
-                    "taninmayan_secmeli_akts": unrecognized_ects,
-                    "taninmayan_secmeliler": [
-                        {
-                            "kod": e["kod"],
-                            "ad": e["ad"],
-                            "akts": e.get("akts", 0),
-                            "aciklama": (
-                                "Müfredat veri tabanında kaydı bulunmuyor — "
-                                "AKTS mezuniyet toplamına dahil edildi"
-                            ),
-                        }
-                        for e in unrecognized
-                    ],
-                    "tekrar_alinacaklar": failed,
-                    "eksik_zorunlular": missing,
-                    "oneri_gelecek_donem": priorities[:8],
-                },
-                ensure_ascii=False,
-                indent=2,
-            )
+            return json.dumps(load_intibak_rules(), ensure_ascii=False, indent=2)
         except Exception as e:
-            return f"Hesaplama hatası: {e}"
+            return f"İntibak kuralları yüklenemedi: {e}"
 
     return [
-        StructuredTool.from_function(
-            func=get_transcript_data,
-            name="GetTranscriptData",
-            description=(
-                "Öğrencinin dönem dönem transkript verilerini getirir. "
-                "Dönem GPA'ları, AKTS değerleri ve ders listesi için kullan. "
-                "NOT: total_ects ve cumulative_gpa Python tarafından önceden hesaplanmıştır; "
-                "bu sayıları yeniden hesaplama, doğrudan kullan."
-            ),
-        ),
         StructuredTool.from_function(
             func=get_curriculum_data,
             name="GetCurriculumData",
             description=(
                 "Bilgisayar Mühendisliği müfredatını getirir: zorunlu/seçmeli dersler, "
-                "AKTS değerleri ve mezuniyet koşulları."
+                "AKTS değerleri ve mezuniyet koşulları. "
+                "Belirli bir yıla ait müfredatı görmek için year_key parametresini geç "
+                "(örn: '2021-2022', '2023-2024'). Parametresiz kullanımda güncel müfredat döner."
             ),
         ),
         StructuredTool.from_function(
-            func=calculate_graduation_path,
-            name="CalculateGraduationPath",
+            func=get_intibak_rules,
+            name="GetIntibakRules",
             description=(
-                "Eksik ve başarısız zorunlu dersleri, tanınmayan seçmeli dersleri ve "
-                "mezuniyet durumunu önceden hesaplanmış Python değerleriyle döndürür. "
-                "'Mezun olabilir miyim?', 'Kaç dersim eksik?', 'Gelecek dönem ne almalıyım?', "
-                "'Başarısız derslerim var mı?' sorularında kullan. "
-                "NOT: akts_tamamlanan ve mezuniyet_akts_yeterli gibi sayısal alanlar "
-                "Python tarafından hesaplanmıştır; yeniden hesaplama yapma."
+                "İntibak (eşdeğerlik) kurallarını, eski-yeni ders kod eşleşmelerini ve "
+                "akademik takvim notlarını getirir. "
+                "Muafiyet sorularında, eski müfredattan geçen öğrencilerin hangi yeni dersten "
+                "muaf sayıldığını öğrenmek için kullan."
             ),
         ),
     ]
@@ -1325,19 +1382,19 @@ samimi ve %100 dürüst Akademik Danışmanısın. Öğrenciye yalnızca Türkç
 ## DÜŞÜNCE SÜRECİ (Her yanıttan önce şu adımları zihinsel olarak uygula)
 ADIM 1 — Soruyu Analiz Et: Öğrenci tam olarak ne istiyor? \
 (Mezuniyet kontrolü mü? Eksik dersler mi? GNO durumu mu? Gelecek dönem planı mı?)
-ADIM 2 — Araç Seçimi: Hangi araçlara ihtiyacın var? \
-Transkript verisini mi, müfredatı mı, yoksa mezuniyet hesabını mı kullanmalısın?
-ADIM 3 — Veri Doğrulama: Araçlardan gelen veriyi özetle. \
-Tutarsızlık var mı? Eksik veri var mı? Sayılar mantıklı mı?
+ADIM 2 — Geçmişi Tara: Bu promptun SONUNDA "=== ÖĞRENCİ AKADEMİK GEÇMİŞİ VE GÜNCEL DURUMU ===" \
+başlığı altında öğrencinin tüm ders geçmişi (dönem dönem, her ders ve notu), başarısız \
+dersleri ve eksik zorunlu dersleri yer almaktadır. "Kaç AA aldım?", "2021'de ne kaldım?", \
+"başarısız derslerim neler?" gibi soruları bu metne bakarak yanıtla — araç çağırma.
+ADIM 3 — Araç Seçimi: YALNIZCA müfredat kuralları, yıla özgü ders planı veya intibak \
+bilgisi gerekiyorsa `GetCurriculumData` / `GetIntibakRules` araçlarını çalıştır.
 ADIM 4 — Yanıtı Yaz: Yalnızca bu düşünce sürecinden sonra öğrenciye nihai yanıtı ver.
 
 ## MATEMATİK KURALI (KESİNLİKLE UYULMASI ZORUNLU)
-Araçlardan dönen `total_ects`, `cumulative_gpa`, `term_gpa`, `term_ects` değerleri \
-Python işçisi tarafından hesaplanmış kesin sayılardır. Bu sayıları ASLA yeniden hesaplama, \
-toplama, çıkarma ya da sorgulama. Rakamları olduğu gibi kullan; yorumla, tekrar hesaplama.
-`failed_courses` ve `missing_courses` listeleri Python tarafından yeniden alınan dersler \
-de dahil edilerek çakışmalar çözülmüş nihai listelerdir. Ham transkript verisinden kendi \
-başına başarısız ya da eksik ders keşfetmeye ÇALIŞMA; bu listeler kesindir ve güvenilirdir.
+Bu promptun sonundaki TRANSKRİPT ÖZETİ'ndeki `Tamamlanan AKTS`, `Genel GNO`, \
+başarısız ders ve eksik ders listeleri Python pipeline tarafından hesaplanmış kesin \
+sayılardır. Bu sayıları ASLA yeniden hesaplama, toplama, çıkarma ya da sorgulama. \
+Rakamları olduğu gibi kullan; yorumla, tekrar hesaplama.
 
 ## YANIT KURALLARI
 - Öğrenciye doğrudan "sen" diye hitap et.
@@ -1351,6 +1408,20 @@ Transkriptte müfredat veri tabanında kaydı bulunmayan dersler \
 teknik/seçmeli derslerdir. AKTS değerleri mezuniyet toplamına BAŞARIYLA dahil \
 edilmiştir. "Bu derslerin AKTS'i sayılmadı" diye ASLA yanlış bilgi verme; \
 aksine katkılarını olumlu biçimde belirt.
+
+## İNTİBAK VE YILA ÖZEL MÜFREDAT ARAÇLARI
+Öğrenci muafiyetleri, intibak esaslarını, eski-yeni ders kod eşleşmelerini veya \
+akademik takvim notlarını sorduğunda `GetIntibakRules` aracını kullan. \
+Belirli bir yıla ait ders planını doğrulamak için `GetCurriculumData` aracına \
+ilgili yılı pasla (örn: year_key="2022-2023").
+
+## TRANSKRİPT VERİSİ VE ARAÇ KULLANIM KURALI (KESİNLİKLE UYULMASI ZORUNLU)
+ÖĞRENCİ TRANSKRİPT VERİSİ VE GEÇMİŞİ sana bu promptun en sonunda \
+"ÖĞRENCİ AKADEMİK GEÇMİŞİ" başlığı altında verilmiştir. \
+Öğrencinin geçmiş notları, aldığı dersler (AA, BA, CC, F vb.) veya güncel \
+başarısız dersleri hakkındaki TÜM soruları SADECE bu metne bakarak cevapla. \
+Müfredat kuralları veya intibak ile ilgili bir soru gelmedikçe \
+KESİNLİKLE araç (tool) kullanma. Kendi kendine ders uydurma.
 
 ## KRİTİK: ASLA KURS KODU UYDURMA
 Araç çıktılarından gelen gerçek ders kodu ve isimlerini birebir kullan. \
@@ -1411,6 +1482,7 @@ async def upload_transcript(
             "total_ects":             0.0,
             "matched_log":            [],
             "judge_verdict":          "",
+            "graduation_status":      "",
             "mapper_retries":         0,
             "intibak_cleared_codes":  [],
             "status_queue":           [],
@@ -1443,6 +1515,7 @@ async def upload_transcript(
             "missing_courses":        final_state.get("missing_courses", []),
             "failed_courses":         final_state.get("failed_courses", []),
             "unrecognized_electives": final_state.get("unrecognized_electives", []),
+            "graduation_status":      final_state.get("graduation_status", ""),
         }
 
         get_session(session_id)["transcript"] = transcript_data
@@ -1485,6 +1558,7 @@ async def upload_transcript(
             "unrecognized_ects":    round(sum(e.get("akts", 0) for e in unrecognized), 1),
             "semester_count":       len(parsed.get("semesters", [])),
             "cumulative_gpa":       parsed.get("cumulative_gpa"),
+            "graduation_status":    final_state.get("graduation_status", ""),
             "semesters":            semester_summaries,
             # Full arrays for modal display in the frontend
             "missing_courses":      missing_courses,
@@ -1559,11 +1633,18 @@ async def upload_transcript(
 # ─────────────────────────────────────────────────────────────
 @app.post("/chat/stream")
 async def chat_stream(request: ChatRequest):
+    transcript = get_session(request.session_id).get("transcript")
+    active_prompt = (
+        SYSTEM_PROMPT + _build_dynamic_context(transcript)
+        if transcript
+        else SYSTEM_PROMPT
+    )
+
     tools = make_tools(request.session_id)
     agent = create_react_agent(
         model=chat_model,
         tools=tools,
-        prompt=SYSTEM_PROMPT,
+        prompt=active_prompt,
         checkpointer=checkpointer,
     )
     config = {"configurable": {"thread_id": request.session_id}}

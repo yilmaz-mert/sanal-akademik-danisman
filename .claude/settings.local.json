@@ -34,7 +34,8 @@
       "PowerShell(Get-ChildItem \"C:\\\\Users\\\\Mert\\\\Desktop\\\\sanal-akademik-danisman\" -Recurse | Where-Object { $_.Extension -eq \".pdf\" } | Select-Object FullName, Length)",
       "PowerShell(Get-ChildItem \"C:\\\\Users\\\\Mert\\\\Desktop\" | Where-Object { $_.Extension -eq \".pdf\" } | Select-Object Name, FullName)",
       "PowerShell(Get-ChildItem \"C:\\\\Users\\\\Mert\\\\Desktop\\\\sanal-akademik-danisman\" | ForEach-Object { \"$\\($_.Name\\) [$\\($_.Extension\\)]\" })",
-      "PowerShell(cd \"C:\\\\Users\\\\Mert\\\\Desktop\\\\sanal-akademik-danisman\"; Get-ChildItem -Name | Where-Object { $_ -match \"pdf\" -or $_ -match \"PDF\" })"
+      "PowerShell(cd \"C:\\\\Users\\\\Mert\\\\Desktop\\\\sanal-akademik-danisman\"; Get-ChildItem -Name | Where-Object { $_ -match \"pdf\" -or $_ -match \"PDF\" })",
+      "Bash(python *)"
     ]
   },
   "enabledPlugins": {
