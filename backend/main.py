@@ -740,10 +740,11 @@ def _format_intibak_rules(kurallari: list) -> str:
     for rule in kurallari[:50]:  # cap at 50 to stay within context window
         eski = rule.get("eski_ders", {}).get("kod", "")
         yeni_kodlar = [y.get("kod", "") for y in rule.get("yeni_dersler", []) if y.get("kod")]
-        kosul = rule.get("kosul_yili_oncesi", "")
+        kosul    = rule.get("kosul_yili_oncesi", "")
+        aciklama = rule.get("aciklama", "")
         if eski and yeni_kodlar:
             kosul_str = f" [kosul: {kosul} ve oncesi]" if kosul else ""
-            lines.append(f"{eski} -> {', '.join(yeni_kodlar)}{kosul_str}")
+            lines.append(f"{eski} -> {', '.join(yeni_kodlar)}{kosul_str} | Açıklama: {aciklama}")
     return "\n".join(lines) if lines else "(kural bulunamadi)"
 
 
@@ -982,14 +983,17 @@ async def review_missing_courses_node(state: PipelineState) -> dict:
     unrec_passed = {strip_suffix(v["kod"]) for v in unrecognized.values()}
     all_passed   = passed_set | raw_passed | unrec_passed
 
-    # ── Entry year ────────────────────────────────────────────
+    # ── Entry year — use the earliest starting year across all semesters ────────
     semesters  = state.get("semesters", [])
     entry_year = "unknown"
-    if semesters:
-        m = re.search(r"(\d{4})\s*[-–—]\s*(\d{4})",
-                      semesters[0].get("semester_name", ""))
+    start_years: List[int] = []
+    for sem in semesters:
+        m = re.search(r"(\d{4})\s*[-–—]\s*(\d{4})", sem.get("semester_name", ""))
         if m:
-            entry_year = f"{m.group(1)}-{m.group(2)}"
+            start_years.append(int(m.group(1)))
+    if start_years:
+        min_year   = min(start_years)
+        entry_year = f"{min_year}-{min_year + 1}"
 
     # ── Load intibak rules ────────────────────────────────────
     intibak        = load_intibak_rules()
@@ -1233,11 +1237,10 @@ analysis_pipeline = _g.compile()
 # "what are my failed courses?" questions.
 # ─────────────────────────────────────────────────────────────
 def _build_dynamic_context(transcript: dict) -> str:
-    """Return a comprehensive academic history block appended to SYSTEM_PROMPT per request."""
+    """Return a compact natural-language academic history block for system prompt injection."""
     lines = [
-        "\n\n=== ÖĞRENCİ AKADEMİK GEÇMİŞİ VE GÜNCEL DURUMU ===",
-        "_(Python pipeline tarafından hesaplanmış — KESİN VERİLER."
-        " Araç çağırmadan bu verileri kullan.)_",
+        "\n\n=== ÖĞRENCİ AKADEMİK GEÇMİŞİ VE NOTLARI ===",
+        "_(Kesin veriler — araç çağırmadan bu bölümü kullan.)_",
     ]
 
     # ── General summary ───────────────────────────────────────
@@ -1245,77 +1248,66 @@ def _build_dynamic_context(transcript: dict) -> str:
     total  = transcript.get("total_ects", 0)
     status = transcript.get("graduation_status", "")
 
-    lines.append("\n**GENEL ÖZET**")
-    lines.append(f"- Tamamlanan AKTS: {total}")
+    lines.append(f"- **Tamamlanan AKTS:** {total}")
     if gpa is not None:
-        lines.append(f"- Genel GNO (CGPA): {gpa:.2f}")
+        lines.append(f"- **Genel GNO:** {gpa:.2f}")
     if status:
-        lines.append(f"- Mezuniyet Durumu: {status}")
+        lines.append(f"- **Mezuniyet Durumu:** {status}")
 
-    # ── Failed courses ────────────────────────────────────────
+    # ── Failed courses — compact inline list ──────────────────
     failed = transcript.get("failed_courses", [])
-    lines.append(f"\n**BAŞARISIZ DERSLER ({len(failed)} adet)**")
     if failed:
-        lines.append("| Kod | Ad | Not |")
-        lines.append("|-----|-----|-----|")
-        for c in failed:
-            lines.append(f"| {c.get('kod','')} | {c.get('ad','')} | {c.get('not','')} |")
+        failed_str = ", ".join(
+            f"{c.get('kod','')} {c.get('ad','')} ({c.get('not','')})" for c in failed
+        )
+        lines.append(f"- **Güncel Başarısız Dersler ({len(failed)} adet):** {failed_str}")
     else:
-        lines.append("_Başarısız ders bulunmamaktadır._")
+        lines.append("- **Güncel Başarısız Dersler:** Yok")
 
-    # ── Missing mandatory courses ─────────────────────────────
+    # ── Missing mandatory courses — compact inline list ───────
     missing = transcript.get("missing_courses", [])
-    lines.append(f"\n**EKSİK ZORUNLU DERSLER ({len(missing)} adet)**")
     if missing:
-        lines.append("| Kod | Ad | AKTS | Dönem |")
-        lines.append("|-----|-----|------|-------|")
-        for c in missing[:30]:
-            lines.append(
-                f"| {c.get('kod','')} | {c.get('ad','')} "
-                f"| {c.get('akts','')} | {c.get('donem','')} |"
-            )
-        if len(missing) > 30:
-            lines.append(f"_... ve {len(missing) - 30} ders daha_")
+        miss_str = ", ".join(
+            f"{c.get('kod','')} {c.get('ad','')}" for c in missing[:20]
+        )
+        if len(missing) > 20:
+            miss_str += f" (+{len(missing) - 20} daha)"
+        lines.append(f"- **Eksik Zorunlu Dersler ({len(missing)} adet):** {miss_str}")
     else:
-        lines.append("_Eksik zorunlu ders bulunmamaktadır._")
+        lines.append("- **Eksik Zorunlu Dersler:** Yok")
 
     # ── Unrecognized electives ────────────────────────────────
     unrecognized = transcript.get("unrecognized_electives", [])
     if unrecognized:
         unrec_ects = round(sum(e.get("akts", 0) for e in unrecognized), 1)
+        unrec_str  = ", ".join(f"{e.get('kod','')}" for e in unrecognized)
         lines.append(
-            f"\n**TANINMAYAN SEÇMELİ DERSLER ({len(unrecognized)} adet — "
-            f"{unrec_ects} AKTS mezuniyet toplamına dahil edildi)**"
+            f"- **Tanınmayan Seçmeliler ({len(unrecognized)} adet,"
+            f" {unrec_ects} AKTS — mezuniyet toplamına sayıldı):** {unrec_str}"
         )
-        for e in unrecognized[:10]:
-            lines.append(f"- {e.get('kod','')} — {e.get('ad','')} ({e.get('akts','')} AKTS)")
 
-    # ── Full semester-by-semester grade history ───────────────
+    # ── Semester-by-semester history — one compact line each ──
     semesters = transcript.get("semesters", [])
     if semesters:
-        lines.append("\n**DÖNEM DÖNEM DERS GEÇMİŞİ (Tüm Notlar)**")
+        lines.append("\n**Dönem Dönem Not Geçmişi:**")
         for sem in semesters:
-            sem_name = sem.get("semester_name", "")
-            term_gpa = sem.get("term_gpa")
-            gpa_str  = f" | Dönem GNO: {term_gpa}" if term_gpa is not None else ""
-            lines.append(f"\n*{sem_name}{gpa_str}*")
-            courses = sem.get("courses", [])
+            sem_name  = sem.get("semester_name", "")
+            term_gpa  = sem.get("term_gpa")
+            gpa_str   = f" (GNO: {term_gpa})" if term_gpa is not None else ""
+            courses   = sem.get("courses", [])
             if courses:
-                for c in courses:
-                    kod   = c.get("kod", "")
-                    ad    = c.get("ad", "")
-                    grade = c.get("not", "")
-                    durum = c.get("durum", "")
-                    akts  = c.get("akts", "")
-                    lines.append(f"  - {kod} {ad}: {grade} ({durum}, {akts} AKTS)")
+                course_str = ", ".join(
+                    f"{c.get('kod','')} ({c.get('not','')})" for c in courses
+                )
+                lines.append(f"- **{sem_name}{gpa_str}:** {course_str}")
             else:
-                lines.append("  _Bu dönemde ders kaydı bulunamadı._")
+                lines.append(f"- **{sem_name}:** kayıt yok")
 
     lines.append(
-        "\n**UYARI: Yukarıdaki tüm veriler kesin Python çıktısıdır."
-        " Bu listede kayıt varsa ASLA 'başarısız ders yok' veya 'AA almamış' deme.**"
+        "\n**NOT: Bu veriler kesindir."
+        " 'Başarısız' listesi doluysa ASLA 'başarısız ders yok' deme.**"
     )
-    lines.append("=== TRANSKRİPT BİTİŞİ ===")
+    lines.append("=== GEÇMİŞ BİTİŞİ ===")
     return "\n".join(lines)
 
 
@@ -1332,20 +1324,72 @@ TOOL_STATUS = {
 
 def make_tools(session_id: str) -> list:
     def get_curriculum_data(year_key: str = "") -> str:
-        """Belirtilen yıla ait veya güncel müfredatı getirir. year_key örn: '2021-2022'"""
+        """Belirtilen yıla ait müfredatı okunabilir Markdown özeti olarak getirir."""
         try:
             if year_key and year_key.strip():
                 data = load_year_curriculum(year_key.strip())
             else:
                 data = load_latest_curriculum()
-            return json.dumps(data, ensure_ascii=False, indent=2)
+
+            yil     = data.get("yil", year_key or "güncel")
+            sartlar = data.get("mezuniyet_sartlari", {})
+            dersler = data.get("dersler", [])
+
+            lines = [
+                f"## Müfredat: {yil}",
+                f"- Toplam AKTS Hedefi: {sartlar.get('toplam_akts_hedefi', 240)}",
+                f"- Min GNO: {sartlar.get('minimum_gno', 2.0)}",
+                f"- Staj: {sartlar.get('staj_zorunlulugu_gun', 60)} gün",
+            ]
+
+            zorunlu = [c for c in dersler if c.get("tip") == "Zorunlu"]
+            secmeli = [c for c in dersler if c.get("tip") != "Zorunlu"]
+
+            by_donem: Dict[int, List] = {}
+            for c in zorunlu:
+                by_donem.setdefault(int(c.get("donem", 0)), []).append(c)
+
+            if by_donem:
+                lines.append("\n### Zorunlu Dersler")
+                for donem in sorted(by_donem):
+                    parts = ", ".join(
+                        f"{c['kod']} {c['ad']} ({c.get('akts', 0)} AKTS)"
+                        for c in by_donem[donem]
+                    )
+                    lines.append(f"- Dönem {donem}: {parts}")
+
+            if secmeli:
+                sec_parts = ", ".join(f"{c['kod']} {c['ad']}" for c in secmeli[:20])
+                if len(secmeli) > 20:
+                    sec_parts += f" ... (+{len(secmeli) - 20} seçmeli)"
+                lines.append(f"\n### Seçmeli Dersler\n- {sec_parts}")
+
+            return "\n".join(lines)
         except Exception as e:
             return f"Müfredat yüklenemedi: {e}"
 
     def get_intibak_rules(_: str = "") -> str:
-        """İntibak/eşdeğerlik kurallarını ve eski-yeni ders kod eşleşmelerini getirir."""
+        """İntibak kurallarını okunabilir düz metin olarak getirir."""
         try:
-            return json.dumps(load_intibak_rules(), ensure_ascii=False, indent=2)
+            data  = load_intibak_rules()
+            quick = data.get("eski_yeni_eslestirme", {})
+            rules = data.get("intibak_kurallari", [])
+
+            lines = ["## Eski → Yeni Ders Eşleşmeleri"]
+            for old, new_list in quick.items():
+                lines.append(f"- {old} → {', '.join(new_list)}")
+
+            if rules:
+                lines.append("\n## Detaylı İntibak Kuralları")
+                for i, r in enumerate(rules[:25], 1):
+                    eski  = r.get("eski_ders", {}).get("kod", "")
+                    yeni  = ", ".join(y.get("kod", "") for y in r.get("yeni_dersler", []))
+                    kosul = r.get("kosul_yili_oncesi", "")
+                    acik  = r.get("aciklama", "")
+                    kosul_str = f" [{kosul} ve öncesi]" if kosul else ""
+                    lines.append(f"{i}. {eski} → {yeni}{kosul_str}: {acik}")
+
+            return "\n".join(lines)
         except Exception as e:
             return f"İntibak kuralları yüklenemedi: {e}"
 
@@ -1354,20 +1398,21 @@ def make_tools(session_id: str) -> list:
             func=get_curriculum_data,
             name="GetCurriculumData",
             description=(
-                "Bilgisayar Mühendisliği müfredatını getirir: zorunlu/seçmeli dersler, "
-                "AKTS değerleri ve mezuniyet koşulları. "
-                "Belirli bir yıla ait müfredatı görmek için year_key parametresini geç "
-                "(örn: '2021-2022', '2023-2024'). Parametresiz kullanımda güncel müfredat döner."
+                "Bölümün GENEL MÜFREDATINı (ders listesi, AKTS, mezuniyet koşulları) getirir. "
+                "Belirli bir yıl için year_key parametresini geç (örn: '2023-2024'). "
+                "DİKKAT: Öğrencinin KENDİ transkriptini, aldığı notları (AA, FF vb.), "
+                "geçtiği veya kaldığı dersleri sorgulamak için BU ARACI KESİNLİKLE KULLANMA. "
+                "Öğrencinin geçmişi zaten senin hafızana eklenmiştir. "
+                "SADECE öğrenci bölümün genel müfredatında hangi dersler olduğunu sorarsa kullan."
             ),
         ),
         StructuredTool.from_function(
             func=get_intibak_rules,
             name="GetIntibakRules",
             description=(
-                "İntibak (eşdeğerlik) kurallarını, eski-yeni ders kod eşleşmelerini ve "
-                "akademik takvim notlarını getirir. "
-                "Muafiyet sorularında, eski müfredattan geçen öğrencilerin hangi yeni dersten "
-                "muaf sayıldığını öğrenmek için kullan."
+                "Eski-yeni ders eşleşmelerini ve intibak kurallarını getirir. "
+                "DİKKAT: Yalnızca öğrenci 'muafiyet, intibak, eşdeğerlik' sorarsa kullan. "
+                "Not sorgusu için KULLANMA."
             ),
         ),
     ]
@@ -1401,6 +1446,9 @@ Rakamları olduğu gibi kullan; yorumla, tekrar hesaplama.
 - Sadece gerçek verilere dayan; bilmiyorsan açıkça belirt.
 - Yanıtlarında gerektiğinde markdown tablo ve madde işareti kullan.
 - Yanıtın kısa ve odaklı olsun; gereksiz tekrar yapma.
+- SEN BİR JSON VEYA KOD OKUYUCU DEĞİLSİN. Sana verilen araçlardan veya bağlamdan \
+gelen verileri asla "Bu bir JSON dosyasıdır" ya da "Bu kod şunu temsil ediyor" şeklinde \
+açıklama. İnsan gibi, doğal bir dille ve doğrudan soruya cevap ver.
 
 ## TANINMAYAN SEÇMELİ DERSLER
 Transkriptte müfredat veri tabanında kaydı bulunmayan dersler \
@@ -1422,6 +1470,14 @@ ilgili yılı pasla (örn: year_key="2022-2023").
 başarısız dersleri hakkındaki TÜM soruları SADECE bu metne bakarak cevapla. \
 Müfredat kuralları veya intibak ile ilgili bir soru gelmedikçe \
 KESİNLİKLE araç (tool) kullanma. Kendi kendine ders uydurma.
+
+## ARAÇ (TOOL) KULLANIM YASAĞI
+Öğrencinin transkript verisi, dönem dönem aldığı notlar ve FF ile kaldığı dersler \
+sana "ÖĞRENCİ AKADEMİK GEÇMİŞİ" başlığı altında zaten verilmiştir. \
+Öğrenci "Şu dönem hangi dersten kaldım?", "Kaç AA var?", "2025-2026 Güz'de ne aldım?" \
+diye sorduğunda KESİNLİKLE HİÇBİR ARAÇ ÇAĞIRMA. \
+Sadece sana verilen metne bakarak cevap ver. \
+Araçları sadece müfredat geneli veya intibak kuralları sorulduğunda kullan.
 
 ## KRİTİK: ASLA KURS KODU UYDURMA
 Araç çıktılarından gelen gerçek ders kodu ve isimlerini birebir kullan. \
