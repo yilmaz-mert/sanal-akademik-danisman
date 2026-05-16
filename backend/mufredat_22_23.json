@@ -1,0 +1,538 @@
+{
+    "universite": "Galatasaray",
+    "bolum": "Bilgisayar Mühendisliği",
+    "yil": "2022-2023",
+    "mezuniyet_sartlari": {
+        "toplam_akts_hedefi": 240,
+        "minimum_gno": 2.0,
+        "staj_zorunlulugu_gun": 60,
+        "hazirlik_sarti": "Tamamlanmış olmalı"
+    },
+    "dersler": [
+        {
+            "kod": "ING106",
+            "ad": "Matematik I",
+            "akts": 7.0,
+            "tip": "Zorunlu",
+            "donem": 1
+        },
+        {
+            "kod": "INF112-A",
+            "ad": "Programlamaya Giriş",
+            "akts": 6.0,
+            "tip": "Zorunlu",
+            "donem": 1
+        },
+        {
+            "kod": "INF112-B",
+            "ad": "Programlamaya Giriş",
+            "akts": 6.0,
+            "tip": "Zorunlu",
+            "donem": 1
+        },
+        {
+            "kod": "INF113",
+            "ad": "Bilgisayar Mühendisliğine Giriş",
+            "akts": 4.0,
+            "tip": "Zorunlu",
+            "donem": 1
+        },
+        {
+            "kod": "ING107",
+            "ad": "Matematik II",
+            "akts": 7.0,
+            "tip": "Zorunlu",
+            "donem": 2
+        },
+        {
+            "kod": "INF114",
+            "ad": "Algoritma ve İleri Bilgisayar Programlama",
+            "akts": 5.0,
+            "tip": "Zorunlu",
+            "donem": 2
+        },
+        {
+            "kod": "INF115",
+            "ad": "Programlama Dillerinin Prensipleri",
+            "akts": 2.0,
+            "tip": "Zorunlu",
+            "donem": 2
+        },
+        {
+            "kod": "INF116",
+            "ad": "Bilgisayar Sistemlerine Giriş",
+            "akts": 2.0,
+            "tip": "Zorunlu",
+            "donem": 2
+        },
+        {
+            "kod": "ING144",
+            "ad": "Teknik Resim",
+            "akts": 3.0,
+            "tip": "Zorunlu",
+            "donem": 2
+        },
+        {
+            "kod": "CNT120",
+            "ad": "Kariyer Planlama",
+            "akts": 2.0,
+            "tip": "Zorunlu",
+            "donem": 2
+        },
+        {
+            "kod": "ING251",
+            "ad": "Yüksek Matematik I",
+            "akts": 4.0,
+            "tip": "Zorunlu",
+            "donem": 3
+        },
+        {
+            "kod": "ING207",
+            "ad": "Lineer Cebir",
+            "akts": 5.0,
+            "tip": "Zorunlu",
+            "donem": 3
+        },
+        {
+            "kod": "INF204",
+            "ad": "Elektromanyetik Dalgalar",
+            "akts": 3.0,
+            "tip": "Zorunlu",
+            "donem": 3
+        },
+        {
+            "kod": "INF246",
+            "ad": "Programlama Uygulamaları",
+            "akts": 3.0,
+            "tip": "Zorunlu",
+            "donem": 3
+        },
+        {
+            "kod": "INF224-A",
+            "ad": "Veri Yapısı ve Algoritmalar",
+            "akts": 4.0,
+            "tip": "Zorunlu",
+            "donem": 3
+        },
+        {
+            "kod": "INF224-B",
+            "ad": "Veri Yapısı ve Algoritmalar",
+            "akts": 4.0,
+            "tip": "Zorunlu",
+            "donem": 3
+        },
+        {
+            "kod": "ING229-A",
+            "ad": "Analog Elektronik",
+            "akts": 7.0,
+            "tip": "Zorunlu",
+            "donem": 3
+        },
+        {
+            "kod": "ING229-B",
+            "ad": "Analog Elektronik",
+            "akts": 7.0,
+            "tip": "Zorunlu",
+            "donem": 3
+        },
+        {
+            "kod": "ATA001",
+            "ad": "Atatürk İlkeleri ve İnkılap Tarihi I",
+            "akts": 2.0,
+            "tip": "Zorunlu",
+            "donem": 3
+        },
+        {
+            "kod": "ING208",
+            "ad": "Diferansiyel Denklemler",
+            "akts": 4.0,
+            "tip": "Zorunlu",
+            "donem": 4
+        },
+        {
+            "kod": "INF211",
+            "ad": "Bilgisayar Mühendisliği İçin Olasılık ve İstatistiğe Giriş",
+            "akts": 4.0,
+            "tip": "Zorunlu",
+            "donem": 4
+        },
+        {
+            "kod": "INF243-A",
+            "ad": "Nesneye Yönelik Programlama",
+            "akts": 7.0,
+            "tip": "Zorunlu",
+            "donem": 4
+        },
+        {
+            "kod": "INF243",
+            "ad": "Nesneye Yönelik Programlama",
+            "akts": 7.0,
+            "tip": "Zorunlu",
+            "donem": 4
+        },
+        {
+            "kod": "ATA002",
+            "ad": "Atatürk İlkeleri ve İnkılap Tarihi II",
+            "akts": 2.0,
+            "tip": "Zorunlu",
+            "donem": 4
+        },
+        {
+            "kod": "INF291",
+            "ad": "Staj",
+            "akts": 3.0,
+            "tip": "Zorunlu",
+            "donem": 4
+        },
+        {
+            "kod": "INF356",
+            "ad": "Veri Analizine Giriş",
+            "akts": 4.0,
+            "tip": "Zorunlu",
+            "donem": 5
+        },
+        {
+            "kod": "INF324",
+            "ad": "İlişkisel Veri Tabanları",
+            "akts": 4.0,
+            "tip": "Zorunlu",
+            "donem": 5
+        },
+        {
+            "kod": "INF315",
+            "ad": "Kesikli Matematik",
+            "akts": 4.0,
+            "tip": "Zorunlu",
+            "donem": 5
+        },
+        {
+            "kod": "INF316",
+            "ad": "Sinyaller ve Sistemler",
+            "akts": 4.0,
+            "tip": "Zorunlu",
+            "donem": 5
+        },
+        {
+            "kod": "INF320",
+            "ad": "Bilgisayar Mimarisi",
+            "akts": 6.0,
+            "tip": "Zorunlu",
+            "donem": 5
+        },
+        {
+            "kod": "CNT350",
+            "ad": "Bilgisayar Mühendisleri için Proje, Risk ve Değişiklik Yönetimi",
+            "akts": 2.0,
+            "tip": "Zorunlu",
+            "donem": 5
+        },
+        {
+            "kod": "INF352",
+            "ad": "İnsan Bilgisayar Etkileşimine Giriş",
+            "akts": 4.0,
+            "tip": "Seçmeli",
+            "donem": 5
+        },
+        {
+            "kod": "INF353",
+            "ad": "Web Programlamaya Giriş",
+            "akts": 4.0,
+            "tip": "Seçmeli",
+            "donem": 5
+        },
+        {
+            "kod": "INF354",
+            "ad": "Bilişimde Oyun Teorisi ve Uygulamalarına Giriş",
+            "akts": 4.0,
+            "tip": "Seçmeli",
+            "donem": 5
+        },
+        {
+            "kod": "INF323",
+            "ad": "Otomatlar ve Diller Teorisi",
+            "akts": 4.0,
+            "tip": "Zorunlu",
+            "donem": 6
+        },
+        {
+            "kod": "INF333",
+            "ad": "İşletim Sistemleri",
+            "akts": 5.0,
+            "tip": "Zorunlu",
+            "donem": 6
+        },
+        {
+            "kod": "INF325",
+            "ad": "Sayısal Analiz",
+            "akts": 4.0,
+            "tip": "Zorunlu",
+            "donem": 6
+        },
+        {
+            "kod": "INF340-A",
+            "ad": "Mikroişlemciler",
+            "akts": 5.0,
+            "tip": "Zorunlu",
+            "donem": 6
+        },
+        {
+            "kod": "INF340-B",
+            "ad": "Mikroişlemciler",
+            "akts": 5.0,
+            "tip": "Zorunlu",
+            "donem": 6
+        },
+        {
+            "kod": "INF334",
+            "ad": "Bilgisayar Ağları",
+            "akts": 4.0,
+            "tip": "Zorunlu",
+            "donem": 6
+        },
+        {
+            "kod": "INF345",
+            "ad": "Sayısal İşaret İşleme",
+            "akts": 4.0,
+            "tip": "Seçmeli",
+            "donem": 6
+        },
+        {
+            "kod": "INF360",
+            "ad": "Veritabanı Yönetimi ve Güvenliği",
+            "akts": 4.0,
+            "tip": "Seçmeli",
+            "donem": 6
+        },
+        {
+            "kod": "INF365",
+            "ad": "Bilgi Teorisi",
+            "akts": 4.0,
+            "tip": "Seçmeli",
+            "donem": 6
+        },
+        {
+            "kod": "INF399",
+            "ad": "Staj",
+            "akts": 2.0,
+            "tip": "Zorunlu",
+            "donem": 6
+        },
+        {
+            "kod": "INF443",
+            "ad": "Dağıtık Sistemler ve Uygulamalar",
+            "akts": 6.0,
+            "tip": "Zorunlu",
+            "donem": 7
+        },
+        {
+            "kod": "INF400",
+            "ad": "Veri Derlemesi",
+            "akts": 5.0,
+            "tip": "Zorunlu",
+            "donem": 7
+        },
+        {
+            "kod": "INF444",
+            "ad": "Yapay Zeka",
+            "akts": 5.0,
+            "tip": "Zorunlu",
+            "donem": 7
+        },
+        {
+            "kod": "INF470",
+            "ad": "Bilgisayar Ağ Laboratuvarı",
+            "akts": 3.0,
+            "tip": "Zorunlu",
+            "donem": 7
+        },
+        {
+            "kod": "INF493",
+            "ad": "Bilgisayar Mühendisliğinde Araştırma Konuları",
+            "akts": 3.0,
+            "tip": "Zorunlu",
+            "donem": 7
+        },
+        {
+            "kod": "INF471-A",
+            "ad": "Bilişimde Güvenlik",
+            "akts": 4.0,
+            "tip": "Zorunlu",
+            "donem": 7
+        },
+        {
+            "kod": "INF471-B",
+            "ad": "Bilişimde Güvenlik",
+            "akts": 4.0,
+            "tip": "Zorunlu",
+            "donem": 7
+        },
+        {
+            "kod": "INF438",
+            "ad": "İleri Veri Tabanları",
+            "akts": 4.0,
+            "tip": "Seçmeli",
+            "donem": 7
+        },
+        {
+            "kod": "INF430",
+            "ad": "Robotik",
+            "akts": 4.0,
+            "tip": "Seçmeli",
+            "donem": 7
+        },
+        {
+            "kod": "INF432",
+            "ad": "Bilgisayar Grafikleri",
+            "akts": 4.0,
+            "tip": "Seçmeli",
+            "donem": 7
+        },
+        {
+            "kod": "INF481",
+            "ad": "Yazılım Mühendisliği ve Nesneye Yönelik Tasarım",
+            "akts": 5.0,
+            "tip": "Zorunlu",
+            "donem": 8
+        },
+        {
+            "kod": "INF482",
+            "ad": "Gömülü Sistem Tasarım Temelleri",
+            "akts": 5.0,
+            "tip": "Zorunlu",
+            "donem": 8
+        },
+        {
+            "kod": "INF494",
+            "ad": "Bitirme Projesi",
+            "akts": 6.0,
+            "tip": "Zorunlu",
+            "donem": 8
+        },
+        {
+            "kod": "IND471",
+            "ad": "Yöneylem Araştırması",
+            "akts": 4.0,
+            "tip": "Seçmeli",
+            "donem": 8
+        },
+        {
+            "kod": "IND472",
+            "ad": "Mühendislik Ekonomisi",
+            "akts": 4.0,
+            "tip": "Seçmeli",
+            "donem": 8
+        },
+        {
+            "kod": "INF483",
+            "ad": "Bilgi Çıkarımı ve Veri Madenciliğine Giriş",
+            "akts": 4.0,
+            "tip": "Seçmeli",
+            "donem": 8
+        },
+        {
+            "kod": "INF437",
+            "ad": "Sistem Mühendisliği",
+            "akts": 4.0,
+            "tip": "Seçmeli",
+            "donem": 8
+        },
+        {
+            "kod": "INF446",
+            "ad": "Bilgisayar Mühendisliğinde Özel Konular",
+            "akts": 4.0,
+            "tip": "Seçmeli",
+            "donem": 8
+        },
+        {
+            "kod": "INF441",
+            "ad": "Şifrelemeye Giriş",
+            "akts": 4.0,
+            "tip": "Seçmeli",
+            "donem": 8
+        },
+        {
+            "kod": "CNT416",
+            "ad": "Sosyal Medya",
+            "akts": 2.0,
+            "tip": "Seçmeli",
+            "donem": 8
+        },
+        {
+            "kod": "ING116-A",
+            "ad": "Fizik I",
+            "akts": 5.0,
+            "tip": "Zorunlu",
+            "donem": 1
+        },
+        {
+            "kod": "ING116-B",
+            "ad": "Fizik I",
+            "akts": 5.0,
+            "tip": "Zorunlu",
+            "donem": 1
+        },
+        {
+            "kod": "ING127-A",
+            "ad": "Kimya",
+            "akts": 4.0,
+            "tip": "Zorunlu",
+            "donem": 1
+        },
+        {
+            "kod": "ING127-B",
+            "ad": "Kimya",
+            "akts": 4.0,
+            "tip": "Zorunlu",
+            "donem": 1
+        },
+        {
+            "kod": "ING252",
+            "ad": "Yüksek Matematik II",
+            "akts": 4.0,
+            "tip": "Zorunlu",
+            "donem": 4
+        },
+        {
+            "kod": "CNT417",
+            "ad": "Girişimcilik",
+            "akts": 2.0,
+            "tip": "Seçmeli",
+            "donem": 8
+        },
+        {
+            "kod": "ING220-A",
+            "ad": "Sayısal Elektronik",
+            "akts": 4.0,
+            "tip": "Zorunlu",
+            "donem": 4
+        },
+        {
+            "kod": "ING220-B",
+            "ad": "Sayısal Elektronik",
+            "akts": 4.0,
+            "tip": "Zorunlu",
+            "donem": 4
+        },
+        {
+            "kod": "ING117-A",
+            "ad": "Fizik II",
+            "akts": 5.0,
+            "tip": "Zorunlu",
+            "donem": 2
+        },
+        {
+            "kod": "ING117-B",
+            "ad": "Fizik II",
+            "akts": 5.0,
+            "tip": "Zorunlu",
+            "donem": 2
+        },
+        {
+            "kod": "CNT411",
+            "ad": "Fotoğrafçılık",
+            "akts": 2.0,
+            "tip": "Seçmeli",
+            "donem": 8
+        }
+    ]
+}

@@ -1,0 +1,2674 @@
+{
+  "meta": {
+    "kaynak": "Galatasaray Universitesi Bilgisayar Muhendisligi Bolumu Akademik Takvim & Uygulama Esaslari",
+    "islenen_yillar": [
+      "2021-2022",
+      "2022-2023",
+      "2023-2024",
+      "2024-2025",
+      "2025-2026"
+    ],
+    "toplam_intibak_kurali": 35,
+    "aciklama": "Bu dosya, mufredat degisikliklerinde hangi eski dersin hangi yeni ders(ler)in yerine gectigi (intibak/esdegerlik kurallari), genel kayit kurallari ve mezuniyet sartlarini icerir."
+  },
+  "eski_yeni_eslestirme": {
+    "INF101": [
+      "INF113"
+    ],
+    "INF102": [
+      "INF112"
+    ],
+    "INF103": [
+      "INF114"
+    ],
+    "ING104": [
+      "ING106",
+      "INF115",
+      "INF116",
+      "ING111"
+    ],
+    "ING105": [
+      "ING107",
+      "INF115",
+      "INF116",
+      "ING111"
+    ],
+    "ING114": [
+      "ING116",
+      "INF115",
+      "ING111"
+    ],
+    "ING115": [
+      "ING117",
+      "INF116"
+    ],
+    "ING125": [
+      "ING127",
+      "ING111"
+    ],
+    "ING126": [
+      "INF115",
+      "INF116",
+      "ING111"
+    ],
+    "INF223": [
+      "INF243"
+    ],
+    "INF236": [
+      "INF246"
+    ],
+    "INF299": [
+      "INF291"
+    ],
+    "ING203": [
+      "ING251",
+      "INF115",
+      "INF112",
+      "ING111"
+    ],
+    "ING204": [
+      "ING252",
+      "INF115",
+      "INF112",
+      "ING111"
+    ],
+    "CNT120": [
+      "CNT120"
+    ],
+    "CNT350": [
+      "INF353"
+    ],
+    "CNT417": [
+      "CNT120"
+    ],
+    "INF112": [
+      "INF112"
+    ],
+    "INF115": [
+      "CNT120",
+      "CNT120"
+    ],
+    "INF257": [
+      "INF257"
+    ],
+    "INF316": [
+      "INF345"
+    ],
+    "INF324": [
+      "INF324"
+    ],
+    "INF353": [
+      "INF353"
+    ],
+    "INF430": [
+      "INF330"
+    ],
+    "INF441": [
+      "INF441"
+    ],
+    "ING127": [
+      "ING111"
+    ],
+    "ING144": [
+      "INF321"
+    ]
+  },
+  "intibak_kurallari": [
+    {
+      "eski_ders": {
+        "kod": "INF101",
+        "ad": "Bilgisayar Mühendisliğine Giriş"
+      },
+      "yeni_dersler": [
+        {
+          "kod": "INF113",
+          "ad": ""
+        }
+      ],
+      "kosul_yili_oncesi": "2020-2021",
+      "ilk_gorulen_yil": "2021-2022",
+      "son_gorulen_yil": "2025-2026",
+      "aciklama": "2020-2021 öğretim yılı ve öncesinde “INF 101 Bilgisayar Mühendisliğine Giriş” dersinden kalan öğrenciler, bu ders yerine “INF 113 Bilgisayar Mühendisliğine Giriş” dersini alırlar. Genel Kural: Laboratuvar saati olan derslere kayıt olan öğrenci sayısı 20’den fazla olması halinde laboratuvar dersleri iki ayrı grup olarak yapılabilecektir."
+    },
+    {
+      "eski_ders": {
+        "kod": "INF102",
+        "ad": "Programlamaya Giriş"
+      },
+      "yeni_dersler": [
+        {
+          "kod": "INF112",
+          "ad": ""
+        }
+      ],
+      "kosul_yili_oncesi": "2020-2021",
+      "ilk_gorulen_yil": "2021-2022",
+      "son_gorulen_yil": "2025-2026",
+      "aciklama": "2020-2021 öğretim yılı ve öncesinde “INF 102 Programlamaya Giriş” dersinden kalan öğrenciler, bu ders yerine “INF 112 Programlamaya Giriş” dersini alırlar."
+    },
+    {
+      "eski_ders": {
+        "kod": "INF103",
+        "ad": "Algoritma ve İleri Bilgisayar Programlama"
+      },
+      "yeni_dersler": [
+        {
+          "kod": "INF114",
+          "ad": ""
+        }
+      ],
+      "kosul_yili_oncesi": "2020-2021",
+      "ilk_gorulen_yil": "2025-2026",
+      "son_gorulen_yil": "2025-2026",
+      "aciklama": "2020-2021 öğretim yılı ve öncesinde: • ING105 Matematik II dersinden kalanlar, yerine ING107 Matematik II ve ING111 Ekonominin Temelleri ile INF116 Bilgisayar Sistemlerine Giriş derslerini, • ING115 Fizik II dersinden kalanlar, yerine ING117 Fizik II ve INF116 Bilgisayar Sistemlerine Giriş derslerini, • ING126 Kimya II dersinden kalanlar, yerine ING111 Ekonominin Temelleri ile INF116 Bilgisayar Sistemlerine Giriş derslerini, • INF103 Algoritma ve İleri Bilgisayar Programlama dersinden kalanlar, "
+    },
+    {
+      "eski_ders": {
+        "kod": "ING104",
+        "ad": "Matematik I"
+      },
+      "yeni_dersler": [
+        {
+          "kod": "ING106",
+          "ad": ""
+        },
+        {
+          "kod": "INF115",
+          "ad": ""
+        },
+        {
+          "kod": "INF116",
+          "ad": ""
+        }
+      ],
+      "kosul_yili_oncesi": "2020-2021",
+      "ilk_gorulen_yil": "2021-2022",
+      "son_gorulen_yil": "2024-2025",
+      "aciklama": "2020-2021 öğretim yılı ve öncesinde “ING 104 Matematik I” dersinden kalan öğrenciler, bu ders yerine “ING 106 Matematik I” ve 1. Sınıf Bahar yarıyılından \"INF 115 Programlama Dillerinin Prensipleri\" ile \"INF 116 Bilgisayar Sistemlerine Giriş\" derslerini alırlar."
+    },
+    {
+      "eski_ders": {
+        "kod": "ING104",
+        "ad": "Matematik I"
+      },
+      "yeni_dersler": [
+        {
+          "kod": "ING106",
+          "ad": ""
+        },
+        {
+          "kod": "INF116",
+          "ad": ""
+        },
+        {
+          "kod": "ING111",
+          "ad": ""
+        }
+      ],
+      "kosul_yili_oncesi": "2020-2021",
+      "ilk_gorulen_yil": "2025-2026",
+      "son_gorulen_yil": "2025-2026",
+      "aciklama": "2020-2021 öğretim yılı ve öncesinde: • ING104 Matematik I dersinden kalanlar, yerine ING106 Matematik I, INF116 Bilgisayar Sistemlerine Giriş ve ING111 Ekonominin Temelleri derslerini, • ING114 Fizik I dersinden kalanlar, yerine ING116 Fizik I ve ING111 Ekonominin Temelleri derslerini, • ING125 Kimya I dersinden kalanlar, yerine ING111 Ekonominin Temelleri dersini, • INF102 Programlamaya Giriş dersinden kalanlar, yerine INF112 Programlamaya Giriş dersini, • INF101 Bilgisayar Mühendisliğine Giriş"
+    },
+    {
+      "eski_ders": {
+        "kod": "ING105",
+        "ad": "Matematik II"
+      },
+      "yeni_dersler": [
+        {
+          "kod": "ING107",
+          "ad": ""
+        },
+        {
+          "kod": "INF115",
+          "ad": ""
+        },
+        {
+          "kod": "INF116",
+          "ad": ""
+        }
+      ],
+      "kosul_yili_oncesi": "2020-2021",
+      "ilk_gorulen_yil": "2021-2022",
+      "son_gorulen_yil": "2024-2025",
+      "aciklama": "2020-2021 öğretim yılı ve öncesinde “ING 105 Matematik II” dersinden kalan öğrenciler, bu ders yerine “ING 107 Matematik II” ve “INF 115 Programlama Dillerinin Prensipleri” ile “INF 116 Bilgisayar Sistemlerine Giriş” derslerini alırlar."
+    },
+    {
+      "eski_ders": {
+        "kod": "ING105",
+        "ad": "Matematik II"
+      },
+      "yeni_dersler": [
+        {
+          "kod": "ING107",
+          "ad": ""
+        },
+        {
+          "kod": "ING111",
+          "ad": ""
+        },
+        {
+          "kod": "INF116",
+          "ad": ""
+        }
+      ],
+      "kosul_yili_oncesi": "2020-2021",
+      "ilk_gorulen_yil": "2025-2026",
+      "son_gorulen_yil": "2025-2026",
+      "aciklama": "2020-2021 öğretim yılı ve öncesinde: • ING105 Matematik II dersinden kalanlar, yerine ING107 Matematik II ve ING111 Ekonominin Temelleri ile INF116 Bilgisayar Sistemlerine Giriş derslerini, • ING115 Fizik II dersinden kalanlar, yerine ING117 Fizik II ve INF116 Bilgisayar Sistemlerine Giriş derslerini, • ING126 Kimya II dersinden kalanlar, yerine ING111 Ekonominin Temelleri ile INF116 Bilgisayar Sistemlerine Giriş derslerini, • INF103 Algoritma ve İleri Bilgisayar Programlama dersinden kalanlar, "
+    },
+    {
+      "eski_ders": {
+        "kod": "ING114",
+        "ad": "Fizik I"
+      },
+      "yeni_dersler": [
+        {
+          "kod": "ING116",
+          "ad": ""
+        },
+        {
+          "kod": "INF115",
+          "ad": ""
+        }
+      ],
+      "kosul_yili_oncesi": "2020-2021",
+      "ilk_gorulen_yil": "2021-2022",
+      "son_gorulen_yil": "2024-2025",
+      "aciklama": "2020-2021 öğretim yılı ve öncesinde “ING 114 Fizik I” dersinden kalan öğrenciler, bu ders yerine “ING 116 Fizik I” 1. Sınıf Bahar yarıyılından \"INF 115 Programlama Dillerinin Prensipleri\" ve derslerini alırlar."
+    },
+    {
+      "eski_ders": {
+        "kod": "ING114",
+        "ad": "Fizik I"
+      },
+      "yeni_dersler": [
+        {
+          "kod": "ING116",
+          "ad": ""
+        },
+        {
+          "kod": "ING111",
+          "ad": ""
+        }
+      ],
+      "kosul_yili_oncesi": "2020-2021",
+      "ilk_gorulen_yil": "2025-2026",
+      "son_gorulen_yil": "2025-2026",
+      "aciklama": "2020-2021 öğretim yılı ve öncesinde: • ING104 Matematik I dersinden kalanlar, yerine ING106 Matematik I, INF116 Bilgisayar Sistemlerine Giriş ve ING111 Ekonominin Temelleri derslerini, • ING114 Fizik I dersinden kalanlar, yerine ING116 Fizik I ve ING111 Ekonominin Temelleri derslerini, • ING125 Kimya I dersinden kalanlar, yerine ING111 Ekonominin Temelleri dersini, • INF102 Programlamaya Giriş dersinden kalanlar, yerine INF112 Programlamaya Giriş dersini, • INF101 Bilgisayar Mühendisliğine Giriş"
+    },
+    {
+      "eski_ders": {
+        "kod": "ING115",
+        "ad": "Fizik II"
+      },
+      "yeni_dersler": [
+        {
+          "kod": "ING117",
+          "ad": ""
+        },
+        {
+          "kod": "INF116",
+          "ad": ""
+        }
+      ],
+      "kosul_yili_oncesi": "2020-2021",
+      "ilk_gorulen_yil": "2021-2022",
+      "son_gorulen_yil": "2025-2026",
+      "aciklama": "2020-2021 öğretim yılı ve öncesinde “ING 115 Fizik II” dersinden kalan öğrenciler, bu ders yerine “ING 117 Fizik II” ve “INF 116 Bilgisayar Sistemlerine Giriş” derslerini alırlar."
+    },
+    {
+      "eski_ders": {
+        "kod": "ING125",
+        "ad": "Kimya I"
+      },
+      "yeni_dersler": [
+        {
+          "kod": "ING127",
+          "ad": ""
+        }
+      ],
+      "kosul_yili_oncesi": "2020-2021",
+      "ilk_gorulen_yil": "2021-2022",
+      "son_gorulen_yil": "2024-2025",
+      "aciklama": "2020-2021 öğretim yılı ve öncesinde “ING 125 Kimya I” dersinden kalan öğrenciler, bu ders yerine “ING 127 Kimya” dersini alırlar."
+    },
+    {
+      "eski_ders": {
+        "kod": "ING125",
+        "ad": "Kimya I"
+      },
+      "yeni_dersler": [
+        {
+          "kod": "ING111",
+          "ad": ""
+        }
+      ],
+      "kosul_yili_oncesi": "2020-2021",
+      "ilk_gorulen_yil": "2025-2026",
+      "son_gorulen_yil": "2025-2026",
+      "aciklama": "2020-2021 öğretim yılı ve öncesinde: • ING104 Matematik I dersinden kalanlar, yerine ING106 Matematik I, INF116 Bilgisayar Sistemlerine Giriş ve ING111 Ekonominin Temelleri derslerini, • ING114 Fizik I dersinden kalanlar, yerine ING116 Fizik I ve ING111 Ekonominin Temelleri derslerini, • ING125 Kimya I dersinden kalanlar, yerine ING111 Ekonominin Temelleri dersini, • INF102 Programlamaya Giriş dersinden kalanlar, yerine INF112 Programlamaya Giriş dersini, • INF101 Bilgisayar Mühendisliğine Giriş"
+    },
+    {
+      "eski_ders": {
+        "kod": "ING126",
+        "ad": "Kimya II"
+      },
+      "yeni_dersler": [
+        {
+          "kod": "INF115",
+          "ad": ""
+        },
+        {
+          "kod": "INF116",
+          "ad": ""
+        }
+      ],
+      "kosul_yili_oncesi": "2020-2021",
+      "ilk_gorulen_yil": "2021-2022",
+      "son_gorulen_yil": "2024-2025",
+      "aciklama": "2020-2021 öğretim yılı ve öncesinde “ING 126 Kimya II” dersinden kalan öğrenciler, bu ders yerine “INF 115 Programlama Dillerinin Prensipleri” ile “INF 116 Bilgisayar Sistemlerine Giriş” derslerini alırlar. 1"
+    },
+    {
+      "eski_ders": {
+        "kod": "ING126",
+        "ad": "Kimya II"
+      },
+      "yeni_dersler": [
+        {
+          "kod": "ING111",
+          "ad": ""
+        },
+        {
+          "kod": "INF116",
+          "ad": ""
+        }
+      ],
+      "kosul_yili_oncesi": "2020-2021",
+      "ilk_gorulen_yil": "2025-2026",
+      "son_gorulen_yil": "2025-2026",
+      "aciklama": "2020-2021 öğretim yılı ve öncesinde: • ING105 Matematik II dersinden kalanlar, yerine ING107 Matematik II ve ING111 Ekonominin Temelleri ile INF116 Bilgisayar Sistemlerine Giriş derslerini, • ING115 Fizik II dersinden kalanlar, yerine ING117 Fizik II ve INF116 Bilgisayar Sistemlerine Giriş derslerini, • ING126 Kimya II dersinden kalanlar, yerine ING111 Ekonominin Temelleri ile INF116 Bilgisayar Sistemlerine Giriş derslerini, • INF103 Algoritma ve İleri Bilgisayar Programlama dersinden kalanlar, "
+    },
+    {
+      "eski_ders": {
+        "kod": "INF223",
+        "ad": "Nesneye Yönelik Programlama"
+      },
+      "yeni_dersler": [
+        {
+          "kod": "INF243",
+          "ad": ""
+        }
+      ],
+      "kosul_yili_oncesi": "2021-2022",
+      "ilk_gorulen_yil": "2022-2023",
+      "son_gorulen_yil": "2024-2025",
+      "aciklama": "2021-2022 öğretim yılı ve öncesinde “INF 223 Nesneye Yönelik Programlama” dersinden kalan öğrenciler, bu ders yerine “INF 243 Nesneye Yönelik Programlama” dersini alırlar."
+    },
+    {
+      "eski_ders": {
+        "kod": "INF236",
+        "ad": "Programlama Uygulamaları"
+      },
+      "yeni_dersler": [
+        {
+          "kod": "INF246",
+          "ad": ""
+        }
+      ],
+      "kosul_yili_oncesi": "2021-2022",
+      "ilk_gorulen_yil": "2022-2023",
+      "son_gorulen_yil": "2024-2025",
+      "aciklama": "2021-2022 öğretim yılı ve öncesinde “INF 236 Programlama Uygulamaları” dersinden kalan öğrenciler, bu ders yerine “INF 246 Programlama Uygulamaları” dersini alırlar. GENEL KURALLAR 1. Öğrenciler, aynı yarıyıl içinde en fazla 45 AKTS kredilik derse yazılabilirler. Bir derse yazılabilmek için, ilgili ön koşul ders(ler)inin başarılmış olması gerekmektedir. 2. Laboratuvar saati olan derslere kayıt olan öğrenci sayısı 20’den fazla olması halinde laboratuvar dersleri iki ayrı grup olarak yapılabilecek"
+    },
+    {
+      "eski_ders": {
+        "kod": "INF299",
+        "ad": "Staj"
+      },
+      "yeni_dersler": [
+        {
+          "kod": "INF291",
+          "ad": ""
+        }
+      ],
+      "kosul_yili_oncesi": "2021-2022",
+      "ilk_gorulen_yil": "2022-2023",
+      "son_gorulen_yil": "2024-2025",
+      "aciklama": "2021-2022 öğretim yılı ve öncesinde “INF 299 Staj” dersinden kalan öğrenciler, bu ders yerine “INF 291 Staj” dersini alırlar. GENEL KURALLAR 1. Öğrenciler, aynı yarıyıl içinde en fazla 45 AKTS kredilik derse yazılabilirler. Bir derse yazılabilmek için, ilgili ön koşul ders(ler)inin başarılmış olması gerekmektedir. 2. Laboratuvar saati olan derslere kayıt olan öğrenci sayısı 20’den fazla olması halinde laboratuvar dersleri iki ayrı grup olarak yapılabilecektir. 3"
+    },
+    {
+      "eski_ders": {
+        "kod": "ING203",
+        "ad": "Yüksek Matematik I"
+      },
+      "yeni_dersler": [
+        {
+          "kod": "ING251",
+          "ad": ""
+        },
+        {
+          "kod": "INF115",
+          "ad": ""
+        },
+        {
+          "kod": "INF112",
+          "ad": ""
+        }
+      ],
+      "kosul_yili_oncesi": "2021-2022",
+      "ilk_gorulen_yil": "2022-2023",
+      "son_gorulen_yil": "2024-2025",
+      "aciklama": "2 2021-2022 öğretim yılı ve öncesinde “ING 203 Yüksek Matematik I” dersinden kalan öğrenciler, bu ders yerine “ING 251 Yüksek Matematik I” ve 1. Sınıf / Bahar Yarıyılından “INF 115 Programlama Dillerinin Prensipleri” ya da “INF 112 Programlamaya Giriş” derslerini alırlar."
+    },
+    {
+      "eski_ders": {
+        "kod": "ING203",
+        "ad": "Yüksek Matematik I"
+      },
+      "yeni_dersler": [
+        {
+          "kod": "ING251",
+          "ad": ""
+        },
+        {
+          "kod": "ING111",
+          "ad": ""
+        },
+        {
+          "kod": "INF112",
+          "ad": ""
+        }
+      ],
+      "kosul_yili_oncesi": "2021-2022",
+      "ilk_gorulen_yil": "2025-2026",
+      "son_gorulen_yil": "2025-2026",
+      "aciklama": "2021-2022 öğretim yılı ve öncesinde ING203 Yüksek Matematik I dersinden kalan öğrenciler, bu ders yerine ING251 Yüksek Matematik I ve ING111 Ekonominin Temelleri ya da INF112 Programlamaya Giriş derslerini alırlar."
+    },
+    {
+      "eski_ders": {
+        "kod": "ING204",
+        "ad": "Yüksek Matematik II"
+      },
+      "yeni_dersler": [
+        {
+          "kod": "ING252",
+          "ad": ""
+        },
+        {
+          "kod": "INF115",
+          "ad": ""
+        },
+        {
+          "kod": "INF112",
+          "ad": ""
+        }
+      ],
+      "kosul_yili_oncesi": "2021-2022",
+      "ilk_gorulen_yil": "2022-2023",
+      "son_gorulen_yil": "2023-2024",
+      "aciklama": "2021-2022 öğretim yılı ve öncesinde “ING 204 Yüksek Matematik II” dersinden kalan öğrenciler, bu ders yerine “ING 252 Yüksek Matematik II” ve 1. Sınıf / Bahar Yarıyılından “INF 115 Programlama Dillerinin Prensipleri” ya da “INF 112 Programlamaya Giriş” derslerini alırlar."
+    },
+    {
+      "eski_ders": {
+        "kod": "ING204",
+        "ad": "Yüksek Matematik II"
+      },
+      "yeni_dersler": [
+        {
+          "kod": "ING252",
+          "ad": ""
+        },
+        {
+          "kod": "INF112",
+          "ad": ""
+        }
+      ],
+      "kosul_yili_oncesi": "2021-2022",
+      "ilk_gorulen_yil": "2024-2025",
+      "son_gorulen_yil": "2024-2025",
+      "aciklama": "2021-2022 öğretim yılı ve öncesinde “ING 204 Yüksek Matematik II” dersinden kalan öğrenciler, bu ders yerine “ING 252 Yüksek Matematik II” ve 1. Sınıf / Bahar Yarıyılından “INF Sayfa 3 115 Programlama Dillerinin Prensipleri” ya da “INF 112 Programlamaya Giriş” derslerini alırlar."
+    },
+    {
+      "eski_ders": {
+        "kod": "ING204",
+        "ad": "Yüksek Matematik II"
+      },
+      "yeni_dersler": [
+        {
+          "kod": "ING252",
+          "ad": ""
+        },
+        {
+          "kod": "ING111",
+          "ad": ""
+        },
+        {
+          "kod": "INF112",
+          "ad": ""
+        }
+      ],
+      "kosul_yili_oncesi": "2021-2022",
+      "ilk_gorulen_yil": "2025-2026",
+      "son_gorulen_yil": "2025-2026",
+      "aciklama": "2021-2022 öğretim yılı ve öncesinde ING204 Yüksek Matematik II dersinden kalan öğrenciler, bu ders yerine ING252 Yüksek Matematik II ve ING111 Ekonominin Temelleri ya da INF112 Programlamaya Giriş derslerini alırlar."
+    },
+    {
+      "eski_ders": {
+        "kod": "CNT120",
+        "ad": "Kariyer Planlama"
+      },
+      "yeni_dersler": [
+        {
+          "kod": "CNT120",
+          "ad": ""
+        }
+      ],
+      "kosul_yili_oncesi": "2024-2025",
+      "ilk_gorulen_yil": "2025-2026",
+      "son_gorulen_yil": "2025-2026",
+      "aciklama": "2024-2025 öğretim yılı ve öncesinde: • ING144 Teknik Resim dersinden kalanlar, yerine 5. yarıyıldaki INF321 Teknik Resim dersini, • INF115 Programlama Dillerinin Prensipleri dersinden kalanlar, yerine 5. yarıyıl itibariyle seçmeleri gereken INF kodlu seçmeli derslere ilaveten bir tane ders, • CNT120 Kariyer Planlama dersinden kalanlar, yerine CNT120 Girişimcilik ve Kariyer Planlama dersini, • INF114 Algoritma ve İleri Bilgisayar Programlama dersinden kalanlar, INF114 İleri Bilgisayar Programlama"
+    },
+    {
+      "eski_ders": {
+        "kod": "CNT350",
+        "ad": "Bilgisayar Mühendisleri için Proje Risk ve Değişiklik Yönetimi"
+      },
+      "yeni_dersler": [
+        {
+          "kod": "INF353",
+          "ad": ""
+        }
+      ],
+      "kosul_yili_oncesi": "2024-2025",
+      "ilk_gorulen_yil": "2025-2026",
+      "son_gorulen_yil": "2025-2026",
+      "aciklama": "2024-2025 öğretim yılı ve öncesinde: • INF324 İlişkisel Veri Tabanları dersinden kalanlar, yerine INF324 Veri Tabanı Tasarımı ve Uygulamaları dersini, • INF316 Sinyaller ve Sistemler dersinden kalanlar, yerine INF345 Sayısal Sinyal İşleme dersini, • CNT350 Bilgisayar Mühendisleri için Proje, Risk ve Değişiklik Yönetimi dersinden kalanlar, CNT250 Bilgisayar Mühendisleri için Proje, Risk ve Değişiklik Yönetimi dersini, • INF353 Web Programlamaya Giriş dersinden kalanlar, yerine INF353 Web Programl"
+    },
+    {
+      "eski_ders": {
+        "kod": "CNT417",
+        "ad": "Girişimcilik"
+      },
+      "yeni_dersler": [
+        {
+          "kod": "CNT120",
+          "ad": ""
+        }
+      ],
+      "kosul_yili_oncesi": "2024-2025",
+      "ilk_gorulen_yil": "2025-2026",
+      "son_gorulen_yil": "2025-2026",
+      "aciklama": "2024-2025 öğretim yılı ve öncesinde: • INF441 Şifrelemeye Giriş dersinden kalanlar, yerine INF441 Kriptolojinin Temelleri dersini, • CNT417 Girişimcilik dersinden kalanlar, yerine CNT120 Girişimcilik ve Kariyer Planlama dersini alırlar. • INF446 Bilgisayar Mühendisliğinde Özel Konular dersinden kalanlar, yerine 8. yarıyılda seçmeleri gereken INF kodlu seçmeli derslere ilaveten bir tane ders alırlar."
+    },
+    {
+      "eski_ders": {
+        "kod": "INF112",
+        "ad": "Programlamaya Giriş"
+      },
+      "yeni_dersler": [
+        {
+          "kod": "INF112",
+          "ad": ""
+        }
+      ],
+      "kosul_yili_oncesi": "2024-2025",
+      "ilk_gorulen_yil": "2025-2026",
+      "son_gorulen_yil": "2025-2026",
+      "aciklama": "2024-2025 öğretim yılı ve öncesinde: • ING127 Kimya dersinden kalanlar, yerine ING111 Ekonominin Temelleri dersini, • INF112 Programlamaya Giriş dersinden kalanlar, yerine INF112 Programlamaya Giriş ve seçmeleri gereken sosyal seçmeli derslere ilaveten bir tane ders alırlar. Genel Kurallar: 1. Öğrenciler, bir yarıyılda en fazla 45 AKTS değerinde derse kayıt yaptırabilirler. 1 2. Laboratuvar saati bulunan derslerde, öğrenci sayısının 25’i aşması durumunda, laboratuvar dersleri ayrı gruplar halind"
+    },
+    {
+      "eski_ders": {
+        "kod": "INF115",
+        "ad": "Programlama Dillerinin Prensipleri"
+      },
+      "yeni_dersler": [
+        {
+          "kod": "CNT120",
+          "ad": ""
+        },
+        {
+          "kod": "CNT120",
+          "ad": ""
+        }
+      ],
+      "kosul_yili_oncesi": "2024-2025",
+      "ilk_gorulen_yil": "2025-2026",
+      "son_gorulen_yil": "2025-2026",
+      "aciklama": "2024-2025 öğretim yılı ve öncesinde: • ING144 Teknik Resim dersinden kalanlar, yerine 5. yarıyıldaki INF321 Teknik Resim dersini, • INF115 Programlama Dillerinin Prensipleri dersinden kalanlar, yerine 5. yarıyıl itibariyle seçmeleri gereken INF kodlu seçmeli derslere ilaveten bir tane ders, • CNT120 Kariyer Planlama dersinden kalanlar, yerine CNT120 Girişimcilik ve Kariyer Planlama dersini, • INF114 Algoritma ve İleri Bilgisayar Programlama dersinden kalanlar, INF114 İleri Bilgisayar Programlama"
+    },
+    {
+      "eski_ders": {
+        "kod": "INF257",
+        "ad": "İstatistik"
+      },
+      "yeni_dersler": [
+        {
+          "kod": "INF257",
+          "ad": ""
+        }
+      ],
+      "kosul_yili_oncesi": "2024-2025",
+      "ilk_gorulen_yil": "2025-2026",
+      "son_gorulen_yil": "2025-2026",
+      "aciklama": "2024-2025 öğretim yılı ve öncesinde: • INF257 İstatistik dersinden kalanlar, yerine INF257 İstatistik ve Veri Analizi dersini alırlar. 3"
+    },
+    {
+      "eski_ders": {
+        "kod": "INF316",
+        "ad": "Sinyaller ve Sistemler"
+      },
+      "yeni_dersler": [
+        {
+          "kod": "INF345",
+          "ad": ""
+        }
+      ],
+      "kosul_yili_oncesi": "2024-2025",
+      "ilk_gorulen_yil": "2025-2026",
+      "son_gorulen_yil": "2025-2026",
+      "aciklama": "2024-2025 öğretim yılı ve öncesinde: • INF324 İlişkisel Veri Tabanları dersinden kalanlar, yerine INF324 Veri Tabanı Tasarımı ve Uygulamaları dersini, • INF316 Sinyaller ve Sistemler dersinden kalanlar, yerine INF345 Sayısal Sinyal İşleme dersini, • CNT350 Bilgisayar Mühendisleri için Proje, Risk ve Değişiklik Yönetimi dersinden kalanlar, CNT250 Bilgisayar Mühendisleri için Proje, Risk ve Değişiklik Yönetimi dersini, • INF353 Web Programlamaya Giriş dersinden kalanlar, yerine INF353 Web Programl"
+    },
+    {
+      "eski_ders": {
+        "kod": "INF324",
+        "ad": "İlişkisel Veri Tabanları"
+      },
+      "yeni_dersler": [
+        {
+          "kod": "INF324",
+          "ad": ""
+        }
+      ],
+      "kosul_yili_oncesi": "2024-2025",
+      "ilk_gorulen_yil": "2025-2026",
+      "son_gorulen_yil": "2025-2026",
+      "aciklama": "2024-2025 öğretim yılı ve öncesinde: • INF324 İlişkisel Veri Tabanları dersinden kalanlar, yerine INF324 Veri Tabanı Tasarımı ve Uygulamaları dersini, • INF316 Sinyaller ve Sistemler dersinden kalanlar, yerine INF345 Sayısal Sinyal İşleme dersini, • CNT350 Bilgisayar Mühendisleri için Proje, Risk ve Değişiklik Yönetimi dersinden kalanlar, CNT250 Bilgisayar Mühendisleri için Proje, Risk ve Değişiklik Yönetimi dersini, • INF353 Web Programlamaya Giriş dersinden kalanlar, yerine INF353 Web Programl"
+    },
+    {
+      "eski_ders": {
+        "kod": "INF353",
+        "ad": "Web Programlamaya Giriş"
+      },
+      "yeni_dersler": [
+        {
+          "kod": "INF353",
+          "ad": ""
+        }
+      ],
+      "kosul_yili_oncesi": "2024-2025",
+      "ilk_gorulen_yil": "2025-2026",
+      "son_gorulen_yil": "2025-2026",
+      "aciklama": "2024-2025 öğretim yılı ve öncesinde: • INF324 İlişkisel Veri Tabanları dersinden kalanlar, yerine INF324 Veri Tabanı Tasarımı ve Uygulamaları dersini, • INF316 Sinyaller ve Sistemler dersinden kalanlar, yerine INF345 Sayısal Sinyal İşleme dersini, • CNT350 Bilgisayar Mühendisleri için Proje, Risk ve Değişiklik Yönetimi dersinden kalanlar, CNT250 Bilgisayar Mühendisleri için Proje, Risk ve Değişiklik Yönetimi dersini, • INF353 Web Programlamaya Giriş dersinden kalanlar, yerine INF353 Web Programl"
+    },
+    {
+      "eski_ders": {
+        "kod": "INF430",
+        "ad": "Robotik"
+      },
+      "yeni_dersler": [
+        {
+          "kod": "INF330",
+          "ad": ""
+        }
+      ],
+      "kosul_yili_oncesi": "2024-2025",
+      "ilk_gorulen_yil": "2025-2026",
+      "son_gorulen_yil": "2025-2026",
+      "aciklama": "2024-2025 öğretim yılı ve öncesinde: • INF430 Robotik dersinden kalanlar, yerine INF330 Robotik dersini,"
+    },
+    {
+      "eski_ders": {
+        "kod": "INF441",
+        "ad": "Şifrelemeye Giriş"
+      },
+      "yeni_dersler": [
+        {
+          "kod": "INF441",
+          "ad": ""
+        }
+      ],
+      "kosul_yili_oncesi": "2024-2025",
+      "ilk_gorulen_yil": "2025-2026",
+      "son_gorulen_yil": "2025-2026",
+      "aciklama": "2024-2025 öğretim yılı ve öncesinde: • INF441 Şifrelemeye Giriş dersinden kalanlar, yerine INF441 Kriptolojinin Temelleri dersini, • CNT417 Girişimcilik dersinden kalanlar, yerine CNT120 Girişimcilik ve Kariyer Planlama dersini alırlar. • INF446 Bilgisayar Mühendisliğinde Özel Konular dersinden kalanlar, yerine 8. yarıyılda seçmeleri gereken INF kodlu seçmeli derslere ilaveten bir tane ders alırlar."
+    },
+    {
+      "eski_ders": {
+        "kod": "ING127",
+        "ad": "Kimya"
+      },
+      "yeni_dersler": [
+        {
+          "kod": "ING111",
+          "ad": ""
+        }
+      ],
+      "kosul_yili_oncesi": "2024-2025",
+      "ilk_gorulen_yil": "2025-2026",
+      "son_gorulen_yil": "2025-2026",
+      "aciklama": "2024-2025 öğretim yılı ve öncesinde: • ING127 Kimya dersinden kalanlar, yerine ING111 Ekonominin Temelleri dersini, • INF112 Programlamaya Giriş dersinden kalanlar, yerine INF112 Programlamaya Giriş ve seçmeleri gereken sosyal seçmeli derslere ilaveten bir tane ders alırlar. Genel Kurallar: 1. Öğrenciler, bir yarıyılda en fazla 45 AKTS değerinde derse kayıt yaptırabilirler. 1 2. Laboratuvar saati bulunan derslerde, öğrenci sayısının 25’i aşması durumunda, laboratuvar dersleri ayrı gruplar halind"
+    },
+    {
+      "eski_ders": {
+        "kod": "ING144",
+        "ad": "Teknik Resim"
+      },
+      "yeni_dersler": [
+        {
+          "kod": "INF321",
+          "ad": ""
+        }
+      ],
+      "kosul_yili_oncesi": "2024-2025",
+      "ilk_gorulen_yil": "2025-2026",
+      "son_gorulen_yil": "2025-2026",
+      "aciklama": "2024-2025 öğretim yılı ve öncesinde: • ING144 Teknik Resim dersinden kalanlar, yerine 5. yarıyıldaki INF321 Teknik Resim dersini, • INF115 Programlama Dillerinin Prensipleri dersinden kalanlar, yerine 5. yarıyıl itibariyle seçmeleri gereken INF kodlu seçmeli derslere ilaveten bir tane ders, • CNT120 Kariyer Planlama dersinden kalanlar, yerine CNT120 Girişimcilik ve Kariyer Planlama dersini, • INF114 Algoritma ve İleri Bilgisayar Programlama dersinden kalanlar, INF114 İleri Bilgisayar Programlama"
+    }
+  ],
+  "genel_kurallar": [
+    "Öğrenciler, aynı yarıyıl içinde en fazla 45 AKTS kredilik derse yazılabilirler.",
+    "Laboratuvar saati olan derslere kayıt olan öğrenci sayısı 20’den fazla olması halinde laboratuvar",
+    "Öğrenciler, aynı yarıyıl içinde en fazla 45 AKTS kredilik derse yazılabilirler. Bir derse yazılabilmek",
+    "Bir derse yazılabilmek için, ilgili ön koşul ders(ler)inin başarılmış olması gerekmektedir.",
+    "Seçmeli dersler (S) ile ifade edilir. Önerilen seçmeli derslerden 1 adet ders seçilecektir.",
+    "Mezun olabilmek için öğrencinin en az 2.00 ağırlıklı not ortalaması şartını sağlaması gerekmektedir.",
+    "Önerilen seçmeli derslerden, CNT grubundan 1 adet, INF grubundan 2 adet, IND grubundan 1 adet",
+    "Mezun olabilmek için, öğrencinin toplam 12 kredilik yabancı dil dersini başarmış olması veya",
+    "Laboratuvar saati olan derslere kayıt olan öğrenci sayısı 25’den fazla olması halinde",
+    "Öğrenciler, aynı yarıyıl içinde en fazla 45 AKTS kredilik derse yazılabilirler. Bir derse",
+    "Laboratuvar saati olan derslere kayıt olan öğrenci sayısı 20’den fazla olması halinde",
+    "Öğrenciler, bir yarıyılda en fazla 45 AKTS değerinde derse kayıt yaptırabilirler.",
+    "Laboratuvar saati bulunan derslerde, öğrenci sayısının 25’i aşması durumunda,",
+    "Bir derse kayıt yapılabilmesi için, ilgili ön koşul ders(ler)inin başarıyla tamamlanmış",
+    "Mezun olabilmek için öğrencinin en az 2.00 ağırlıklı not ortalaması şartını sağlaması",
+    "Mezun olabilmek için, öğrencinin toplam 12 kredilik yabancı dil dersini başarmış"
+  ],
+  "mezuniyet_sartlari": [
+    "INF441 Şifrelemeye Giriş dersinden kalanlar, yerine INF441 Kriptolojinin Temelleri dersini,",
+    "CNT417 Girişimcilik dersinden kalanlar, yerine CNT120 Girişimcilik ve Kariyer Planlama dersini",
+    "INF446 Bilgisayar Mühendisliğinde Özel Konular dersinden kalanlar, yerine 8. yarıyılda"
+  ],
+  "yil_bazli_detay": [
+    {
+      "akademik_yil": "2021-2022",
+      "kaynak_dosya": "Akademik_Takvim_2021_2022.pdf",
+      "notlar": [
+        {
+          "akademik_yil": "2021-2022",
+          "donem": 1,
+          "not_no": 1,
+          "kosul_yili_oncesi": null,
+          "eslestirmeler": [],
+          "aciklama": "Fransızca Hazırlık sınıfından gelen ve Fransızca seviye tespit sınavında başarısız olan öğrenciler, Yabancı Dil dersi olarak Fransızca dersini alırlar. Fransızca seviye tespit sınavını başarmış olup, İngilizce seviye tespit sınavında başarısız olan öğrenciler, Yabancı Dil dersi olarak, Yabancı Dil Bölümü’nün öğrencinin seviyesine uygun olarak açacağı İngilizce dersini alırlar. Fransızca ve İngilizce seviyeleri istenen düzeyde olan öğrenciler, Yabancı Dil Bölümü’nün açacağı diğer dil derslerini a"
+        },
+        {
+          "akademik_yil": "2021-2022",
+          "donem": 1,
+          "not_no": 2,
+          "kosul_yili_oncesi": "2020-2021",
+          "eslestirmeler": [
+            {
+              "eski": {
+                "kod": "ING104",
+                "ad": "Matematik I"
+              },
+              "yeni": [
+                {
+                  "kod": "ING106",
+                  "ad": ""
+                },
+                {
+                  "kod": "INF115",
+                  "ad": ""
+                },
+                {
+                  "kod": "INF116",
+                  "ad": ""
+                }
+              ]
+            }
+          ],
+          "aciklama": "2020-2021 öğretim yılı ve öncesinde “ING 104 Matematik I” dersinden kalan öğrenciler, bu ders yerine “ING 106 Matematik I” ve 1. Sınıf Bahar yarıyılından \"INF 115 Programlama Dillerinin Prensipleri\" ile \"INF 116 Bilgisayar Sistemlerine Giriş\" derslerini alırlar."
+        },
+        {
+          "akademik_yil": "2021-2022",
+          "donem": 1,
+          "not_no": 3,
+          "kosul_yili_oncesi": "2020-2021",
+          "eslestirmeler": [
+            {
+              "eski": {
+                "kod": "ING114",
+                "ad": "Fizik I"
+              },
+              "yeni": [
+                {
+                  "kod": "ING116",
+                  "ad": ""
+                },
+                {
+                  "kod": "INF115",
+                  "ad": ""
+                }
+              ]
+            }
+          ],
+          "aciklama": "2020-2021 öğretim yılı ve öncesinde “ING 114 Fizik I” dersinden kalan öğrenciler, bu ders yerine “ING 116 Fizik I” 1. Sınıf Bahar yarıyılından \"INF 115 Programlama Dillerinin Prensipleri\" ve derslerini alırlar."
+        },
+        {
+          "akademik_yil": "2021-2022",
+          "donem": 1,
+          "not_no": 4,
+          "kosul_yili_oncesi": "2020-2021",
+          "eslestirmeler": [
+            {
+              "eski": {
+                "kod": "ING125",
+                "ad": "Kimya I"
+              },
+              "yeni": [
+                {
+                  "kod": "ING127",
+                  "ad": ""
+                }
+              ]
+            }
+          ],
+          "aciklama": "2020-2021 öğretim yılı ve öncesinde “ING 125 Kimya I” dersinden kalan öğrenciler, bu ders yerine “ING 127 Kimya” dersini alırlar."
+        },
+        {
+          "akademik_yil": "2021-2022",
+          "donem": 1,
+          "not_no": 5,
+          "kosul_yili_oncesi": "2020-2021",
+          "eslestirmeler": [
+            {
+              "eski": {
+                "kod": "INF102",
+                "ad": "Programlamaya Giriş"
+              },
+              "yeni": [
+                {
+                  "kod": "INF112",
+                  "ad": ""
+                }
+              ]
+            }
+          ],
+          "aciklama": "2020-2021 öğretim yılı ve öncesinde “INF 102 Programlamaya Giriş” dersinden kalan öğrenciler, bu ders yerine “INF 112 Programlamaya Giriş” dersini alırlar."
+        },
+        {
+          "akademik_yil": "2021-2022",
+          "donem": 1,
+          "not_no": 6,
+          "kosul_yili_oncesi": "2020-2021",
+          "eslestirmeler": [
+            {
+              "eski": {
+                "kod": "INF101",
+                "ad": "Bilgisayar Mühendisliğine Giriş"
+              },
+              "yeni": [
+                {
+                  "kod": "INF113",
+                  "ad": ""
+                }
+              ]
+            }
+          ],
+          "aciklama": "2020-2021 öğretim yılı ve öncesinde “INF 101 Bilgisayar Mühendisliğine Giriş” dersinden kalan öğrenciler, bu ders yerine “INF 113 Bilgisayar Mühendisliğine Giriş” dersini alırlar. Genel Kural: Laboratuvar saati olan derslere kayıt olan öğrenci sayısı 20’den fazla olması halinde laboratuvar dersleri iki ayrı grup olarak yapılabilecektir."
+        },
+        {
+          "akademik_yil": "2021-2022",
+          "donem": 2,
+          "not_no": 7,
+          "kosul_yili_oncesi": "2020-2021",
+          "eslestirmeler": [
+            {
+              "eski": {
+                "kod": "ING105",
+                "ad": "Matematik II"
+              },
+              "yeni": [
+                {
+                  "kod": "ING107",
+                  "ad": ""
+                },
+                {
+                  "kod": "INF115",
+                  "ad": ""
+                },
+                {
+                  "kod": "INF116",
+                  "ad": ""
+                }
+              ]
+            }
+          ],
+          "aciklama": "2020-2021 öğretim yılı ve öncesinde “ING 105 Matematik II” dersinden kalan öğrenciler, bu ders yerine “ING 107 Matematik II” ve “INF 115 Programlama Dillerinin Prensipleri” ile “INF 116 Bilgisayar Sistemlerine Giriş” derslerini alırlar."
+        },
+        {
+          "akademik_yil": "2021-2022",
+          "donem": 2,
+          "not_no": 8,
+          "kosul_yili_oncesi": "2020-2021",
+          "eslestirmeler": [
+            {
+              "eski": {
+                "kod": "ING115",
+                "ad": "Fizik II"
+              },
+              "yeni": [
+                {
+                  "kod": "ING117",
+                  "ad": ""
+                },
+                {
+                  "kod": "INF116",
+                  "ad": ""
+                }
+              ]
+            }
+          ],
+          "aciklama": "2020-2021 öğretim yılı ve öncesinde “ING 115 Fizik II” dersinden kalan öğrenciler, bu ders yerine “ING 117 Fizik II” ve “INF 116 Bilgisayar Sistemlerine Giriş” derslerini alırlar."
+        },
+        {
+          "akademik_yil": "2021-2022",
+          "donem": 2,
+          "not_no": 9,
+          "kosul_yili_oncesi": "2020-2021",
+          "eslestirmeler": [
+            {
+              "eski": {
+                "kod": "ING126",
+                "ad": "Kimya II"
+              },
+              "yeni": [
+                {
+                  "kod": "INF115",
+                  "ad": ""
+                },
+                {
+                  "kod": "INF116",
+                  "ad": ""
+                }
+              ]
+            }
+          ],
+          "aciklama": "2020-2021 öğretim yılı ve öncesinde “ING 126 Kimya II” dersinden kalan öğrenciler, bu ders yerine “INF 115 Programlama Dillerinin Prensipleri” ile “INF 116 Bilgisayar Sistemlerine Giriş” derslerini alırlar. 1"
+        },
+        {
+          "akademik_yil": "2021-2022",
+          "donem": 2,
+          "not_no": 10,
+          "kosul_yili_oncesi": "2020-2021",
+          "eslestirmeler": [],
+          "aciklama": "2020-2021 öğretim yılı ve öncesinde “INF 103 Algoritma ve İleri Bilgisayar Programlama” dersinden kalan öğrenciler, bu ders yerine “INF 114 Algoritma ve İleri Bilgisayar Programlama” dersini alırlar. Genel Kural: 1. Öğrenciler, aynı yarıyıl içinde en fazla 45 AKTS kredilik derse yazılabilirler. 2. Laboratuvar saati olan derslere kayıt olan öğrenci sayısı 20’den fazla olması halinde laboratuvar dersleri iki ayrı grup olarak yapılabilecektir."
+        }
+      ],
+      "genel_kurallar": [],
+      "mezuniyet_sartlari": [
+        "Mezun olabilmek için öğrencinin en az 2.00 ağırlıklı not ortalaması şartını sağlaması",
+        "Önerilen seçmeli derslerden, CNT grubundan 1 adet, INF grubundan 2 adet, IND grubundan",
+        "Mezun olabilmek için, öğrencinin toplam 12 kredilik yabancı dil dersini başarmış olması veya",
+        "Öğrenciler, aynı yarıyıl içinde en fazla 45 AKTS kredilik derse yazılabilirler."
+      ]
+    },
+    {
+      "akademik_yil": "2022-2023",
+      "kaynak_dosya": "Akademik_Takvim_2022_2023.pdf",
+      "notlar": [
+        {
+          "akademik_yil": "2022-2023",
+          "donem": 1,
+          "not_no": 1,
+          "kosul_yili_oncesi": null,
+          "eslestirmeler": [],
+          "aciklama": "Fransızca Hazırlık sınıfından gelen ve Fransızca seviye tespit sınavında başarısız olan öğrenciler, Yabancı Dil dersi olarak Fransızca dersini alırlar. Fransızca seviye tespit sınavını başarmış olup, İngilizce seviye tespit sınavında başarısız olan öğrenciler, Yabancı Dil dersi olarak, Yabancı Dil Bölümü’nün öğrencinin seviyesine uygun olarak açacağı İngilizce dersini alırlar. Fransızca ve İngilizce seviyeleri istenen düzeyde olan öğrenciler, Yabancı Dil Bölümü’nün açacağı diğer dil derslerini a"
+        },
+        {
+          "akademik_yil": "2022-2023",
+          "donem": 1,
+          "not_no": 2,
+          "kosul_yili_oncesi": "2020-2021",
+          "eslestirmeler": [
+            {
+              "eski": {
+                "kod": "ING104",
+                "ad": "Matematik I"
+              },
+              "yeni": [
+                {
+                  "kod": "ING106",
+                  "ad": ""
+                },
+                {
+                  "kod": "INF115",
+                  "ad": ""
+                },
+                {
+                  "kod": "INF116",
+                  "ad": ""
+                }
+              ]
+            }
+          ],
+          "aciklama": "2020-2021 öğretim yılı ve öncesinde “ING 104 Matematik I” dersinden kalan öğrenciler, bu ders yerine “ING 106 Matematik I” ve 1. Sınıf / Bahar Yarıyılından “INF 115 Programlama Dillerinin Prensipleri” ile “INF 116 Bilgisayar Sistemlerine Giriş” derslerini alırlar."
+        },
+        {
+          "akademik_yil": "2022-2023",
+          "donem": 1,
+          "not_no": 3,
+          "kosul_yili_oncesi": "2020-2021",
+          "eslestirmeler": [
+            {
+              "eski": {
+                "kod": "ING114",
+                "ad": "Fizik I"
+              },
+              "yeni": [
+                {
+                  "kod": "ING116",
+                  "ad": ""
+                },
+                {
+                  "kod": "INF115",
+                  "ad": ""
+                }
+              ]
+            }
+          ],
+          "aciklama": "2020-2021 öğretim yılı ve öncesinde “ING 114 Fizik I” dersinden kalan öğrenciler, bu ders yerine “ING 116 Fizik I” ve 1. Sınıf / Bahar Yarıyılından “INF 115 Programlama Dillerinin Prensipleri” derslerini alırlar."
+        },
+        {
+          "akademik_yil": "2022-2023",
+          "donem": 1,
+          "not_no": 4,
+          "kosul_yili_oncesi": "2020-2021",
+          "eslestirmeler": [
+            {
+              "eski": {
+                "kod": "ING125",
+                "ad": "Kimya I"
+              },
+              "yeni": [
+                {
+                  "kod": "ING127",
+                  "ad": ""
+                }
+              ]
+            }
+          ],
+          "aciklama": "2020-2021 öğretim yılı ve öncesinde “ING 125 Kimya I” dersinden kalan öğrenciler, bu ders yerine “ING 127 Kimya” dersini alırlar."
+        },
+        {
+          "akademik_yil": "2022-2023",
+          "donem": 1,
+          "not_no": 5,
+          "kosul_yili_oncesi": "2020-2021",
+          "eslestirmeler": [
+            {
+              "eski": {
+                "kod": "INF102",
+                "ad": "Programlamaya Giriş"
+              },
+              "yeni": [
+                {
+                  "kod": "INF112",
+                  "ad": ""
+                }
+              ]
+            }
+          ],
+          "aciklama": "2020-2021 öğretim yılı ve öncesinde “INF 102 Programlamaya Giriş” dersinden kalan öğrenciler, bu ders yerine “INF 112 Programlamaya Giriş” dersini alırlar."
+        },
+        {
+          "akademik_yil": "2022-2023",
+          "donem": 1,
+          "not_no": 6,
+          "kosul_yili_oncesi": "2020-2021",
+          "eslestirmeler": [
+            {
+              "eski": {
+                "kod": "INF101",
+                "ad": "Bilgisayar Mühendisliğine Giriş"
+              },
+              "yeni": [
+                {
+                  "kod": "INF113",
+                  "ad": ""
+                }
+              ]
+            }
+          ],
+          "aciklama": "2020-2021 öğretim yılı ve öncesinde “INF 101 Bilgisayar Mühendisliğine Giriş” dersinden kalan öğrenciler, bu ders yerine “INF 113 Bilgisayar Mühendisliğine Giriş” dersini alırlar. 1 GENEL KURALLAR 1. Öğrenciler, aynı yarıyıl içinde en fazla 45 AKTS kredilik derse yazılabilirler. 2. Laboratuvar saati olan derslere kayıt olan öğrenci sayısı 20’den fazla olması halinde laboratuvar dersleri iki ayrı grup olarak yapılabilecektir."
+        },
+        {
+          "akademik_yil": "2022-2023",
+          "donem": 2,
+          "not_no": 7,
+          "kosul_yili_oncesi": "2020-2021",
+          "eslestirmeler": [
+            {
+              "eski": {
+                "kod": "ING105",
+                "ad": "Matematik II"
+              },
+              "yeni": [
+                {
+                  "kod": "ING107",
+                  "ad": ""
+                },
+                {
+                  "kod": "INF115",
+                  "ad": ""
+                },
+                {
+                  "kod": "INF116",
+                  "ad": ""
+                }
+              ]
+            }
+          ],
+          "aciklama": "2020-2021 öğretim yılı ve öncesinde “ING 105 Matematik II” dersinden kalan öğrenciler, bu ders yerine “ING 107 Matematik II” ve “INF 115 Programlama Dillerinin Prensipleri” ile “INF 116 Bilgisayar Sistemlerine Giriş” derslerini alırlar."
+        },
+        {
+          "akademik_yil": "2022-2023",
+          "donem": 2,
+          "not_no": 8,
+          "kosul_yili_oncesi": "2020-2021",
+          "eslestirmeler": [
+            {
+              "eski": {
+                "kod": "ING115",
+                "ad": "Fizik II"
+              },
+              "yeni": [
+                {
+                  "kod": "ING117",
+                  "ad": ""
+                },
+                {
+                  "kod": "INF116",
+                  "ad": ""
+                }
+              ]
+            }
+          ],
+          "aciklama": "2020-2021 öğretim yılı ve öncesinde “ING 115 Fizik II” dersinden kalan öğrenciler, bu ders yerine “ING 117 Fizik II” ve “INF 116 Bilgisayar Sistemlerine Giriş” derslerini alırlar."
+        },
+        {
+          "akademik_yil": "2022-2023",
+          "donem": 2,
+          "not_no": 9,
+          "kosul_yili_oncesi": "2020-2021",
+          "eslestirmeler": [
+            {
+              "eski": {
+                "kod": "ING126",
+                "ad": "Kimya II"
+              },
+              "yeni": [
+                {
+                  "kod": "INF115",
+                  "ad": ""
+                },
+                {
+                  "kod": "INF116",
+                  "ad": ""
+                }
+              ]
+            }
+          ],
+          "aciklama": "2020-2021 öğretim yılı ve öncesinde “ING 126 Kimya II” dersinden kalan öğrenciler, bu ders yerine “INF 115 Programlama Dillerinin Prensipleri” ile “INF 116 Bilgisayar Sistemlerine Giriş” derslerini alırlar."
+        },
+        {
+          "akademik_yil": "2022-2023",
+          "donem": 2,
+          "not_no": 10,
+          "kosul_yili_oncesi": "2020-2021",
+          "eslestirmeler": [],
+          "aciklama": "2020-2021 öğretim yılı ve öncesinde “INF 103 Algoritma ve İleri Bilgisayar Programlama” dersinden kalan öğrenciler, bu ders yerine “INF 114 Algoritma ve İleri Bilgisayar Programlama” dersini alırlar. GENEL KURALLAR 1. Öğrenciler, aynı yarıyıl içinde en fazla 45 AKTS kredilik derse yazılabilirler. 2. Laboratuvar saati olan derslere kayıt olan öğrenci sayısı 20’den fazla olması halinde laboratuvar dersleri iki ayrı grup olarak yapılabilecektir."
+        },
+        {
+          "akademik_yil": "2022-2023",
+          "donem": 3,
+          "not_no": 11,
+          "kosul_yili_oncesi": "2021-2022",
+          "eslestirmeler": [
+            {
+              "eski": {
+                "kod": "ING203",
+                "ad": "Yüksek Matematik I"
+              },
+              "yeni": [
+                {
+                  "kod": "ING251",
+                  "ad": ""
+                },
+                {
+                  "kod": "INF115",
+                  "ad": ""
+                },
+                {
+                  "kod": "INF112",
+                  "ad": ""
+                }
+              ]
+            }
+          ],
+          "aciklama": "2 2021-2022 öğretim yılı ve öncesinde “ING 203 Yüksek Matematik I” dersinden kalan öğrenciler, bu ders yerine “ING 251 Yüksek Matematik I” ve 1. Sınıf / Bahar Yarıyılından “INF 115 Programlama Dillerinin Prensipleri” ya da “INF 112 Programlamaya Giriş” derslerini alırlar."
+        },
+        {
+          "akademik_yil": "2022-2023",
+          "donem": 3,
+          "not_no": 12,
+          "kosul_yili_oncesi": "2021-2022",
+          "eslestirmeler": [
+            {
+              "eski": {
+                "kod": "INF236",
+                "ad": "Programlama Uygulamaları"
+              },
+              "yeni": [
+                {
+                  "kod": "INF246",
+                  "ad": ""
+                }
+              ]
+            }
+          ],
+          "aciklama": "2021-2022 öğretim yılı ve öncesinde “INF 236 Programlama Uygulamaları” dersinden kalan öğrenciler, bu ders yerine “INF 246 Programlama Uygulamaları” dersini alırlar. GENEL KURALLAR 1. Öğrenciler, aynı yarıyıl içinde en fazla 45 AKTS kredilik derse yazılabilirler. Bir derse yazılabilmek için, ilgili ön koşul ders(ler)inin başarılmış olması gerekmektedir. 2. Laboratuvar saati olan derslere kayıt olan öğrenci sayısı 20’den fazla olması halinde laboratuvar dersleri iki ayrı grup olarak yapılabilecek"
+        },
+        {
+          "akademik_yil": "2022-2023",
+          "donem": 4,
+          "not_no": 13,
+          "kosul_yili_oncesi": "2021-2022",
+          "eslestirmeler": [
+            {
+              "eski": {
+                "kod": "ING204",
+                "ad": "Yüksek Matematik II"
+              },
+              "yeni": [
+                {
+                  "kod": "ING252",
+                  "ad": ""
+                },
+                {
+                  "kod": "INF115",
+                  "ad": ""
+                },
+                {
+                  "kod": "INF112",
+                  "ad": ""
+                }
+              ]
+            }
+          ],
+          "aciklama": "2021-2022 öğretim yılı ve öncesinde “ING 204 Yüksek Matematik II” dersinden kalan öğrenciler, bu ders yerine “ING 252 Yüksek Matematik II” ve 1. Sınıf / Bahar Yarıyılından “INF 115 Programlama Dillerinin Prensipleri” ya da “INF 112 Programlamaya Giriş” derslerini alırlar."
+        },
+        {
+          "akademik_yil": "2022-2023",
+          "donem": 4,
+          "not_no": 14,
+          "kosul_yili_oncesi": "2021-2022",
+          "eslestirmeler": [
+            {
+              "eski": {
+                "kod": "INF223",
+                "ad": "Nesneye Yönelik Programlama"
+              },
+              "yeni": [
+                {
+                  "kod": "INF243",
+                  "ad": ""
+                }
+              ]
+            }
+          ],
+          "aciklama": "2021-2022 öğretim yılı ve öncesinde “INF 223 Nesneye Yönelik Programlama” dersinden kalan öğrenciler, bu ders yerine “INF 243 Nesneye Yönelik Programlama” dersini alırlar."
+        },
+        {
+          "akademik_yil": "2022-2023",
+          "donem": 4,
+          "not_no": 15,
+          "kosul_yili_oncesi": "2021-2022",
+          "eslestirmeler": [
+            {
+              "eski": {
+                "kod": "INF299",
+                "ad": "Staj"
+              },
+              "yeni": [
+                {
+                  "kod": "INF291",
+                  "ad": ""
+                }
+              ]
+            }
+          ],
+          "aciklama": "2021-2022 öğretim yılı ve öncesinde “INF 299 Staj” dersinden kalan öğrenciler, bu ders yerine “INF 291 Staj” dersini alırlar. GENEL KURALLAR 1. Öğrenciler, aynı yarıyıl içinde en fazla 45 AKTS kredilik derse yazılabilirler. Bir derse yazılabilmek için, ilgili ön koşul ders(ler)inin başarılmış olması gerekmektedir. 2. Laboratuvar saati olan derslere kayıt olan öğrenci sayısı 20’den fazla olması halinde laboratuvar dersleri iki ayrı grup olarak yapılabilecektir. 3"
+        }
+      ],
+      "genel_kurallar": [
+        "Öğrenciler, aynı yarıyıl içinde en fazla 45 AKTS kredilik derse yazılabilirler.",
+        "Laboratuvar saati olan derslere kayıt olan öğrenci sayısı 20’den fazla olması halinde laboratuvar",
+        "Öğrenciler, aynı yarıyıl içinde en fazla 45 AKTS kredilik derse yazılabilirler. Bir derse yazılabilmek",
+        "Bir derse yazılabilmek için, ilgili ön koşul ders(ler)inin başarılmış olması gerekmektedir.",
+        "Seçmeli dersler (S) ile ifade edilir. Önerilen seçmeli derslerden 1 adet ders seçilecektir.",
+        "Mezun olabilmek için öğrencinin en az 2.00 ağırlıklı not ortalaması şartını sağlaması gerekmektedir.",
+        "Önerilen seçmeli derslerden, CNT grubundan 1 adet, INF grubundan 2 adet, IND grubundan 1 adet",
+        "Mezun olabilmek için, öğrencinin toplam 12 kredilik yabancı dil dersini başarmış olması veya"
+      ],
+      "mezuniyet_sartlari": [
+        "Mezun olabilmek için öğrencinin en az 2.00 ağırlıklı not ortalaması şartını sağlaması gerekmektedir.",
+        "Önerilen seçmeli derslerden, CNT grubundan 1 adet, INF grubundan 2 adet, IND grubundan 1 adet",
+        "Mezun olabilmek için, öğrencinin toplam 12 kredilik yabancı dil dersini başarmış olması veya",
+        "Öğrenciler, aynı yarıyıl içinde en fazla 45 AKTS kredilik derse yazılabilirler."
+      ]
+    },
+    {
+      "akademik_yil": "2023-2024",
+      "kaynak_dosya": "Akademik_Takvim_2023-2024.pdf",
+      "notlar": [
+        {
+          "akademik_yil": "2023-2024",
+          "donem": 1,
+          "not_no": 1,
+          "kosul_yili_oncesi": null,
+          "eslestirmeler": [],
+          "aciklama": "Fransızca Hazırlık sınıfından gelen ve Fransızca seviye tespit sınavında başarısız olan öğrenciler, Yabancı Dil dersi olarak Fransızca dersini alırlar. Fransızca seviye tespit sınavını başarmış olup, İngilizce seviye tespit sınavında başarısız olan öğrenciler, Yabancı Dil dersi olarak, Yabancı Dil Bölümü’nün öğrencinin seviyesine uygun olarak açacağı İngilizce dersini alırlar. Fransızca ve İngilizce seviyeleri istenen düzeyde olan öğrenciler, Yabancı Dil Bölümü’nün açacağı diğer dil derslerini a"
+        },
+        {
+          "akademik_yil": "2023-2024",
+          "donem": 1,
+          "not_no": 2,
+          "kosul_yili_oncesi": "2020-2021",
+          "eslestirmeler": [
+            {
+              "eski": {
+                "kod": "ING104",
+                "ad": "Matematik I"
+              },
+              "yeni": [
+                {
+                  "kod": "ING106",
+                  "ad": ""
+                },
+                {
+                  "kod": "INF115",
+                  "ad": ""
+                },
+                {
+                  "kod": "INF116",
+                  "ad": ""
+                }
+              ]
+            }
+          ],
+          "aciklama": "2020-2021 öğretim yılı ve öncesinde “ING 104 Matematik I” dersinden kalan öğrenciler, bu ders yerine “ING 106 Matematik I” ve 1. Sınıf / Bahar Yarıyılından “INF 115 Programlama Dillerinin Prensipleri” ile “INF 116 Bilgisayar Sistemlerine Giriş” derslerini alırlar."
+        },
+        {
+          "akademik_yil": "2023-2024",
+          "donem": 1,
+          "not_no": 3,
+          "kosul_yili_oncesi": "2020-2021",
+          "eslestirmeler": [
+            {
+              "eski": {
+                "kod": "ING114",
+                "ad": "Fizik I"
+              },
+              "yeni": [
+                {
+                  "kod": "ING116",
+                  "ad": ""
+                },
+                {
+                  "kod": "INF115",
+                  "ad": ""
+                }
+              ]
+            }
+          ],
+          "aciklama": "2020-2021 öğretim yılı ve öncesinde “ING 114 Fizik I” dersinden kalan öğrenciler, bu ders yerine “ING 116 Fizik I” ve 1. Sınıf / Bahar Yarıyılından “INF 115 Programlama Dillerinin Prensipleri” derslerini alırlar."
+        },
+        {
+          "akademik_yil": "2023-2024",
+          "donem": 1,
+          "not_no": 4,
+          "kosul_yili_oncesi": "2020-2021",
+          "eslestirmeler": [
+            {
+              "eski": {
+                "kod": "ING125",
+                "ad": "Kimya I"
+              },
+              "yeni": [
+                {
+                  "kod": "ING127",
+                  "ad": ""
+                }
+              ]
+            }
+          ],
+          "aciklama": "2020-2021 öğretim yılı ve öncesinde “ING 125 Kimya I” dersinden kalan öğrenciler, bu ders yerine “ING 127 Kimya” dersini alırlar."
+        },
+        {
+          "akademik_yil": "2023-2024",
+          "donem": 1,
+          "not_no": 5,
+          "kosul_yili_oncesi": "2020-2021",
+          "eslestirmeler": [
+            {
+              "eski": {
+                "kod": "INF102",
+                "ad": "Programlamaya Giriş"
+              },
+              "yeni": [
+                {
+                  "kod": "INF112",
+                  "ad": ""
+                }
+              ]
+            }
+          ],
+          "aciklama": "2020-2021 öğretim yılı ve öncesinde “INF 102 Programlamaya Giriş” dersinden kalan öğrenciler, bu ders yerine “INF 112 Programlamaya Giriş” dersini alırlar."
+        },
+        {
+          "akademik_yil": "2023-2024",
+          "donem": 1,
+          "not_no": 6,
+          "kosul_yili_oncesi": "2020-2021",
+          "eslestirmeler": [
+            {
+              "eski": {
+                "kod": "INF101",
+                "ad": "Bilgisayar Mühendisliğine Giriş"
+              },
+              "yeni": [
+                {
+                  "kod": "INF113",
+                  "ad": ""
+                }
+              ]
+            }
+          ],
+          "aciklama": "2020-2021 öğretim yılı ve öncesinde “INF 101 Bilgisayar Mühendisliğine Giriş” dersinden kalan öğrenciler, bu ders yerine “INF 113 Bilgisayar Mühendisliğine Giriş” dersini alırlar. Genel Kural: • Öğrenciler, aynı yarıyıl içinde en fazla 45 AKTS kredilik derse yazılabilirler. • Laboratuvar saati olan derslere kayıt olan öğrenci sayısı 25’den fazla olması halinde laboratuvar dersleri ayrı gruplar halinde yapılabilecektir."
+        },
+        {
+          "akademik_yil": "2023-2024",
+          "donem": 2,
+          "not_no": 7,
+          "kosul_yili_oncesi": "2020-2021",
+          "eslestirmeler": [
+            {
+              "eski": {
+                "kod": "ING105",
+                "ad": "Matematik II"
+              },
+              "yeni": [
+                {
+                  "kod": "ING107",
+                  "ad": ""
+                },
+                {
+                  "kod": "INF115",
+                  "ad": ""
+                },
+                {
+                  "kod": "INF116",
+                  "ad": ""
+                }
+              ]
+            }
+          ],
+          "aciklama": "2020-2021 öğretim yılı ve öncesinde “ING 105 Matematik II” dersinden kalan öğrenciler, bu ders yerine “ING 107 Matematik II” ve “INF 115 Programlama Dillerinin Prensipleri” ile “INF 116 Bilgisayar Sistemlerine Giriş” derslerini alırlar."
+        },
+        {
+          "akademik_yil": "2023-2024",
+          "donem": 2,
+          "not_no": 8,
+          "kosul_yili_oncesi": "2020-2021",
+          "eslestirmeler": [
+            {
+              "eski": {
+                "kod": "ING115",
+                "ad": "Fizik II"
+              },
+              "yeni": [
+                {
+                  "kod": "ING117",
+                  "ad": ""
+                },
+                {
+                  "kod": "INF116",
+                  "ad": ""
+                }
+              ]
+            }
+          ],
+          "aciklama": "2020-2021 öğretim yılı ve öncesinde “ING 115 Fizik II” dersinden kalan öğrenciler, bu ders yerine “ING 117 Fizik II” ve “INF 116 Bilgisayar Sistemlerine Giriş” derslerini alırlar."
+        },
+        {
+          "akademik_yil": "2023-2024",
+          "donem": 2,
+          "not_no": 9,
+          "kosul_yili_oncesi": "2020-2021",
+          "eslestirmeler": [
+            {
+              "eski": {
+                "kod": "ING126",
+                "ad": "Kimya II"
+              },
+              "yeni": [
+                {
+                  "kod": "INF115",
+                  "ad": ""
+                },
+                {
+                  "kod": "INF116",
+                  "ad": ""
+                }
+              ]
+            }
+          ],
+          "aciklama": "2020-2021 öğretim yılı ve öncesinde “ING 126 Kimya II” dersinden kalan öğrenciler, bu ders yerine “INF 115 Programlama Dillerinin Prensipleri” ile “INF 116 Bilgisayar Sistemlerine Giriş” derslerini alırlar."
+        },
+        {
+          "akademik_yil": "2023-2024",
+          "donem": 2,
+          "not_no": 10,
+          "kosul_yili_oncesi": "2020-2021",
+          "eslestirmeler": [],
+          "aciklama": "2020-2021 öğretim yılı ve öncesinde “INF 103 Algoritma ve İleri Bilgisayar Programlama” dersinden kalan öğrenciler, bu ders yerine “INF 114 Algoritma ve İleri Bilgisayar Programlama” dersini alırlar. Genel Kural: • Öğrenciler, aynı yarıyıl içinde en fazla 45 AKTS kredilik derse yazılabilirler. • Laboratuvar saati olan derslere kayıt olan öğrenci sayısı 25’den fazla olması halinde laboratuvar dersleri ayrı gruplar halinde yapılabilecektir."
+        },
+        {
+          "akademik_yil": "2023-2024",
+          "donem": 3,
+          "not_no": 11,
+          "kosul_yili_oncesi": "2021-2022",
+          "eslestirmeler": [
+            {
+              "eski": {
+                "kod": "ING203",
+                "ad": "Yüksek Matematik I"
+              },
+              "yeni": [
+                {
+                  "kod": "ING251",
+                  "ad": ""
+                },
+                {
+                  "kod": "INF115",
+                  "ad": ""
+                },
+                {
+                  "kod": "INF112",
+                  "ad": ""
+                }
+              ]
+            }
+          ],
+          "aciklama": "2021-2022 öğretim yılı ve öncesinde “ING 203 Yüksek Matematik I” dersinden kalan öğrenciler, bu ders yerine “ING 251 Yüksek Matematik I” ve 1. Sınıf / Bahar Yarıyılından “INF 115 Programlama Dillerinin Prensipleri” ya da “INF 112 Programlamaya Giriş” derslerini alırlar."
+        },
+        {
+          "akademik_yil": "2023-2024",
+          "donem": 3,
+          "not_no": 12,
+          "kosul_yili_oncesi": "2021-2022",
+          "eslestirmeler": [
+            {
+              "eski": {
+                "kod": "INF236",
+                "ad": "Programlama Uygulamaları"
+              },
+              "yeni": [
+                {
+                  "kod": "INF246",
+                  "ad": ""
+                }
+              ]
+            }
+          ],
+          "aciklama": "2021-2022 öğretim yılı ve öncesinde “INF 236 Programlama Uygulamaları” dersinden kalan öğrenciler, bu ders yerine “INF 246 Programlama Uygulamaları” dersini alırlar."
+        },
+        {
+          "akademik_yil": "2023-2024",
+          "donem": 3,
+          "not_no": 13,
+          "kosul_yili_oncesi": "2022-2023",
+          "eslestirmeler": [],
+          "aciklama": "2022-2023 öğretim yılı ve öncesinde “INF 204 Elektromanyetik Dalgalar” ve “INF 211 Bilgisayar Mühendisliği için Olasılık ve İstatistiğe Giriş” dersinden kalan öğrenciler, bu dersler yerine “INF 256 Olasılık” ve “INF 257 İstatistik” derslerini alırlar."
+        },
+        {
+          "akademik_yil": "2023-2024",
+          "donem": 3,
+          "not_no": 14,
+          "kosul_yili_oncesi": "2022-2023",
+          "eslestirmeler": [],
+          "aciklama": "2022-2023 öğretim yılı ve öncesinde “INF 204 Elektromanyetik Dalgalar” dersinden kalan ve “INF 211 Bilgisayar Mühendisliği için Olasılık ve İstatistiğe Giriş” dersini alıp başarılı olan öğrenciler, 5. yarıyıl itibariyle seçmeleri gereken INF derslerine ilaveten 1 adet INF seçmeli ders alırlar. Genel Kural: • Öğrenciler, aynı yarıyıl içinde en fazla 45 AKTS kredilik derse yazılabilirler. Bir derse yazılabilmek için, ilgili ön koşul ders(ler)inin başarılmış olması gerekmektedir. • Laboratuvar saat"
+        },
+        {
+          "akademik_yil": "2023-2024",
+          "donem": 4,
+          "not_no": 15,
+          "kosul_yili_oncesi": "2021-2022",
+          "eslestirmeler": [
+            {
+              "eski": {
+                "kod": "ING204",
+                "ad": "Yüksek Matematik II"
+              },
+              "yeni": [
+                {
+                  "kod": "ING252",
+                  "ad": ""
+                },
+                {
+                  "kod": "INF115",
+                  "ad": ""
+                },
+                {
+                  "kod": "INF112",
+                  "ad": ""
+                }
+              ]
+            }
+          ],
+          "aciklama": "2021-2022 öğretim yılı ve öncesinde “ING 204 Yüksek Matematik II” dersinden kalan öğrenciler, bu ders yerine “ING 252 Yüksek Matematik II” ve 1. Sınıf / Bahar Yarıyılından “INF 115 Programlama Dillerinin Prensipleri” ya da “INF 112 Programlamaya Giriş” derslerini alırlar."
+        },
+        {
+          "akademik_yil": "2023-2024",
+          "donem": 4,
+          "not_no": 16,
+          "kosul_yili_oncesi": "2021-2022",
+          "eslestirmeler": [
+            {
+              "eski": {
+                "kod": "INF223",
+                "ad": "Nesneye Yönelik Programlama"
+              },
+              "yeni": [
+                {
+                  "kod": "INF243",
+                  "ad": ""
+                }
+              ]
+            }
+          ],
+          "aciklama": "2021-2022 öğretim yılı ve öncesinde “INF 223 Nesneye Yönelik Programlama” dersinden kalan öğrenciler, bu ders yerine “INF 243 Nesneye Yönelik Programlama” dersini alırlar."
+        },
+        {
+          "akademik_yil": "2023-2024",
+          "donem": 4,
+          "not_no": 17,
+          "kosul_yili_oncesi": "2021-2022",
+          "eslestirmeler": [
+            {
+              "eski": {
+                "kod": "INF299",
+                "ad": "Staj"
+              },
+              "yeni": [
+                {
+                  "kod": "INF291",
+                  "ad": ""
+                }
+              ]
+            }
+          ],
+          "aciklama": "2021-2022 öğretim yılı ve öncesinde “INF 299 Staj” dersinden kalan öğrenciler, bu ders yerine “INF 291 Staj” dersini alırlar."
+        },
+        {
+          "akademik_yil": "2023-2024",
+          "donem": 4,
+          "not_no": 18,
+          "kosul_yili_oncesi": "2022-2023",
+          "eslestirmeler": [],
+          "aciklama": "2022-2023 öğretim yılı ve öncesinde “INF 204 Elektromanyetik Dalgalar” dersinden başarılı olan ve “INF 211 Bilgisayar Mühendisliği için Olasılık ve İstatistiğe Giriş” dersinden kalan öğrenciler, “INF 257 İstatistik” dersini alırlar. Genel Kural: • Öğrenciler, aynı yarıyıl içinde en fazla 45 AKTS kredilik derse yazılabilirler. Bir derse yazılabilmek için, ilgili ön koşul ders(ler)inin başarılmış olması gerekmektedir. • Laboratuvar saati olan derslere kayıt olan öğrenci sayısı 25’den fazla olması "
+        },
+        {
+          "akademik_yil": "2023-2024",
+          "donem": 7,
+          "not_no": 19,
+          "kosul_yili_oncesi": "2022-2023",
+          "eslestirmeler": [],
+          "aciklama": "2022-2023 öğretim yılı ve öncesinde “INF 470 Bilgisayar Ağ Laboratuvarı” dersinden kalan öğrenciler “INF 402 Nesnelerin İnternetine Giriş” dersini alırlar. Genel Kural: • Öğrenciler, aynı yarıyıl içinde en fazla 45 AKTS kredilik derse yazılabilirler. • Bir derse yazılabilmek için, ilgili ön koşul ders(ler)inin başarılmış olması gerekmektedir. • Seçmeli dersler (S) ile ifade edilir. Önerilen seçmeli derslerden 1 adet ders seçilecektir. • Laboratuvar saati olan derslere kayıt olan öğrenci sayısı 2"
+        }
+      ],
+      "genel_kurallar": [],
+      "mezuniyet_sartlari": [
+        "Mezun olabilmek için öğrencinin en az 2.00 ağırlıklı not ortalaması şartını sağlaması",
+        "Önerilen seçmeli derslerden, CNT grubundan 1 adet, INF grubundan 2 adet, IND",
+        "Mezun olabilmek için, öğrencinin toplam 12 kredilik yabancı dil dersini başarmış olması",
+        "Öğrenciler, aynı yarıyıl içinde en fazla 45 AKTS kredilik derse yazılabilirler."
+      ]
+    },
+    {
+      "akademik_yil": "2024-2025",
+      "kaynak_dosya": "Akademik_Takvim_2024_2025.pdf",
+      "notlar": [
+        {
+          "akademik_yil": "2024-2025",
+          "donem": 1,
+          "not_no": 1,
+          "kosul_yili_oncesi": null,
+          "eslestirmeler": [],
+          "aciklama": "Fransızca Hazırlık sınıfından gelen ve Fransızca seviye tespit sınavında başarısız olan öğrenciler, Yabancı Dil dersi olarak Fransızca dersini alırlar. Fransızca seviye tespit sınavını başarmış olup, İngilizce seviye tespit sınavında başarısız olan öğrenciler, Yabancı Dil dersi olarak, Yabancı Dil Bölümü’nün öğrencinin seviyesine uygun olarak açacağı İngilizce dersini alırlar. Fransızca ve İngilizce seviyeleri istenen düzeyde olan öğrenciler, Yabancı Dil Bölümü’nün açacağı diğer dil derslerini a"
+        },
+        {
+          "akademik_yil": "2024-2025",
+          "donem": 1,
+          "not_no": 2,
+          "kosul_yili_oncesi": "2020-2021",
+          "eslestirmeler": [
+            {
+              "eski": {
+                "kod": "ING104",
+                "ad": "Matematik I"
+              },
+              "yeni": [
+                {
+                  "kod": "ING106",
+                  "ad": ""
+                },
+                {
+                  "kod": "INF115",
+                  "ad": ""
+                },
+                {
+                  "kod": "INF116",
+                  "ad": ""
+                }
+              ]
+            }
+          ],
+          "aciklama": "2020-2021 öğretim yılı ve öncesinde “ING 104 Matematik I” dersinden kalan öğrenciler, bu ders yerine “ING 106 Matematik I” ve 1. Sınıf / Bahar Yarıyılından “INF 115 Programlama Dillerinin Prensipleri” ile “INF 116 Bilgisayar Sistemlerine Giriş” derslerini alırlar."
+        },
+        {
+          "akademik_yil": "2024-2025",
+          "donem": 1,
+          "not_no": 3,
+          "kosul_yili_oncesi": "2020-2021",
+          "eslestirmeler": [
+            {
+              "eski": {
+                "kod": "ING114",
+                "ad": "Fizik I"
+              },
+              "yeni": [
+                {
+                  "kod": "ING116",
+                  "ad": ""
+                },
+                {
+                  "kod": "INF115",
+                  "ad": ""
+                }
+              ]
+            }
+          ],
+          "aciklama": "2020-2021 öğretim yılı ve öncesinde “ING 114 Fizik I” dersinden kalan öğrenciler, bu ders yerine “ING 116 Fizik I” ve 1. Sınıf / Bahar Yarıyılından “INF 115 Programlama Dillerinin Prensipleri” derslerini alırlar."
+        },
+        {
+          "akademik_yil": "2024-2025",
+          "donem": 1,
+          "not_no": 4,
+          "kosul_yili_oncesi": "2020-2021",
+          "eslestirmeler": [
+            {
+              "eski": {
+                "kod": "ING125",
+                "ad": "Kimya I"
+              },
+              "yeni": [
+                {
+                  "kod": "ING127",
+                  "ad": ""
+                }
+              ]
+            }
+          ],
+          "aciklama": "2020-2021 öğretim yılı ve öncesinde “ING 125 Kimya I” dersinden kalan öğrenciler, bu ders yerine “ING 127 Kimya” dersini alırlar."
+        },
+        {
+          "akademik_yil": "2024-2025",
+          "donem": 1,
+          "not_no": 5,
+          "kosul_yili_oncesi": "2020-2021",
+          "eslestirmeler": [
+            {
+              "eski": {
+                "kod": "INF102",
+                "ad": "Programlamaya Giriş"
+              },
+              "yeni": [
+                {
+                  "kod": "INF112",
+                  "ad": ""
+                }
+              ]
+            }
+          ],
+          "aciklama": "2020-2021 öğretim yılı ve öncesinde “INF 102 Programlamaya Giriş” dersinden kalan öğrenciler, bu ders yerine “INF 112 Programlamaya Giriş” dersini alırlar."
+        },
+        {
+          "akademik_yil": "2024-2025",
+          "donem": 1,
+          "not_no": 6,
+          "kosul_yili_oncesi": "2020-2021",
+          "eslestirmeler": [
+            {
+              "eski": {
+                "kod": "INF101",
+                "ad": "Bilgisayar Mühendisliğine Giriş"
+              },
+              "yeni": [
+                {
+                  "kod": "INF113",
+                  "ad": ""
+                }
+              ]
+            }
+          ],
+          "aciklama": "Sayfa 1 2020-2021 öğretim yılı ve öncesinde “INF 101 Bilgisayar Mühendisliğine Giriş” dersinden kalan öğrenciler, bu ders yerine “INF 113 Bilgisayar Mühendisliğine Giriş” dersini alırlar. GENEL KURALLAR 1. Öğrenciler, aynı yarıyıl içinde en fazla 45 AKTS kredilik derse yazılabilirler. 2. Laboratuvar saati olan derslere kayıt olan öğrenci sayısı 25’den fazla olması halinde laboratuvar dersleri ayrı gruplar halinde yapılabilecektir."
+        },
+        {
+          "akademik_yil": "2024-2025",
+          "donem": 2,
+          "not_no": 7,
+          "kosul_yili_oncesi": "2020-2021",
+          "eslestirmeler": [
+            {
+              "eski": {
+                "kod": "ING105",
+                "ad": "Matematik II"
+              },
+              "yeni": [
+                {
+                  "kod": "ING107",
+                  "ad": ""
+                },
+                {
+                  "kod": "INF115",
+                  "ad": ""
+                },
+                {
+                  "kod": "INF116",
+                  "ad": ""
+                }
+              ]
+            }
+          ],
+          "aciklama": "2020-2021 öğretim yılı ve öncesinde “ING 105 Matematik II” dersinden kalan öğrenciler, bu ders yerine “ING 107 Matematik II” ve “INF 115 Programlama Dillerinin Prensipleri” ile “INF 116 Bilgisayar Sistemlerine Giriş” derslerini alırlar."
+        },
+        {
+          "akademik_yil": "2024-2025",
+          "donem": 2,
+          "not_no": 8,
+          "kosul_yili_oncesi": "2020-2021",
+          "eslestirmeler": [
+            {
+              "eski": {
+                "kod": "ING115",
+                "ad": "Fizik II"
+              },
+              "yeni": [
+                {
+                  "kod": "ING117",
+                  "ad": ""
+                },
+                {
+                  "kod": "INF116",
+                  "ad": ""
+                }
+              ]
+            }
+          ],
+          "aciklama": "2020-2021 öğretim yılı ve öncesinde “ING 115 Fizik II” dersinden kalan öğrenciler, bu ders yerine “ING 117 Fizik II” ve “INF 116 Bilgisayar Sistemlerine Giriş” derslerini alırlar."
+        },
+        {
+          "akademik_yil": "2024-2025",
+          "donem": 2,
+          "not_no": 9,
+          "kosul_yili_oncesi": "2020-2021",
+          "eslestirmeler": [
+            {
+              "eski": {
+                "kod": "ING126",
+                "ad": "Kimya II"
+              },
+              "yeni": [
+                {
+                  "kod": "INF115",
+                  "ad": ""
+                },
+                {
+                  "kod": "INF116",
+                  "ad": ""
+                }
+              ]
+            }
+          ],
+          "aciklama": "2020-2021 öğretim yılı ve öncesinde “ING 126 Kimya II” dersinden kalan öğrenciler, bu ders yerine “INF 115 Programlama Dillerinin Prensipleri” ile “INF 116 Bilgisayar Sistemlerine Giriş” derslerini alırlar."
+        },
+        {
+          "akademik_yil": "2024-2025",
+          "donem": 2,
+          "not_no": 10,
+          "kosul_yili_oncesi": "2020-2021",
+          "eslestirmeler": [],
+          "aciklama": "2020-2021 öğretim yılı ve öncesinde “INF 103 Algoritma ve İleri Bilgisayar Programlama” dersinden kalan öğrenciler, bu ders yerine “INF 114 Algoritma ve İleri Bilgisayar Programlama” dersini alırlar. GENEL KURALLAR 1. Öğrenciler, aynı yarıyıl içinde en fazla 45 AKTS kredilik derse yazılabilirler. 2. Laboratuvar saati olan derslere kayıt olan öğrenci sayısı 25’den fazla olması halinde laboratuvar dersleri ayrı gruplar halinde yapılabilecektir. Sayfa 2"
+        },
+        {
+          "akademik_yil": "2024-2025",
+          "donem": 3,
+          "not_no": 11,
+          "kosul_yili_oncesi": "2021-2022",
+          "eslestirmeler": [
+            {
+              "eski": {
+                "kod": "ING203",
+                "ad": "Yüksek Matematik I"
+              },
+              "yeni": [
+                {
+                  "kod": "ING251",
+                  "ad": ""
+                },
+                {
+                  "kod": "INF115",
+                  "ad": ""
+                },
+                {
+                  "kod": "INF112",
+                  "ad": ""
+                }
+              ]
+            }
+          ],
+          "aciklama": "2021-2022 öğretim yılı ve öncesinde “ING 203 Yüksek Matematik I” dersinden kalan öğrenciler, bu ders yerine “ING 251 Yüksek Matematik I” ve 1. Sınıf / Bahar Yarıyılından “INF 115 Programlama Dillerinin Prensipleri” ya da “INF 112 Programlamaya Giriş” derslerini alırlar."
+        },
+        {
+          "akademik_yil": "2024-2025",
+          "donem": 3,
+          "not_no": 12,
+          "kosul_yili_oncesi": "2021-2022",
+          "eslestirmeler": [
+            {
+              "eski": {
+                "kod": "INF236",
+                "ad": "Programlama Uygulamaları"
+              },
+              "yeni": [
+                {
+                  "kod": "INF246",
+                  "ad": ""
+                }
+              ]
+            }
+          ],
+          "aciklama": "2021-2022 öğretim yılı ve öncesinde “INF 236 Programlama Uygulamaları” dersinden kalan öğrenciler, bu ders yerine “INF 246 Programlama Uygulamaları” dersini alırlar."
+        },
+        {
+          "akademik_yil": "2024-2025",
+          "donem": 3,
+          "not_no": 13,
+          "kosul_yili_oncesi": "2022-2023",
+          "eslestirmeler": [],
+          "aciklama": "2022-2023 öğretim yılı ve öncesinde “INF 204 Elektromanyetik Dalgalar” ve “INF 211 Bilgisayar Mühendisliği için Olasılık ve İstatistiğe Giriş” dersinden kalan öğrenciler, bu dersler yerine “INF 256 Olasılık” ve “INF 257 İstatistik” derslerini alırlar."
+        },
+        {
+          "akademik_yil": "2024-2025",
+          "donem": 3,
+          "not_no": 14,
+          "kosul_yili_oncesi": "2022-2023",
+          "eslestirmeler": [],
+          "aciklama": "2022-2023 öğretim yılı ve öncesinde “INF 204 Elektromanyetik Dalgalar” dersinden kalan ve “INF 211 Bilgisayar Mühendisliği için Olasılık ve İstatistiğe Giriş” dersini alıp başarılı olan öğrenciler, 5. yarıyıl itibariyle seçmeleri gereken INF derslerine ilaveten 1 adet INF seçmeli ders alırlar. GENEL KURALLAR 1. Öğrenciler, aynı yarıyıl içinde en fazla 45 AKTS kredilik derse yazılabilirler. Bir derse yazılabilmek için, ilgili ön koşul ders(ler)inin başarılmış olması gerekmektedir. 2. Laboratuvar "
+        },
+        {
+          "akademik_yil": "2024-2025",
+          "donem": 4,
+          "not_no": 15,
+          "kosul_yili_oncesi": "2021-2022",
+          "eslestirmeler": [
+            {
+              "eski": {
+                "kod": "ING204",
+                "ad": "Yüksek Matematik II"
+              },
+              "yeni": [
+                {
+                  "kod": "ING252",
+                  "ad": ""
+                },
+                {
+                  "kod": "INF112",
+                  "ad": ""
+                }
+              ]
+            }
+          ],
+          "aciklama": "2021-2022 öğretim yılı ve öncesinde “ING 204 Yüksek Matematik II” dersinden kalan öğrenciler, bu ders yerine “ING 252 Yüksek Matematik II” ve 1. Sınıf / Bahar Yarıyılından “INF Sayfa 3 115 Programlama Dillerinin Prensipleri” ya da “INF 112 Programlamaya Giriş” derslerini alırlar."
+        },
+        {
+          "akademik_yil": "2024-2025",
+          "donem": 4,
+          "not_no": 16,
+          "kosul_yili_oncesi": "2021-2022",
+          "eslestirmeler": [
+            {
+              "eski": {
+                "kod": "INF223",
+                "ad": "Nesneye Yönelik Programlama"
+              },
+              "yeni": [
+                {
+                  "kod": "INF243",
+                  "ad": ""
+                }
+              ]
+            }
+          ],
+          "aciklama": "2021-2022 öğretim yılı ve öncesinde “INF 223 Nesneye Yönelik Programlama” dersinden kalan öğrenciler, bu ders yerine “INF 243 Nesneye Yönelik Programlama” dersini alırlar."
+        },
+        {
+          "akademik_yil": "2024-2025",
+          "donem": 4,
+          "not_no": 17,
+          "kosul_yili_oncesi": "2021-2022",
+          "eslestirmeler": [
+            {
+              "eski": {
+                "kod": "INF299",
+                "ad": "Staj"
+              },
+              "yeni": [
+                {
+                  "kod": "INF291",
+                  "ad": ""
+                }
+              ]
+            }
+          ],
+          "aciklama": "2021-2022 öğretim yılı ve öncesinde “INF 299 Staj” dersinden kalan öğrenciler, bu ders yerine “INF 291 Staj” dersini alırlar."
+        },
+        {
+          "akademik_yil": "2024-2025",
+          "donem": 4,
+          "not_no": 18,
+          "kosul_yili_oncesi": "2022-2023",
+          "eslestirmeler": [],
+          "aciklama": "2022-2023 öğretim yılı ve öncesinde “INF 204 Elektromanyetik Dalgalar” dersinden başarılı olan ve “INF 211 Bilgisayar Mühendisliği için Olasılık ve İstatistiğe Giriş” dersinden kalan öğrenciler, “INF 257 İstatistik” dersini alırlar. GENEL KURALLAR 1. Öğrenciler, aynı yarıyıl içinde en fazla 45 AKTS kredilik derse yazılabilirler. Bir derse yazılabilmek için, ilgili ön koşul ders(ler)inin başarılmış olması gerekmektedir. 2. Laboratuvar saati olan derslere kayıt olan öğrenci sayısı 25’den fazla olm"
+        },
+        {
+          "akademik_yil": "2024-2025",
+          "donem": 7,
+          "not_no": 19,
+          "kosul_yili_oncesi": "2022-2023",
+          "eslestirmeler": [],
+          "aciklama": "2022-2023 öğretim yılı ve öncesinde “INF 470 Bilgisayar Ağ Laboratuvarı” dersinden kalan öğrenciler “INF 402 Nesnelerin İnternetine Giriş” dersini alırlar. GENEL KURALLAR 1. Öğrenciler, aynı yarıyıl içinde en fazla 45 AKTS kredilik derse yazılabilirler. 2. Bir derse yazılabilmek için, ilgili ön koşul ders(ler)inin başarılmış olması gerekmektedir. 3. Seçmeli dersler (S) ile ifade edilir. Önerilen seçmeli derslerden 1 adet ders seçilecektir. 4. Laboratuvar saati olan derslere kayıt olan öğrenci sa"
+        }
+      ],
+      "genel_kurallar": [
+        "Öğrenciler, aynı yarıyıl içinde en fazla 45 AKTS kredilik derse yazılabilirler.",
+        "Laboratuvar saati olan derslere kayıt olan öğrenci sayısı 25’den fazla olması halinde",
+        "Öğrenciler, aynı yarıyıl içinde en fazla 45 AKTS kredilik derse yazılabilirler. Bir derse",
+        "Laboratuvar saati olan derslere kayıt olan öğrenci sayısı 20’den fazla olması halinde",
+        "Bir derse yazılabilmek için, ilgili ön koşul ders(ler)inin başarılmış olması gerekmektedir.",
+        "Seçmeli dersler (S) ile ifade edilir. Önerilen seçmeli derslerden 1 adet ders seçilecektir."
+      ],
+      "mezuniyet_sartlari": [
+        "Mezun olabilmek için öğrencinin en az 2.00 ağırlıklı not ortalaması şartını sağlaması",
+        "Önerilen seçmeli derslerden, CNT grubundan 1 adet, INF grubundan 2 adet, IND grubundan",
+        "Mezun olabilmek için, öğrencinin toplam 12 kredilik yabancı dil dersini başarmış olması veya",
+        "Öğrenciler, aynı yarıyıl içinde en fazla 45 AKTS kredilik derse yazılabilirler."
+      ]
+    },
+    {
+      "akademik_yil": "2025-2026",
+      "kaynak_dosya": "Akademik_Takvim_2025_2026.pdf",
+      "notlar": [
+        {
+          "akademik_yil": "2025-2026",
+          "donem": 1,
+          "not_no": 1,
+          "kosul_yili_oncesi": null,
+          "eslestirmeler": [],
+          "aciklama": "Fransızca Hazırlık sınıfından gelen ve Fransızca seviye tespit sınavında başarısız olan öğrenciler, Yabancı Dil dersi olarak Fransızca dersini alırlar. Fransızca seviye tespit sınavını başarmış olup, İngilizce seviye tespit sınavında başarısız olan öğrenciler, Yabancı Dil dersi olarak, Yabancı Diller Yüksekokulu’nun öğrencinin seviyesine uygun olarak açacağı İngilizce dersini alırlar. Fransızca ve İngilizce seviyeleri istenen düzeyde olan öğrenciler, Yabancı Diller Yüksekokulu’nun açacağı diğer "
+        },
+        {
+          "akademik_yil": "2025-2026",
+          "donem": 1,
+          "not_no": 2,
+          "kosul_yili_oncesi": "2020-2021",
+          "eslestirmeler": [
+            {
+              "eski": {
+                "kod": "ING104",
+                "ad": "Matematik I"
+              },
+              "yeni": [
+                {
+                  "kod": "ING106",
+                  "ad": ""
+                },
+                {
+                  "kod": "INF116",
+                  "ad": ""
+                },
+                {
+                  "kod": "ING111",
+                  "ad": ""
+                }
+              ]
+            },
+            {
+              "eski": {
+                "kod": "ING114",
+                "ad": "Fizik I"
+              },
+              "yeni": [
+                {
+                  "kod": "ING116",
+                  "ad": ""
+                },
+                {
+                  "kod": "ING111",
+                  "ad": ""
+                }
+              ]
+            },
+            {
+              "eski": {
+                "kod": "ING125",
+                "ad": "Kimya I"
+              },
+              "yeni": [
+                {
+                  "kod": "ING111",
+                  "ad": ""
+                }
+              ]
+            },
+            {
+              "eski": {
+                "kod": "INF102",
+                "ad": "Programlamaya Giriş"
+              },
+              "yeni": [
+                {
+                  "kod": "INF112",
+                  "ad": ""
+                }
+              ]
+            },
+            {
+              "eski": {
+                "kod": "INF101",
+                "ad": "Bilgisayar Mühendisliğine Giriş"
+              },
+              "yeni": [
+                {
+                  "kod": "INF113",
+                  "ad": ""
+                }
+              ]
+            }
+          ],
+          "aciklama": "2020-2021 öğretim yılı ve öncesinde: • ING104 Matematik I dersinden kalanlar, yerine ING106 Matematik I, INF116 Bilgisayar Sistemlerine Giriş ve ING111 Ekonominin Temelleri derslerini, • ING114 Fizik I dersinden kalanlar, yerine ING116 Fizik I ve ING111 Ekonominin Temelleri derslerini, • ING125 Kimya I dersinden kalanlar, yerine ING111 Ekonominin Temelleri dersini, • INF102 Programlamaya Giriş dersinden kalanlar, yerine INF112 Programlamaya Giriş dersini, • INF101 Bilgisayar Mühendisliğine Giriş"
+        },
+        {
+          "akademik_yil": "2025-2026",
+          "donem": 1,
+          "not_no": 3,
+          "kosul_yili_oncesi": "2024-2025",
+          "eslestirmeler": [
+            {
+              "eski": {
+                "kod": "ING127",
+                "ad": "Kimya"
+              },
+              "yeni": [
+                {
+                  "kod": "ING111",
+                  "ad": ""
+                }
+              ]
+            },
+            {
+              "eski": {
+                "kod": "INF112",
+                "ad": "Programlamaya Giriş"
+              },
+              "yeni": [
+                {
+                  "kod": "INF112",
+                  "ad": ""
+                }
+              ]
+            }
+          ],
+          "aciklama": "2024-2025 öğretim yılı ve öncesinde: • ING127 Kimya dersinden kalanlar, yerine ING111 Ekonominin Temelleri dersini, • INF112 Programlamaya Giriş dersinden kalanlar, yerine INF112 Programlamaya Giriş ve seçmeleri gereken sosyal seçmeli derslere ilaveten bir tane ders alırlar. Genel Kurallar: 1. Öğrenciler, bir yarıyılda en fazla 45 AKTS değerinde derse kayıt yaptırabilirler. 1 2. Laboratuvar saati bulunan derslerde, öğrenci sayısının 25’i aşması durumunda, laboratuvar dersleri ayrı gruplar halind"
+        },
+        {
+          "akademik_yil": "2025-2026",
+          "donem": 2,
+          "not_no": 4,
+          "kosul_yili_oncesi": "2020-2021",
+          "eslestirmeler": [
+            {
+              "eski": {
+                "kod": "ING105",
+                "ad": "Matematik II"
+              },
+              "yeni": [
+                {
+                  "kod": "ING107",
+                  "ad": ""
+                },
+                {
+                  "kod": "ING111",
+                  "ad": ""
+                },
+                {
+                  "kod": "INF116",
+                  "ad": ""
+                }
+              ]
+            },
+            {
+              "eski": {
+                "kod": "ING115",
+                "ad": "Fizik II"
+              },
+              "yeni": [
+                {
+                  "kod": "ING117",
+                  "ad": ""
+                },
+                {
+                  "kod": "INF116",
+                  "ad": ""
+                }
+              ]
+            },
+            {
+              "eski": {
+                "kod": "ING126",
+                "ad": "Kimya II"
+              },
+              "yeni": [
+                {
+                  "kod": "ING111",
+                  "ad": ""
+                },
+                {
+                  "kod": "INF116",
+                  "ad": ""
+                }
+              ]
+            },
+            {
+              "eski": {
+                "kod": "INF103",
+                "ad": "Algoritma ve İleri Bilgisayar Programlama"
+              },
+              "yeni": [
+                {
+                  "kod": "INF114",
+                  "ad": ""
+                }
+              ]
+            }
+          ],
+          "aciklama": "2020-2021 öğretim yılı ve öncesinde: • ING105 Matematik II dersinden kalanlar, yerine ING107 Matematik II ve ING111 Ekonominin Temelleri ile INF116 Bilgisayar Sistemlerine Giriş derslerini, • ING115 Fizik II dersinden kalanlar, yerine ING117 Fizik II ve INF116 Bilgisayar Sistemlerine Giriş derslerini, • ING126 Kimya II dersinden kalanlar, yerine ING111 Ekonominin Temelleri ile INF116 Bilgisayar Sistemlerine Giriş derslerini, • INF103 Algoritma ve İleri Bilgisayar Programlama dersinden kalanlar, "
+        },
+        {
+          "akademik_yil": "2025-2026",
+          "donem": 2,
+          "not_no": 5,
+          "kosul_yili_oncesi": "2024-2025",
+          "eslestirmeler": [
+            {
+              "eski": {
+                "kod": "ING144",
+                "ad": "Teknik Resim"
+              },
+              "yeni": [
+                {
+                  "kod": "INF321",
+                  "ad": ""
+                }
+              ]
+            },
+            {
+              "eski": {
+                "kod": "INF115",
+                "ad": "Programlama Dillerinin Prensipleri"
+              },
+              "yeni": [
+                {
+                  "kod": "CNT120",
+                  "ad": ""
+                },
+                {
+                  "kod": "CNT120",
+                  "ad": ""
+                }
+              ]
+            },
+            {
+              "eski": {
+                "kod": "CNT120",
+                "ad": "Kariyer Planlama"
+              },
+              "yeni": [
+                {
+                  "kod": "CNT120",
+                  "ad": ""
+                }
+              ]
+            }
+          ],
+          "aciklama": "2024-2025 öğretim yılı ve öncesinde: • ING144 Teknik Resim dersinden kalanlar, yerine 5. yarıyıldaki INF321 Teknik Resim dersini, • INF115 Programlama Dillerinin Prensipleri dersinden kalanlar, yerine 5. yarıyıl itibariyle seçmeleri gereken INF kodlu seçmeli derslere ilaveten bir tane ders, • CNT120 Kariyer Planlama dersinden kalanlar, yerine CNT120 Girişimcilik ve Kariyer Planlama dersini, • INF114 Algoritma ve İleri Bilgisayar Programlama dersinden kalanlar, INF114 İleri Bilgisayar Programlama"
+        },
+        {
+          "akademik_yil": "2025-2026",
+          "donem": 2,
+          "not_no": 6,
+          "kosul_yili_oncesi": null,
+          "eslestirmeler": [],
+          "aciklama": "İlgili notların uygulanması sonucunda 30 AKTS tamamlanamazsa, eksik krediler INF ve CNT grubu seçmeli dersler ile tamamlanır. 2"
+        },
+        {
+          "akademik_yil": "2025-2026",
+          "donem": 3,
+          "not_no": 7,
+          "kosul_yili_oncesi": "2021-2022",
+          "eslestirmeler": [
+            {
+              "eski": {
+                "kod": "ING203",
+                "ad": "Yüksek Matematik I"
+              },
+              "yeni": [
+                {
+                  "kod": "ING251",
+                  "ad": ""
+                },
+                {
+                  "kod": "ING111",
+                  "ad": ""
+                },
+                {
+                  "kod": "INF112",
+                  "ad": ""
+                }
+              ]
+            }
+          ],
+          "aciklama": "2021-2022 öğretim yılı ve öncesinde ING203 Yüksek Matematik I dersinden kalan öğrenciler, bu ders yerine ING251 Yüksek Matematik I ve ING111 Ekonominin Temelleri ya da INF112 Programlamaya Giriş derslerini alırlar."
+        },
+        {
+          "akademik_yil": "2025-2026",
+          "donem": 3,
+          "not_no": 8,
+          "kosul_yili_oncesi": "2022-2023",
+          "eslestirmeler": [],
+          "aciklama": "2022-2023 öğretim yılı ve öncesinde: • INF204 Elektromanyetik Dalgalar ve INF211 Bilgisayar Mühendisliği için Olasılık ve İstatistiğe Giriş dersinden kalanlar, yerine INF256 Olasılık ve INF257 İstatistik ve Veri Analizi derslerini, • INF204 Elektromanyetik Dalgalar dersinden kalan ve INF211 Bilgisayar Mühendisliği için Olasılık ve İstatistiğe Giriş dersini alıp başarılı olanlar, 5. yarıyıl itibariyle seçmeleri gereken INF derslerine ilaveten bir adet seçmeli ders alırlar."
+        },
+        {
+          "akademik_yil": "2025-2026",
+          "donem": 3,
+          "not_no": 9,
+          "kosul_yili_oncesi": "2024-2025",
+          "eslestirmeler": [],
+          "aciklama": "2024-2025 öğretim yılı ve öncesinde: • INF236 Programlama Uygulamaları dersinden kalanlar, yerine 5. yarıyıl itibariyle seçmeleri gereken INF kodlu seçmeli derslere ilaveten bir adet seçmeli ders alırlar."
+        },
+        {
+          "akademik_yil": "2025-2026",
+          "donem": 4,
+          "not_no": 10,
+          "kosul_yili_oncesi": "2021-2022",
+          "eslestirmeler": [
+            {
+              "eski": {
+                "kod": "ING204",
+                "ad": "Yüksek Matematik II"
+              },
+              "yeni": [
+                {
+                  "kod": "ING252",
+                  "ad": ""
+                },
+                {
+                  "kod": "ING111",
+                  "ad": ""
+                },
+                {
+                  "kod": "INF112",
+                  "ad": ""
+                }
+              ]
+            }
+          ],
+          "aciklama": "2021-2022 öğretim yılı ve öncesinde ING204 Yüksek Matematik II dersinden kalan öğrenciler, bu ders yerine ING252 Yüksek Matematik II ve ING111 Ekonominin Temelleri ya da INF112 Programlamaya Giriş derslerini alırlar."
+        },
+        {
+          "akademik_yil": "2025-2026",
+          "donem": 4,
+          "not_no": 11,
+          "kosul_yili_oncesi": "2024-2025",
+          "eslestirmeler": [
+            {
+              "eski": {
+                "kod": "INF257",
+                "ad": "İstatistik"
+              },
+              "yeni": [
+                {
+                  "kod": "INF257",
+                  "ad": ""
+                }
+              ]
+            }
+          ],
+          "aciklama": "2024-2025 öğretim yılı ve öncesinde: • INF257 İstatistik dersinden kalanlar, yerine INF257 İstatistik ve Veri Analizi dersini alırlar. 3"
+        },
+        {
+          "akademik_yil": "2025-2026",
+          "donem": 5,
+          "not_no": 12,
+          "kosul_yili_oncesi": "2024-2025",
+          "eslestirmeler": [
+            {
+              "eski": {
+                "kod": "INF324",
+                "ad": "İlişkisel Veri Tabanları"
+              },
+              "yeni": [
+                {
+                  "kod": "INF324",
+                  "ad": ""
+                }
+              ]
+            },
+            {
+              "eski": {
+                "kod": "INF316",
+                "ad": "Sinyaller ve Sistemler"
+              },
+              "yeni": [
+                {
+                  "kod": "INF345",
+                  "ad": ""
+                }
+              ]
+            },
+            {
+              "eski": {
+                "kod": "CNT350",
+                "ad": "Bilgisayar Mühendisleri için Proje Risk ve Değişiklik Yönetimi"
+              },
+              "yeni": [
+                {
+                  "kod": "INF353",
+                  "ad": ""
+                }
+              ]
+            },
+            {
+              "eski": {
+                "kod": "INF353",
+                "ad": "Web Programlamaya Giriş"
+              },
+              "yeni": [
+                {
+                  "kod": "INF353",
+                  "ad": ""
+                }
+              ]
+            }
+          ],
+          "aciklama": "2024-2025 öğretim yılı ve öncesinde: • INF324 İlişkisel Veri Tabanları dersinden kalanlar, yerine INF324 Veri Tabanı Tasarımı ve Uygulamaları dersini, • INF316 Sinyaller ve Sistemler dersinden kalanlar, yerine INF345 Sayısal Sinyal İşleme dersini, • CNT350 Bilgisayar Mühendisleri için Proje, Risk ve Değişiklik Yönetimi dersinden kalanlar, CNT250 Bilgisayar Mühendisleri için Proje, Risk ve Değişiklik Yönetimi dersini, • INF353 Web Programlamaya Giriş dersinden kalanlar, yerine INF353 Web Programl"
+        },
+        {
+          "akademik_yil": "2025-2026",
+          "donem": 5,
+          "not_no": 13,
+          "kosul_yili_oncesi": null,
+          "eslestirmeler": [],
+          "aciklama": "Önerilen INF kodlu seçmeli derslerden 1 adet seçilir."
+        },
+        {
+          "akademik_yil": "2025-2026",
+          "donem": 6,
+          "not_no": 14,
+          "kosul_yili_oncesi": null,
+          "eslestirmeler": [],
+          "aciklama": "Önerilen INF kodlu seçmeli derslerden 2 adet seçilir."
+        },
+        {
+          "akademik_yil": "2025-2026",
+          "donem": 7,
+          "not_no": 15,
+          "kosul_yili_oncesi": "2024-2025",
+          "eslestirmeler": [
+            {
+              "eski": {
+                "kod": "INF430",
+                "ad": "Robotik"
+              },
+              "yeni": [
+                {
+                  "kod": "INF330",
+                  "ad": ""
+                }
+              ]
+            }
+          ],
+          "aciklama": "2024-2025 öğretim yılı ve öncesinde: • INF430 Robotik dersinden kalanlar, yerine INF330 Robotik dersini,"
+        },
+        {
+          "akademik_yil": "2025-2026",
+          "donem": 7,
+          "not_no": 16,
+          "kosul_yili_oncesi": "2022-2023",
+          "eslestirmeler": [],
+          "aciklama": "2022-2023 öğretim yılı ve öncesinde INF470 Bilgisayar Ağ Laboratuvarı dersinden kalanlar, yerine 5. yarıyıl itibariyle seçmeleri gereken INF kodlu seçmeli derslere ilaveten bir tane ders alırlar."
+        },
+        {
+          "akademik_yil": "2025-2026",
+          "donem": 7,
+          "not_no": 17,
+          "kosul_yili_oncesi": null,
+          "eslestirmeler": [],
+          "aciklama": "İngilizce yapılacak seçmeli dersleri almak için İngilizce dersinden muaf olunması gerekmektedir."
+        },
+        {
+          "akademik_yil": "2025-2026",
+          "donem": 7,
+          "not_no": 18,
+          "kosul_yili_oncesi": null,
+          "eslestirmeler": [],
+          "aciklama": "Önerilen INF grubu seçmeli derslerden 1 adet seçilir. 4"
+        },
+        {
+          "akademik_yil": "2025-2026",
+          "donem": 8,
+          "not_no": 19,
+          "kosul_yili_oncesi": "2024-2025",
+          "eslestirmeler": [
+            {
+              "eski": {
+                "kod": "INF441",
+                "ad": "Şifrelemeye Giriş"
+              },
+              "yeni": [
+                {
+                  "kod": "INF441",
+                  "ad": ""
+                }
+              ]
+            },
+            {
+              "eski": {
+                "kod": "CNT417",
+                "ad": "Girişimcilik"
+              },
+              "yeni": [
+                {
+                  "kod": "CNT120",
+                  "ad": ""
+                }
+              ]
+            }
+          ],
+          "aciklama": "2024-2025 öğretim yılı ve öncesinde: • INF441 Şifrelemeye Giriş dersinden kalanlar, yerine INF441 Kriptolojinin Temelleri dersini, • CNT417 Girişimcilik dersinden kalanlar, yerine CNT120 Girişimcilik ve Kariyer Planlama dersini alırlar. • INF446 Bilgisayar Mühendisliğinde Özel Konular dersinden kalanlar, yerine 8. yarıyılda seçmeleri gereken INF kodlu seçmeli derslere ilaveten bir tane ders alırlar."
+        },
+        {
+          "akademik_yil": "2025-2026",
+          "donem": 8,
+          "not_no": 20,
+          "kosul_yili_oncesi": null,
+          "eslestirmeler": [],
+          "aciklama": "İngilizce yapılacak seçmeli dersleri almak için İngilizce dersinden muaf olunması gerekmektedir."
+        },
+        {
+          "akademik_yil": "2025-2026",
+          "donem": 8,
+          "not_no": 21,
+          "kosul_yili_oncesi": null,
+          "eslestirmeler": [],
+          "aciklama": "Önerilen INF grubu seçmeli derslerden 2 adet, IND grubu seçmeli derslerden 1 adet, CNT grubu seçmeli derslerden 1 adet seçilir."
+        },
+        {
+          "akademik_yil": "2025-2026",
+          "donem": 8,
+          "not_no": 22,
+          "kosul_yili_oncesi": null,
+          "eslestirmeler": [],
+          "aciklama": "Toplam AKTS kredisi 240’ın altında kalan öğrenciler, mezuniyet şartı olan 240 AKTS’yi tamamlamak için eksik kalan kredileri INF grubu seçmeli dersler ile tamamlarlar. 5"
+        }
+      ],
+      "genel_kurallar": [
+        "Öğrenciler, bir yarıyılda en fazla 45 AKTS değerinde derse kayıt yaptırabilirler.",
+        "Laboratuvar saati bulunan derslerde, öğrenci sayısının 25’i aşması durumunda,",
+        "Bir derse kayıt yapılabilmesi için, ilgili ön koşul ders(ler)inin başarıyla tamamlanmış",
+        "Mezun olabilmek için öğrencinin en az 2.00 ağırlıklı not ortalaması şartını sağlaması",
+        "Mezun olabilmek için, öğrencinin toplam 12 kredilik yabancı dil dersini başarmış"
+      ],
+      "mezuniyet_sartlari": [
+        "INF441 Şifrelemeye Giriş dersinden kalanlar, yerine INF441 Kriptolojinin Temelleri dersini,",
+        "CNT417 Girişimcilik dersinden kalanlar, yerine CNT120 Girişimcilik ve Kariyer Planlama dersini",
+        "INF446 Bilgisayar Mühendisliğinde Özel Konular dersinden kalanlar, yerine 8. yarıyılda"
+      ]
+    }
+  ]
+}

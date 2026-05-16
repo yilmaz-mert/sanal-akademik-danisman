@@ -1,0 +1,13 @@
+# Sanal Akademik Danışman - Project Context
+
+## 🎯 Project Overview
+AI-powered Academic Advisor using LangGraph Map-Reduce architecture. It parses transcripts (TXT), matches them against historical curriculums (JSON), deduplicates retakes, and evaluates graduation status.
+
+## ⚠️ Coding Rules & Guidelines (CRITICAL)
+1. **GLOBAL FALLBACK MATCHING:** When a Semester Agent checks a course against its specific historical JSON, if it FAILS to find it, it MUST fallback and check the `LATEST` curriculum (e.g., `mufredat_25_26.json` or `mufredat_tam_chunked.json`) before marking it as `unrecognized`.
+2. **GPA EXTRACTION:** Always use `re.findall` and take the `[-1]` element to find the final Cumulative GPA. Ensure Semester GPAs are extracted using `Yarıyıl\s+([\d.,]+)`.
+3. **TOOL CALLING ENFORCEMENT:** The Chat Agent's System Prompt must explicitly FORBID outputting raw JSON (like `{"name": "CalculateGraduationPath"...}`). It must use native tool invocation.
+4. **UI INTERACTIVITY:** Summary cards on the right panel MUST be clickable, opening a Tailwind Modal/Slide-over that displays detailed tables (Course Code, Name, ECTS, Grades) of the respective category.
+5. **CHAT STREAMING — NO RAW OBJECT LEAKS:** The `on_chain_end` handler in `/chat/stream` MUST only react to `ename == "LangGraph"` (the outermost graph terminal event). It MUST filter messages to `AIMessage` / `AIMessageChunk` types ONLY — never stringify `ToolMessage` or raw `AIMessage` Python objects. The fallback must NEVER call `str(msg)` on a LangChain message object; use a plain Turkish error string instead.
+6. **INTIBAK EQUIVALENCY REVIEW:** The `review_missing_courses_node` runs AFTER `reviewer_ai` and BEFORE `judge`. It loads `backend/intibak_kurallari.json` (27 quick-lookup entries, 35 rules) and performs: (a) deterministic pass expanding passed codes via `eski_yeni_eslestirme`, (b) async AI pass using `_format_intibak_rules(intibak_kurallari)` — the FULL rule text, NOT the quick-lookup dict. Any code cleared is stored in `intibak_cleared_codes` and excluded by the Judge.
+7. **ALL LLM CALLS IN LANGGRAPH NODES MUST BE ASYNC + STRUCTURED:** Every node that calls the LLM MUST be `async def`. It MUST use `await chat_model.with_structured_output(PydanticModel).ainvoke(...)`. NEVER use synchronous `chat_model.invoke()` inside a LangGraph node — it blocks the event loop and hangs the server. NEVER use `re.search(r'\{.*\}')` to parse LLM output — use Pydantic structured output instead. Pydantic schemas for LLM nodes: `ReviewerAIResponse`, `IntibakAIResponse`.

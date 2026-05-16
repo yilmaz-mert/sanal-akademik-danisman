@@ -22,7 +22,22 @@
       "Bash(powershell -Command \"Get-Content 'gs-akts_ham_metin.txt' | Measure-Object -Line\")",
       "Bash(powershell -Command \"Get-Content 'gs-akts_ham_metin.txt' | Select-Object -Last 80\")",
       "Bash(node -e ' *)",
-      "Bash(npm run *)"
+      "Bash(npm run *)",
+      "Bash(python -c \"import json; d=json.load\\(open\\('mufredat_tam_chunked.json', encoding='utf-8'\\)\\); keys=list\\(d.keys\\(\\)\\); print\\('Top keys:', keys\\); c=d.get\\('dersler',[]\\); print\\('Num courses:', len\\(c\\)\\); print\\('Sample:', json.dumps\\(c[:2], ensure_ascii=False, indent=2\\) if c else 'none'\\); s=d.get\\('mezuniyet_sartlari'\\); print\\('Grad req:', json.dumps\\(s, ensure_ascii=False, indent=2\\) if s else 'none'\\)\")",
+      "Bash(python -c \"from langgraph.prebuilt import create_react_agent; print\\('create_react_agent OK'\\)\")",
+      "Bash(python -c \"from langchain.agents import create_agent; print\\('create_agent OK'\\)\")",
+      "Bash(python -c \"import ast; ast.parse\\(open\\('backend/main.py'\\).read\\(\\)\\); print\\('Syntax OK'\\)\")",
+      "Bash(node -e \"const l = require\\('lucide-react'\\); ['X','BookMarked','XCircle','HelpCircle','CalendarDays','ChevronRight'].forEach\\(n => console.log\\(n, n in l ? 'OK' : 'MISSING'\\)\\)\")",
+      "Bash(python -c \"from langgraph.types import Send; print\\('Send OK'\\)\")",
+      "Bash(Get-ChildItem \"C:\\\\Users\\\\Mert\\\\Desktop\\\\sanal-akademik-danisman\" -Filter \"*.md\" -Recurse)",
+      "Bash(Select-Object FullName)",
+      "PowerShell(Get-ChildItem \"C:\\\\Users\\\\Mert\\\\Desktop\\\\sanal-akademik-danisman\" -Recurse | Where-Object { $_.Extension -eq \".pdf\" } | Select-Object FullName, Length)",
+      "PowerShell(Get-ChildItem \"C:\\\\Users\\\\Mert\\\\Desktop\" | Where-Object { $_.Extension -eq \".pdf\" } | Select-Object Name, FullName)",
+      "PowerShell(Get-ChildItem \"C:\\\\Users\\\\Mert\\\\Desktop\\\\sanal-akademik-danisman\" | ForEach-Object { \"$\\($_.Name\\) [$\\($_.Extension\\)]\" })",
+      "PowerShell(cd \"C:\\\\Users\\\\Mert\\\\Desktop\\\\sanal-akademik-danisman\"; Get-ChildItem -Name | Where-Object { $_ -match \"pdf\" -or $_ -match \"PDF\" })"
     ]
+  },
+  "enabledPlugins": {
+    "claude-md-management@claude-plugins-official": true
   }
 }
