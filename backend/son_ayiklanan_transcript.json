@@ -1,5 +1,5 @@
 {
-    "session_id": "dde32c81-4f7c-493d-becd-1ed6c0f0d48a",
+    "session_id": "0ed33637-e2f7-4344-973d-a6702b073635",
     "semesters": [
         {
             "semester_name": "2021 - 2022 Güz",
@@ -845,67 +845,11 @@
     ],
     "failed_courses": [
         {
-            "kod": "FLF101",
-            "ad": "Fransızca Cef B2.1 Akademik",
-            "not": "F",
-            "akts": 2.0,
-            "donem": "2021 - 2022 Güz"
-        },
-        {
-            "kod": "ING116",
-            "ad": "Fizik I",
-            "not": "F",
-            "akts": 5.0,
-            "donem": "2021 - 2022 Güz"
-        },
-        {
-            "kod": "ING107",
-            "ad": "Matematik II",
-            "not": "F",
-            "akts": 7.0,
-            "donem": "2021 - 2022 Bahar"
-        },
-        {
             "kod": "INF204",
             "ad": "Elektromanyetik Dalgalar",
             "not": "F",
             "akts": 3.0,
             "donem": "2022 - 2023 Güz"
-        },
-        {
-            "kod": "ING207",
-            "ad": "Lineer Cebir",
-            "not": "F",
-            "akts": 5.0,
-            "donem": "2022 - 2023 Güz"
-        },
-        {
-            "kod": "ING229",
-            "ad": "-B Analog Elektronik",
-            "not": "F",
-            "akts": 7.0,
-            "donem": "2022 - 2023 Güz"
-        },
-        {
-            "kod": "ING251",
-            "ad": "Yüksek Matematik I",
-            "not": "F",
-            "akts": 4.0,
-            "donem": "2022 - 2023 Güz"
-        },
-        {
-            "kod": "ING220",
-            "ad": "Sayısal Elektronik",
-            "not": "F",
-            "akts": 4.0,
-            "donem": "2022 - 2023 Bahar"
-        },
-        {
-            "kod": "INF333",
-            "ad": "İşletim Sistemleri",
-            "not": "F",
-            "akts": 5.0,
-            "donem": "2023 - 2024 Bahar"
         },
         {
             "kod": "INF400",
@@ -915,19 +859,6 @@
             "donem": "2024 - 2025 Güz"
         }
     ],
-    "unrecognized_electives": [
-        {
-            "kod": "CNT417",
-            "ad": "Girişimcilik",
-            "not": "CB",
-            "akts": 2.0
-        },
-        {
-            "kod": "IND471",
-            "ad": "Yöneylem Araştırması",
-            "not": "BB",
-            "akts": 4.0
-        }
-    ],
+    "unrecognized_electives": [],
     "graduation_status": "Mezun Olamaz (Eksik Zorunlu Dersler Mevcut)"
 }

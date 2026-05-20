@@ -313,13 +313,24 @@ async def upload_transcript(
                 yield _sse({"type": "error", "data": f"Analiz hatası: {e2}"})
                 return
 
-        # ── Compute failed_courses from transcript (simple Python filter) ──
+        # ── Compute failed_courses: only courses never subsequently passed ──
+        # Build the set of base codes the student ultimately passed anywhere in
+        # the transcript — these are NOT shown in the active-failures red box.
+        _passed_bases: set = {
+            strip_suffix(c.get("kod", "").upper())
+            for sem in parsed.get("semesters", [])
+            for c in sem.get("courses", [])
+            if c.get("durum") == "Geçti"
+        }
         failed_courses: List[Dict] = []
         seen_failed: set = set()
         for sem in parsed.get("semesters", []):
             for c in sem.get("courses", []):
                 if c.get("durum") == "Kaldı":
-                    base = c.get("kod", "").upper()
+                    base = strip_suffix(c.get("kod", "").upper())
+                    # Skip if student later passed the same base code
+                    if base in _passed_bases:
+                        continue
                     if base not in seen_failed:
                         seen_failed.add(base)
                         failed_courses.append({

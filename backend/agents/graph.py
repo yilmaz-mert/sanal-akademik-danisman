@@ -60,7 +60,7 @@ async def supervisor_node(state: AdvisorState) -> dict:
         return {
             "next_agent": "__end__",
             "iteration": iteration + 1,
-            "status_queue": ["Süpervizör: Güvenlik sınırına ulaşıldı, analiz sonlandırılıyor."],
+            "status_queue": ["[🧠 Süpervizör] Güvenlik sınırına ulaşıldı, analiz sonlandırılıyor."],
         }
 
     missing_done = state.get("missing_courses") is not None
@@ -81,22 +81,22 @@ async def supervisor_node(state: AdvisorState) -> dict:
             HumanMessage(content=context + "\nSonraki ajanı belirle."),
         ])
         next_agent = decision.next
-        status_msg = f"Süpervizör: {decision.mesaj}"
+        status_msg = f"[🧠 Süpervizör] {decision.mesaj}"
     except Exception as e:
         print(f"[SUPERVISOR] LLM routing failed ({e!r}), using deterministic fallback")
         # Deterministic fallback — identical to what the LLM would decide
         if not missing_done:
             next_agent = "curriculum_agent"
-            status_msg = "Süpervizör → Müfredat Uzmanı'na yönlendiriliyor..."
+            status_msg = "[🧠 Süpervizör] Transkript analizi başlatıldı, Müfredat Uzmanına yönlendiriliyor..."
         elif not intibak_done:
             next_agent = "intibak_agent"
-            status_msg = "Süpervizör → İntibak Avukatı'na yönlendiriliyor..."
+            status_msg = "[🧠 Süpervizör] Müfredat analizi tamamlandı, İntibak Avukatına yönlendiriliyor..."
         elif not audit_done:
             next_agent = "audit_agent"
-            status_msg = "Süpervizör → Mezuniyet Denetçisi'ne yönlendiriliyor..."
+            status_msg = "[🧠 Süpervizör] İntibak kontrolü tamamlandı, Mezuniyet Denetçisine yönlendiriliyor..."
         else:
             next_agent = "__end__"
-            status_msg = "Süpervizör: Tüm analizler tamamlandı."
+            status_msg = "[🧠 Süpervizör] Tüm analizler tamamlandı, sonuçlar hazırlanıyor."
 
     return {
         "next_agent": next_agent,
@@ -132,11 +132,10 @@ async def curriculum_agent_node(state: AdvisorState) -> dict:
 
     input_msg = (
         f"Öğrenci giriş yılı: {entry_year}\n"
-        f"Lütfen analizi şu sırayla yap:\n"
-        f"1. get_transcript_data → öğrencinin geçtiği dersleri gör\n"
-        f"2. get_curriculum_by_year(year='{entry_year}') → zorunlu müfredatı al\n"
-        f"3. Eksik zorunlu ders kodlarını ve tanınmayan ders kodlarını belirle\n"
-        f"4. report_curriculum_findings → bulgularını kaydet"
+        f"1. get_transcript_data çağır → geçilen dersleri gör\n"
+        f"2. get_curriculum_by_year(year='{entry_year}') çağır → zorunlu müfredatı al\n"
+        f"3. Eksik ve tanınmayan ders kodlarını belirle\n"
+        f"4. HEMEN report_curriculum_findings çağır — başka metin yazma, sadece aracı çağır."
     )
 
     try:
@@ -174,8 +173,8 @@ async def curriculum_agent_node(state: AdvisorState) -> dict:
             f"{captured.get('summary', agent_summary)}"
         ))],
         "status_queue": [
-            "Müfredat Uzmanı transkript ve müfredatı karşılaştırıyor...",
-            f"Müfredat Uzmanı: {n_miss} eksik zorunlu ders, {n_unrec} tanınmayan ders tespit edildi.",
+            f"[🔍 Müfredat Uzmanı] {entry_year} müfredat anayasası ile öğrenci geçmişi eşleştiriliyor...",
+            f"[🔍 Müfredat Uzmanı] {n_miss} eksik zorunlu ders, {n_unrec} tanınmayan ders tespit edildi.",
         ],
     }
 
@@ -254,7 +253,7 @@ async def intibak_agent_node(state: AdvisorState) -> dict:
         return {
             "intibak_cleared": [],
             "messages": [AIMessage(content="[İntibak Avukatı] Temizlenecek eksik ders bulunamadı.")],
-            "status_queue": ["İntibak Avukatı: Eksik ders listesi boş, atlanıyor."],
+            "status_queue": ["[⚖️ İntibak Avukatı] Eksik ders listesi boş, bu aşama atlanıyor."],
         }
 
     captured: Dict = {}
@@ -279,20 +278,17 @@ async def intibak_agent_node(state: AdvisorState) -> dict:
 
     input_msg = (
         f"Öğrenci giriş yılı: {entry_year}\n\n"
-        f"Müfredat Uzmanı'nın bulduğu EKSİK ZORUNLU DERSLER:\n{missing_list}\n\n"
-        f"TANINMAYAN (müfredat dışı) geçilen dersler:\n"
-        f"{unrec_list if unrec_list else '(yok)'}\n\n"
-        f"Görev:\n"
-        f"1. get_intibak_rules → tüm muafiyet kurallarını al\n"
-        f"2. Tanınmayan dersler veya öğrencinin aldığı eski dersler, \n"
-        f"   yukarıdaki eksik derslerden herhangi birinin yerine geçiyor mu?\n"
-        f"3. report_intibak_findings → temizlenen ders kodlarını kaydet"
+        f"EKSİK ZORUNLU DERSLER:\n{missing_list}\n\n"
+        f"TANINMAYAN geçilen dersler:\n{unrec_list if unrec_list else '(yok)'}\n\n"
+        f"1. get_intibak_rules çağır → muafiyet kurallarını al\n"
+        f"2. Hangi eksik dersler eşdeğerlik kuralıyla temizlenebilir? Cleared_codes listesini oluştur.\n"
+        f"3. HEMEN report_intibak_findings çağır — başka metin yazma, sadece aracı çağır."
     )
 
     try:
         result = await agent.ainvoke(
             {"messages": [HumanMessage(content=input_msg)]},
-            config={"recursion_limit": 20},
+            config={"recursion_limit": 20, "callbacks":[lambda event: print(f"[AUDIT-AGENT] ReAct event: {event}")]},
         )
         agent_summary = result["messages"][-1].content if result.get("messages") else ""
     except Exception as e:
@@ -320,8 +316,8 @@ async def intibak_agent_node(state: AdvisorState) -> dict:
             f"{captured.get('summary', agent_summary)}"
         ))],
         "status_queue": [
-            "İntibak Avukatı intibak kurallarını araştırıyor...",
-            f"İntibak Avukatı: {n_cleared} ders eşdeğerlik kuralıyla temizlendi, "
+            "[⚖️ İntibak Avukatı] Eksik dersler için bölüm muafiyet kuralları taranıyor...",
+            f"[⚖️ İntibak Avukatı] {n_cleared} ders eşdeğerlik kuralıyla temizlendi, "
             f"{len(final_missing)} eksik kaldı.",
         ],
     }
@@ -361,14 +357,14 @@ async def audit_agent_node(state: AdvisorState) -> dict:
     )
 
     input_msg = (
-        f"Öğrenci giriş yılı: {entry_year}\n"
-        f"Toplam tamamlanan AKTS (Python hesabı): {round(total_ects, 1)} / {target_ects}\n\n"
-        f"İntibak sonrası KALAN EKSİK ZORUNLU DERSLER "
-        f"({len(missing_courses)} adet):\n"
+        f"Tamamlanan AKTS: {round(total_ects, 1)} / {target_ects}\n"
+        f"Kalan EKSİK ZORUNLU DERSLER ({len(missing_courses)} adet):\n"
         f"{missing_list if missing_list else '(Eksik zorunlu ders yok)'}\n\n"
-        f"Görev:\n"
-        f"1. Eksik zorunlu ders var mı? AKTS yeterli mi?\n"
-        f"2. report_audit_decision → graduation_status ve değerlendirmeni kaydet"
+        f"Karar ver:\n"
+        f"- Eksik ders varsa → graduation_status = 'Mezun Olamaz (Eksik Zorunlu Dersler Mevcut)'\n"
+        f"- Eksik ders yok ama AKTS < {target_ects} → graduation_status = 'Mezun Olamaz (Yetersiz AKTS: {round(total_ects,1)}/{target_ects})'\n"
+        f"- Eksik yok, AKTS yeterli → graduation_status = 'Mezun Olabilir'\n\n"
+        f"HEMEN report_audit_decision çağır — başka metin yazma, sadece aracı çağır."
     )
 
     try:
@@ -403,8 +399,8 @@ async def audit_agent_node(state: AdvisorState) -> dict:
         "final_report": assessment,
         "messages": [AIMessage(content=f"[Mezuniyet Denetçisi] Karar: {grad_status}. {assessment}")],
         "status_queue": [
-            "Mezuniyet Denetçisi nihai değerlendirmeyi yapıyor...",
-            f"Mezuniyet Denetçisi: {grad_status}",
+            "[🎓 Mezuniyet Denetçisi] Toplam AKTS hesaplanıyor ve nihai karar veriliyor...",
+            f"[🎓 Mezuniyet Denetçisi] Karar: {grad_status}",
         ],
     }
 
