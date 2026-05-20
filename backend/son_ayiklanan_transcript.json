@@ -1,18 +1,18 @@
 {
-    "session_id": "11ccf42d-8cc9-4b70-a80c-e3ac07900678",
+    "session_id": "dde32c81-4f7c-493d-becd-1ed6c0f0d48a",
     "semesters": [
         {
             "semester_name": "2021 - 2022 Güz",
             "courses": [
                 {
-                    "kod": "ING106",
-                    "ad": "Matematik I",
+                    "kod": "FLF101",
+                    "ad": "Fransızca Cef B2.1 Akademik",
                     "tip": "",
-                    "kredi": 5.0,
-                    "akts": 7.0,
-                    "not": "CC",
-                    "puan": 2.0,
-                    "durum": "Geçti"
+                    "kredi": 2.0,
+                    "akts": 2.0,
+                    "not": "F",
+                    "puan": 0.0,
+                    "durum": "Kaldı"
                 },
                 {
                     "kod": "INF112",
@@ -30,6 +30,16 @@
                     "tip": "",
                     "kredi": 2.5,
                     "akts": 4.0,
+                    "not": "CC",
+                    "puan": 2.0,
+                    "durum": "Geçti"
+                },
+                {
+                    "kod": "ING106",
+                    "ad": "Matematik I",
+                    "tip": "",
+                    "kredi": 5.0,
+                    "akts": 7.0,
                     "not": "CC",
                     "puan": 2.0,
                     "durum": "Geçti"
@@ -122,11 +132,11 @@
                     "durum": "Geçti"
                 },
                 {
-                    "kod": "INF211",
-                    "ad": "Bilgisayar Mühendisliği İçin Olasılık ve İstatistiğe Giriş",
+                    "kod": "ING107",
+                    "ad": "Matematik II",
                     "tip": "",
                     "kredi": 3.0,
-                    "akts": 4.0,
+                    "akts": 7.0,
                     "not": "F",
                     "puan": 0.0,
                     "durum": "Kaldı"
@@ -162,7 +172,7 @@
                     "durum": "Geçti"
                 }
             ],
-            "term_gpa": 1.95,
+            "term_gpa": 2.25,
             "term_ects": 23.0
         },
         {
@@ -194,9 +204,9 @@
                     "tip": "",
                     "kredi": 2.0,
                     "akts": 2.0,
-                    "not": "CC",
-                    "puan": 2.0,
-                    "durum": "Geçti"
+                    "not": "F",
+                    "puan": 0.0,
+                    "durum": "Kaldı"
                 },
                 {
                     "kod": "INF204",
@@ -204,9 +214,9 @@
                     "tip": "",
                     "kredi": 3.0,
                     "akts": 3.0,
-                    "not": "BA",
-                    "puan": 3.5,
-                    "durum": "Geçti"
+                    "not": "F",
+                    "puan": 0.0,
+                    "durum": "Kaldı"
                 },
                 {
                     "kod": "INF224",
@@ -230,7 +240,7 @@
                 },
                 {
                     "kod": "ING116",
-                    "ad": "-A Fizik I",
+                    "ad": "-B Fizik I",
                     "tip": "",
                     "kredi": 4.0,
                     "akts": 5.0,
@@ -244,9 +254,9 @@
                     "tip": "",
                     "kredi": 3.0,
                     "akts": 5.0,
-                    "not": "CC",
-                    "puan": 2.0,
-                    "durum": "Geçti"
+                    "not": "F",
+                    "puan": 0.0,
+                    "durum": "Kaldı"
                 },
                 {
                     "kod": "ING229",
@@ -254,9 +264,9 @@
                     "tip": "",
                     "kredi": 4.0,
                     "akts": 7.0,
-                    "not": "CB",
-                    "puan": 2.5,
-                    "durum": "Geçti"
+                    "not": "F",
+                    "puan": 0.0,
+                    "durum": "Kaldı"
                 },
                 {
                     "kod": "ING251",
@@ -264,13 +274,13 @@
                     "tip": "",
                     "kredi": 2.5,
                     "akts": 4.0,
-                    "not": "BA",
-                    "puan": 3.5,
-                    "durum": "Geçti"
+                    "not": "F",
+                    "puan": 0.0,
+                    "durum": "Kaldı"
                 }
             ],
-            "term_gpa": 2.65,
-            "term_ects": 37.0
+            "term_gpa": 1.04,
+            "term_ects": 16.0
         },
         {
             "semester_name": "2022 - 2023 Bahar",
@@ -293,6 +303,16 @@
                     "akts": 2.0,
                     "not": "AA",
                     "puan": 4.0,
+                    "durum": "Geçti"
+                },
+                {
+                    "kod": "INF211",
+                    "ad": "Bilgisayar Mühendisliği İçin Olasılık ve İstatistiğe Giriş",
+                    "tip": "",
+                    "kredi": 3.0,
+                    "akts": 4.0,
+                    "not": "BA",
+                    "puan": 3.5,
                     "durum": "Geçti"
                 },
                 {
@@ -329,7 +349,7 @@
                     "kod": "ING208",
                     "ad": "Diferansiyel Denklemler",
                     "tip": "",
-                    "kredi": 2.5,
+                    "kredi": 25.0,
                     "akts": 4.0,
                     "not": "CC",
                     "puan": 2.0,
@@ -341,9 +361,9 @@
                     "tip": "",
                     "kredi": 3.0,
                     "akts": 4.0,
-                    "not": "CC",
-                    "puan": 2.0,
-                    "durum": "Geçti"
+                    "not": "F",
+                    "puan": 0.0,
+                    "durum": "Kaldı"
                 },
                 {
                     "kod": "ING252",
@@ -356,7 +376,7 @@
                     "durum": "Geçti"
                 }
             ],
-            "term_gpa": 2.82,
+            "term_gpa": 2.59,
             "term_ects": 33.0
         },
         {
@@ -381,6 +401,16 @@
                     "not": "AA",
                     "puan": 4.0,
                     "durum": "Geçti"
+                },
+                {
+                    "kod": "FLF101",
+                    "ad": "Fransızca Cef B2.1 Akademik",
+                    "tip": "",
+                    "kredi": 2.0,
+                    "akts": 2.0,
+                    "not": "F",
+                    "puan": 0.0,
+                    "durum": "Kaldı"
                 },
                 {
                     "kod": "INF315",
@@ -423,28 +453,38 @@
                     "durum": "Geçti"
                 },
                 {
-                    "kod": "INF256",
-                    "ad": "Olasılık",
+                    "kod": "ING207",
+                    "ad": "Lineer Cebir",
                     "tip": "",
                     "kredi": 3.0,
                     "akts": 5.0,
-                    "not": "CB",
-                    "puan": 2.5,
-                    "durum": "Geçti"
+                    "not": "F",
+                    "puan": 0.0,
+                    "durum": "Kaldı"
                 },
                 {
-                    "kod": "INF257",
-                    "ad": "İstatistik ve Veri Analizi",
+                    "kod": "ING229",
+                    "ad": "-B Analog Elektronik",
                     "tip": "",
-                    "kredi": 3.0,
-                    "akts": 5.0,
-                    "not": "BB",
-                    "puan": 3.0,
+                    "kredi": 4.0,
+                    "akts": 7.0,
+                    "not": "F",
+                    "puan": 0.0,
+                    "durum": "Kaldı"
+                },
+                {
+                    "kod": "ING251",
+                    "ad": "Yüksek Matematik I",
+                    "tip": "",
+                    "kredi": 2.5,
+                    "akts": 4.0,
+                    "not": "CC",
+                    "puan": 2.0,
                     "durum": "Geçti"
                 }
             ],
-            "term_gpa": 2.75,
-            "term_ects": 30.0
+            "term_gpa": 1.76,
+            "term_ects": 24.0
         },
         {
             "semester_name": "2023 - 2024 Bahar",
@@ -475,9 +515,9 @@
                     "tip": "",
                     "kredi": 3.0,
                     "akts": 5.0,
-                    "not": "CC",
-                    "puan": 2.0,
-                    "durum": "Geçti"
+                    "not": "F",
+                    "puan": 0.0,
+                    "durum": "Kaldı"
                 },
                 {
                     "kod": "INF334",
@@ -518,14 +558,34 @@
                     "not": "AA",
                     "puan": 4.0,
                     "durum": "Geçti"
+                },
+                {
+                    "kod": "ING220",
+                    "ad": "Sayısal Elektronik",
+                    "tip": "",
+                    "kredi": 3.0,
+                    "akts": 4.0,
+                    "not": "CC",
+                    "puan": 2.0,
+                    "durum": "Geçti"
                 }
             ],
-            "term_gpa": 2.62,
-            "term_ects": 26.0
+            "term_gpa": 2.13,
+            "term_ects": 25.0
         },
         {
             "semester_name": "2024 - 2025 Güz",
             "courses": [
+                {
+                    "kod": "FLF101",
+                    "ad": "Fransızca Cef B2.1 Akademik",
+                    "tip": "",
+                    "kredi": 2.0,
+                    "akts": 2.0,
+                    "not": "CC",
+                    "puan": 2.0,
+                    "durum": "Geçti"
+                },
                 {
                     "kod": "INF356",
                     "ad": "Veri Analizine Giriş",
@@ -542,9 +602,9 @@
                     "tip": "",
                     "kredi": 3.0,
                     "akts": 5.0,
-                    "not": "CC",
-                    "puan": 2.0,
-                    "durum": "Geçti"
+                    "not": "F",
+                    "puan": 0.0,
+                    "durum": "Kaldı"
                 },
                 {
                     "kod": "INF402",
@@ -605,10 +665,20 @@
                     "not": "BB",
                     "puan": 3.0,
                     "durum": "Geçti"
+                },
+                {
+                    "kod": "ING207",
+                    "ad": "Lineer Cebir",
+                    "tip": "",
+                    "kredi": 3.0,
+                    "akts": 5.0,
+                    "not": "CC",
+                    "puan": 2.0,
+                    "durum": "Geçti"
                 }
             ],
-            "term_gpa": 2.54,
-            "term_ects": 34.0
+            "term_gpa": 2.12,
+            "term_ects": 36.0
         },
         {
             "semester_name": "2024 - 2025 Bahar",
@@ -639,6 +709,16 @@
                     "tip": "",
                     "kredi": 3.0,
                     "akts": 4.0,
+                    "not": "CC",
+                    "puan": 2.0,
+                    "durum": "Geçti"
+                },
+                {
+                    "kod": "INF333",
+                    "ad": "İşletim Sistemleri",
+                    "tip": "",
+                    "kredi": 3.0,
+                    "akts": 5.0,
                     "not": "CC",
                     "puan": 2.0,
                     "durum": "Geçti"
@@ -694,8 +774,8 @@
                     "durum": "Geçti"
                 }
             ],
-            "term_gpa": 2.71,
-            "term_ects": 32.0
+            "term_gpa": 2.57,
+            "term_ects": 37.0
         },
         {
             "semester_name": "2025 - 2026 Güz",
@@ -711,6 +791,16 @@
                     "durum": "Geçti"
                 },
                 {
+                    "kod": "INF400",
+                    "ad": "Veri Derlemesi",
+                    "tip": "",
+                    "kredi": 3.0,
+                    "akts": 5.0,
+                    "not": "F",
+                    "puan": 0.0,
+                    "durum": "Kaldı"
+                },
+                {
                     "kod": "INF494",
                     "ad": "Bitirme Projesi",
                     "tip": "",
@@ -719,156 +809,125 @@
                     "not": "AA",
                     "puan": 4.0,
                     "durum": "Geçti"
+                },
+                {
+                    "kod": "ING229",
+                    "ad": "-B Analog Elektronik",
+                    "tip": "",
+                    "kredi": 4.0,
+                    "akts": 7.0,
+                    "not": "CC",
+                    "puan": 2.0,
+                    "durum": "Geçti"
                 }
             ],
-            "term_gpa": 3.1,
-            "term_ects": 11.0
+            "term_gpa": 2.2,
+            "term_ects": 18.0
         }
     ],
-    "cumulative_gpa": 2.58,
-    "passed_codes": [
-        "INF316",
-        "TUR001",
-        "ING252",
-        "INF400",
-        "FLE202",
-        "CNT350",
-        "ING127",
-        "INF444",
-        "FLF201",
-        "INF243",
-        "FLE103",
-        "INF356",
-        "INF493",
-        "INF481",
-        "INF114",
-        "INF320",
-        "INF494",
-        "ING106",
-        "FLE102",
-        "INF340",
-        "ING116",
-        "ING144",
-        "INF399",
-        "INF112",
-        "ING107",
-        "ING117",
-        "INF334",
-        "INF325",
-        "INF204",
-        "INF333",
-        "INF471",
-        "INF483",
-        "FLE203",
-        "INF360",
-        "ING251",
-        "IND471",
-        "INF482",
-        "INF437",
-        "INF224",
-        "ING207",
-        "ING220",
-        "INF365",
-        "CNT120",
-        "ATA001",
-        "ATA002",
-        "INF323",
-        "INF430",
-        "CNT417",
-        "ING208",
-        "INF115",
-        "FLF101",
-        "TUR002",
-        "INF256",
-        "INF324",
-        "ING229",
-        "INF257",
-        "INF113",
-        "INF116",
-        "INF291",
-        "INF443",
-        "INF402",
-        "INF315",
-        "INF354",
-        "INF246"
+    "cumulative_gpa": 2.59,
+    "total_ects": 235.0,
+    "missing_courses": [
+        {
+            "kod": "INF204",
+            "ad": "Elektromanyetik Dalgalar",
+            "akts": 3.0,
+            "donem": 3,
+            "tip": "Zorunlu"
+        },
+        {
+            "kod": "INF400",
+            "ad": "Veri Derlemesi",
+            "akts": 5.0,
+            "donem": 7,
+            "tip": "Zorunlu"
+        }
     ],
-    "matched_log": [
-        "ING106 - Matematik I (kod)",
-        "INF112-A - Programlamaya Giriş (kod)",
-        "INF113 - Bilgisayar Mühendisliğine Giriş (kod)",
-        "ING116-A - Fizik I (kod)",
-        "ING127 - Kimya (kod)",
-        "TUR001 - Türk Dili I (kod)",
-        "CNT120 - Kariyer Planlama (kod)",
-        "FLF201 - Fransızca Cef B2.2 Akademik (kod)",
-        "INF114 - Algoritma ve İleri Bilgisayar Programlama (kod)",
-        "INF115 - Programlama Dillerinin Prensipleri (kod)",
-        "INF116 - Bilgisayar Sistemlerine Giriş (kod)",
-        "ING117 - Fizik II (kod)",
-        "ING144 - Teknik Resim (kod)",
-        "TUR002 - Türk Dili II (kod)",
-        "ATA001 - Atatürk İlkeleri ve İnkılap Tarihi I (kod)",
-        "FLE102 - İngilizce Cef B1.1 (kod)",
-        "FLF101 - Fransızca Cef B2.1 Akademik (kod)",
-        "INF204 - Elektromanyetik Dalgalar (kod)",
-        "INF224-A - Veri Yapısı ve Algoritmalar (kod)",
-        "INF246 - Programlama Uygulamaları (kod)",
-        "ING207 - Lineer Cebir (kod)",
-        "ING229-A - Analog Elektronik (kod)",
-        "ING251 - Yüksek Matematik I (kod)",
-        "ATA002 - Atatürk İlkeleri ve İnkılap Tarihi II (kod)",
-        "FLE202 - İngilizce Cef B1.2 (kod)",
-        "INF243 - Nesneye Yönelik Programlama (kod)",
-        "INF291 - Staj (kod)",
-        "ING107 - Matematik II (kod)",
-        "ING208 - Diferansiyel Denklemler (kod)",
-        "ING220-A - Sayısal Elektronik (kod)",
-        "ING252 - Yüksek Matematik II (kod)",
-        "CNT350 - Bilgisayar Mühendisleri için Proje, Risk ve Değişiklik Yönetimi (kod)",
-        "FLE103 - İngilizce Cef B2.1 (kod)",
-        "INF315 - Kesikli Matematik (kod)",
-        "INF316 - Sinyaller ve Sistemler (kod)",
-        "INF324 - İlişkisel Veri Tabanları (kod)",
-        "INF354 - Bilişimde Oyun Teorisi ve Uygulamalarına Giriş (kod)",
-        "INF256 - Olasılık (kod)",
-        "INF257 - İstatistik (kod)",
-        "FLE203 - İngilizce Cef B2.2 (kod)",
-        "INF323 - Otomatlar ve Diller Teorisi (kod)",
-        "INF333 - İşletim Sistemleri (kod)",
-        "INF334 - Bilgisayar Ağları (kod)",
-        "INF340-A - Mikroişlemciler (kod)",
-        "INF365 - Bilgi Teorisi (kod)",
-        "INF399 - Staj (kod)",
-        "INF356 - Veri Analizine Giriş (kod)",
-        "INF400 - Veri Derlemesi (kod)",
-        "INF402 - Nesnelerin İnternetine Giriş (kod)",
-        "INF430 - Robotik (kod)",
-        "INF443 - Dağıtık Sistemler ve Uygulamalar (kod)",
-        "INF444 - Yapay Zeka (kod)",
-        "INF471-A - Bilişimde Güvenlik (kod)",
-        "INF493 - Bilgisayar Mühendisliğinde Araştırma Konuları (kod)",
-        "CNT417 - Girişimcilik (kod)",
-        "IND471 - Yöneylem Araştırması (kod)",
-        "INF325 - Sayısal Analiz (kod)",
-        "INF360 - Veritabanı Yönetimi ve Güvenliği (kod)",
-        "INF437 - Sistem Mühendisliği (kod)",
-        "INF481 - Yazılım Mühendisliği ve Nesneye Yönelik Tasarım (kod)",
-        "INF482 - Gömülü Sistem Tasarım Temelleri (kod)",
-        "INF483 - Bilgi Çıkarımı ve Veri Madenciliğine Giriş (kod)",
-        "INF320 - Bilgisayar Mimarisi (kod)",
-        "INF494 - Bitirme Projesi (kod)"
-    ],
-    "total_ects": 246.0,
-    "missing_courses": [],
     "failed_courses": [
         {
-            "kod": "INF211",
-            "ad": "Bilgisayar Mühendisliği İçin Olasılık ve İstatistiğe Giriş",
+            "kod": "FLF101",
+            "ad": "Fransızca Cef B2.1 Akademik",
+            "not": "F",
+            "akts": 2.0,
+            "donem": "2021 - 2022 Güz"
+        },
+        {
+            "kod": "ING116",
+            "ad": "Fizik I",
+            "not": "F",
+            "akts": 5.0,
+            "donem": "2021 - 2022 Güz"
+        },
+        {
+            "kod": "ING107",
+            "ad": "Matematik II",
+            "not": "F",
+            "akts": 7.0,
+            "donem": "2021 - 2022 Bahar"
+        },
+        {
+            "kod": "INF204",
+            "ad": "Elektromanyetik Dalgalar",
+            "not": "F",
+            "akts": 3.0,
+            "donem": "2022 - 2023 Güz"
+        },
+        {
+            "kod": "ING207",
+            "ad": "Lineer Cebir",
+            "not": "F",
+            "akts": 5.0,
+            "donem": "2022 - 2023 Güz"
+        },
+        {
+            "kod": "ING229",
+            "ad": "-B Analog Elektronik",
+            "not": "F",
+            "akts": 7.0,
+            "donem": "2022 - 2023 Güz"
+        },
+        {
+            "kod": "ING251",
+            "ad": "Yüksek Matematik I",
             "not": "F",
             "akts": 4.0,
-            "donem": 4
+            "donem": "2022 - 2023 Güz"
+        },
+        {
+            "kod": "ING220",
+            "ad": "Sayısal Elektronik",
+            "not": "F",
+            "akts": 4.0,
+            "donem": "2022 - 2023 Bahar"
+        },
+        {
+            "kod": "INF333",
+            "ad": "İşletim Sistemleri",
+            "not": "F",
+            "akts": 5.0,
+            "donem": "2023 - 2024 Bahar"
+        },
+        {
+            "kod": "INF400",
+            "ad": "Veri Derlemesi",
+            "not": "F",
+            "akts": 5.0,
+            "donem": "2024 - 2025 Güz"
         }
     ],
-    "unrecognized_electives": [],
-    "graduation_status": "Mezun Olabilir"
+    "unrecognized_electives": [
+        {
+            "kod": "CNT417",
+            "ad": "Girişimcilik",
+            "not": "CB",
+            "akts": 2.0
+        },
+        {
+            "kod": "IND471",
+            "ad": "Yöneylem Araştırması",
+            "not": "BB",
+            "akts": 4.0
+        }
+    ],
+    "graduation_status": "Mezun Olamaz (Eksik Zorunlu Dersler Mevcut)"
 }

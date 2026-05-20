@@ -35,7 +35,13 @@
       "PowerShell(Get-ChildItem \"C:\\\\Users\\\\Mert\\\\Desktop\" | Where-Object { $_.Extension -eq \".pdf\" } | Select-Object Name, FullName)",
       "PowerShell(Get-ChildItem \"C:\\\\Users\\\\Mert\\\\Desktop\\\\sanal-akademik-danisman\" | ForEach-Object { \"$\\($_.Name\\) [$\\($_.Extension\\)]\" })",
       "PowerShell(cd \"C:\\\\Users\\\\Mert\\\\Desktop\\\\sanal-akademik-danisman\"; Get-ChildItem -Name | Where-Object { $_ -match \"pdf\" -or $_ -match \"PDF\" })",
-      "Bash(python *)"
+      "Bash(python *)",
+      "Bash(venv/Scripts/pip list *)",
+      "Bash(findstr /i \"langchain langgraph google gemini fastapi pydantic\")",
+      "Bash(/c/Users/Mert/Desktop/sanal-akademik-danisman/venv/Scripts/python.exe -m pip list)",
+      "Bash(/c/Users/Mert/Desktop/sanal-akademik-danisman/venv/Scripts/python.exe -m pip install langchain-google-genai)",
+      "Bash(/c/Users/Mert/Desktop/sanal-akademik-danisman/venv/Scripts/python.exe -c ' *)",
+      "Bash(/c/Users/Mert/Desktop/sanal-akademik-danisman/venv/Scripts/python.exe *)"
     ]
   },
   "enabledPlugins": {

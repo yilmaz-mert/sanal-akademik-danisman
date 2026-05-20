@@ -1,8 +1,10 @@
 fastapi
 uvicorn[standard]
 pdfplumber
+python-dotenv
 langchain
-langchain-ollama
+langchain-groq
 langchain-community
 langchain-core
+langgraph
 pydantic
